@@ -54,11 +54,18 @@ Assets/01_Scripts/FigthManager/
  BattleSkill.cs
  EnumFigthList.cs
  FightManager.cs
+ TargetSelector.cs
+Assets/01_Scripts/Salas/
  FightMap.cs
+ RoomData.cs
+ RoomManager.cs
  SpawnPoint.cs
 Assets/01_Scripts/Units/
  Projectile.cs
+ UnitCombat.cs
+ UnitMovement.cs
  UnitStats.cs
+ UnitStatus.cs
 Assets/TutorialInfo/Scripts/Readme.cs
 Temp/obj/Assembly-CSharp/.NETStandard,Version=v2.1.AssemblyAttributes.cs
 

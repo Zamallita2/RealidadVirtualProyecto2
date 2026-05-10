@@ -101,6 +101,15 @@ PrefabInstance:
       addedObject: {fileID: 7638411035078663152}
     - targetCorrespondingSourceObject: {fileID: 919132149155446097, guid: 98e15d34324cbd0e1905939b9c49a05c, type: 3}
       insertIndex: -1
+      addedObject: {fileID: -378782801347835447}
+    - targetCorrespondingSourceObject: {fileID: 919132149155446097, guid: 98e15d34324cbd0e1905939b9c49a05c, type: 3}
+      insertIndex: -1
+      addedObject: {fileID: -7464037482476565494}
+    - targetCorrespondingSourceObject: {fileID: 919132149155446097, guid: 98e15d34324cbd0e1905939b9c49a05c, type: 3}
+      insertIndex: -1
+      addedObject: {fileID: -4801647469093208850}
+    - targetCorrespondingSourceObject: {fileID: 919132149155446097, guid: 98e15d34324cbd0e1905939b9c49a05c, type: 3}
+      insertIndex: -1
       addedObject: {fileID: 5174541101267849603}
   m_SourcePrefab: {fileID: 100100000, guid: 98e15d34324cbd0e1905939b9c49a05c, type: 3}
 --- !u!1 &6077719647948029169 stripped
@@ -127,6 +136,32 @@ MonoBehaviour:
   lineNumber: 0
   hasActedThisRound: 0
   faction: 0
+--- !u!114 &-378782801347835447
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 6077719647948029169}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 1b56fef87cd6c4710af35df464055341, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: Assembly-CSharp::UnitMovement
+  moveSpeed: 1
+  modelRotationOffset: {x: 0, y: 90, z: 0}
+--- !u!114 &-7464037482476565494
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 6077719647948029169}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 3b5470f98de607530948e952a7132fd7, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: Assembly-CSharp::UnitCombat
   skills:
   - skillName: Atack
     category: 0
@@ -136,23 +171,33 @@ MonoBehaviour:
     targetType: 0
     applyEffect: 0
     effectChance: 0
-    effectDuration: 1
-  - skillName: Paralize
+    effectDuration: 0
+  - skillName: Paralizar
     category: 0
     isHealing: 0
     isAOE: 0
     strengthMultiplier: 0
     targetType: 4
     applyEffect: 1
-    effectChance: 1
-    effectDuration: 2
-  currentStatus: 0
-  statusTurnsRemaining: 0
+    effectChance: 0.7
+    effectDuration: 0
   isRanged: 0
-  moveSpeed: 1
   projectilePrefab: {fileID: 0}
   projectileSpawnPoint: {fileID: 0}
-  modelRotationOffset: {x: 0, y: 90, z: 0}
+--- !u!114 &-4801647469093208850
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 6077719647948029169}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 023b6e7846ec6bb6b8883dee27f6f548, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: Assembly-CSharp::UnitStatus
+  currentStatus: 0
+  statusTurnsRemaining: 0
 --- !u!95 &5174541101267849603
 Animator:
   serializedVersion: 7
