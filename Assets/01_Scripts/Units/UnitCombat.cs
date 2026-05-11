@@ -24,9 +24,8 @@ public class UnitCombat : MonoBehaviour
     private UnitStats stats;
 
     private UnitMovement movement;
-
+    private TurnManager turnManager;
     private Animator animator;
-    private TargetSelector targetSelector;
 
     private EnumFigthList.SkillCategory lastSkillType;
 
@@ -36,11 +35,9 @@ public class UnitCombat : MonoBehaviour
             FindFirstObjectByType<FightManager>();
 
         stats = GetComponent<UnitStats>();
-
         movement = GetComponent<UnitMovement>();
-
+        turnManager = FindFirstObjectByType<TurnManager>();
         animator = GetComponent<Animator>();
-        targetSelector = FindFirstObjectByType<TargetSelector>();
     }
 
     public void TakeTurn()
@@ -52,7 +49,7 @@ public class UnitCombat : MonoBehaviour
         {
             Debug.LogWarning(name + " no tiene skills");
 
-            fightManager.EndTurn();
+            turnManager.EndTurn();
 
             return;
         }
@@ -62,17 +59,19 @@ public class UnitCombat : MonoBehaviour
 
     void UseSkill(BattleSkill skill)
     {
-        List<UnitStats> targets =
-            targetSelector.GetTargets(
+         List<UnitStats> targets =
+            TargetSystem.GetTargets(
                 stats,
-                skill.targetType
+                skill.targetType,
+                fightManager.GetAllies(stats.faction),
+                fightManager.GetEnemies(stats.faction)
             );
 
         if(targets == null || targets.Count == 0)
         {
             Debug.LogWarning("No hay targets");
 
-            fightManager.EndTurn();
+            turnManager.EndTurn();
 
             return;
         }
@@ -141,7 +140,7 @@ public class UnitCombat : MonoBehaviour
                 movement.ReturnToOriginalPosition(
                     () =>
                     {
-                        fightManager.EndTurn();
+                        turnManager.EndTurn();
                     }
                 )
             );
@@ -152,7 +151,7 @@ public class UnitCombat : MonoBehaviour
     {
         yield return new WaitForSeconds(0.5f);
 
-        fightManager.EndTurn();
+        turnManager.EndTurn();
     }
 
     public void SpawnProjectile()

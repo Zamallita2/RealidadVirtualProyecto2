@@ -53,13 +53,13 @@ TemporaryDependencyNodeTargetIdentifier=netstandard2.1
 Assets/01_Scripts/FigthManager/
  BattleSkill.cs
  EnumFigthList.cs
- FightManager.cs
- TargetSelector.cs
-Assets/01_Scripts/Salas/
  FightMap.cs
- RoomData.cs
- RoomManager.cs
  SpawnPoint.cs
+ TargetSystem.cs
+Assets/01_Scripts/Managers/
+ FightManager.cs
+ TurnManager.cs
+ WaveManager.cs
 Assets/01_Scripts/Units/
  Projectile.cs
  UnitCombat.cs

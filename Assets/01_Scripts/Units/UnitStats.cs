@@ -16,6 +16,7 @@ public class UnitStats : MonoBehaviour
     public bool hasActedThisRound = false;
 
     protected FightManager fightManager;
+    private TurnManager turnManager;
 
     [Header("Faction")]
     public EnumFigthList.Faction faction;
@@ -30,12 +31,13 @@ public class UnitStats : MonoBehaviour
         currentHealth = maxHealth;
 
         fightManager = FindFirstObjectByType<FightManager>();
+        turnManager = FindFirstObjectByType<TurnManager>();
     }
     public void TakeTurn()
     {
         if(!status.CanAct())
         {
-            fightManager.EndTurn();
+            turnManager.EndTurn();
 
             return;
         }

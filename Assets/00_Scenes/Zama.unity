@@ -1305,6 +1305,8 @@ GameObject:
   m_Component:
   - component: {fileID: 1276014283}
   - component: {fileID: 1276014282}
+  - component: {fileID: 1276014284}
+  - component: {fileID: 1276014285}
   m_Layer: 0
   m_Name: FigthManager
   m_TagString: Untagged
@@ -1329,18 +1331,6 @@ MonoBehaviour:
   - {fileID: 6077719647948029169, guid: 8f50033e63582c56394c6ce5b24223e4, type: 3}
   - {fileID: 6077719647948029169, guid: 8f50033e63582c56394c6ce5b24223e4, type: 3}
   - {fileID: 6077719647948029169, guid: 8f50033e63582c56394c6ce5b24223e4, type: 3}
-  wave1:
-  - {fileID: 6077719647948029169, guid: 8f50033e63582c56394c6ce5b24223e4, type: 3}
-  - {fileID: 6077719647948029169, guid: 8f50033e63582c56394c6ce5b24223e4, type: 3}
-  - {fileID: 6077719647948029169, guid: 8f50033e63582c56394c6ce5b24223e4, type: 3}
-  - {fileID: 6077719647948029169, guid: 8f50033e63582c56394c6ce5b24223e4, type: 3}
-  - {fileID: 6077719647948029169, guid: 8f50033e63582c56394c6ce5b24223e4, type: 3}
-  wave2:
-  - {fileID: 6077719647948029169, guid: 8f50033e63582c56394c6ce5b24223e4, type: 3}
-  - {fileID: 6077719647948029169, guid: 8f50033e63582c56394c6ce5b24223e4, type: 3}
-  wave3:
-  - {fileID: 6077719647948029169, guid: 8f50033e63582c56394c6ce5b24223e4, type: 3}
-  - {fileID: 6077719647948029169, guid: 8f50033e63582c56394c6ce5b24223e4, type: 3}
 --- !u!4 &1276014283
 Transform:
   m_ObjectHideFlags: 0
@@ -1356,6 +1346,36 @@ Transform:
   m_Children: []
   m_Father: {fileID: 0}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!114 &1276014284
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1276014281}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 446cd0e1fccc1ad9fa9b6af545a14665, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: Assembly-CSharp::WaveManager
+  wave1:
+  - {fileID: 6077719647948029169, guid: 8f50033e63582c56394c6ce5b24223e4, type: 3}
+  wave2:
+  - {fileID: 6077719647948029169, guid: 8f50033e63582c56394c6ce5b24223e4, type: 3}
+  wave3:
+  - {fileID: 6077719647948029169, guid: 8f50033e63582c56394c6ce5b24223e4, type: 3}
+--- !u!114 &1276014285
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1276014281}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 95a3fdab310db140abe003f13ef28aaf, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: Assembly-CSharp::TurnManager
 --- !u!1 &1323715968
 GameObject:
   m_ObjectHideFlags: 0
