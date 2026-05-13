@@ -17,6 +17,11 @@ public class UnitMovement : MonoBehaviour
     void Awake()
     {
         animator = GetComponent<Animator>();
+
+        if (animator == null)
+        {
+            animator = GetComponentInChildren<Animator>();
+        }
     }
 
     public void SaveOriginalTransform()

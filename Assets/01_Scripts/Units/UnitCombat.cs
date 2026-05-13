@@ -6,29 +6,19 @@ public class UnitCombat : MonoBehaviour
 {
     [Header("Skills")]
     public List<BattleSkill> skills;
-
     [Header("Combat")]
     public bool isRanged = false;
-
     [Header("Ranged")]
     public GameObject projectilePrefab;
-
     public Transform projectileSpawnPoint;
-
     private List<UnitStats> currentTargets;
-
     private BattleSkill currentSkill;
-
     private FightManager fightManager;
-
     private UnitStats stats;
-
     private UnitMovement movement;
     private TurnManager turnManager;
     private Animator animator;
-
     private EnumFigthList.SkillCategory lastSkillType;
-
     void Awake()
     {
         fightManager =
@@ -38,8 +28,12 @@ public class UnitCombat : MonoBehaviour
         movement = GetComponent<UnitMovement>();
         turnManager = FindFirstObjectByType<TurnManager>();
         animator = GetComponent<Animator>();
-    }
 
+        if (animator == null)
+        {
+            animator = GetComponentInChildren<Animator>();
+        }
+    }
     public void TakeTurn()
     {
         BattleSkill selectedSkill =
@@ -56,7 +50,6 @@ public class UnitCombat : MonoBehaviour
 
         UseSkill(selectedSkill);
     }
-
     void UseSkill(BattleSkill skill)
     {
          List<UnitStats> targets =
@@ -70,18 +63,13 @@ public class UnitCombat : MonoBehaviour
         if(targets == null || targets.Count == 0)
         {
             Debug.LogWarning("No hay targets");
-
             turnManager.EndTurn();
-
             return;
         }
 
         currentTargets = targets;
-
         currentSkill = skill;
-
         movement.SaveOriginalTransform();
-
         if(isRanged)
         {
             StartRangedAttack();
@@ -91,7 +79,6 @@ public class UnitCombat : MonoBehaviour
             StartMeleeAttack();
         }
     }
-
     void StartMeleeAttack()
     {
         UnitStats target = currentTargets[0];
@@ -114,14 +101,13 @@ public class UnitCombat : MonoBehaviour
             )
         );
     }
-
     void StartRangedAttack()
     {
         movement.PlayAttackAnimation();
     }
-
     public void AttackAnimationFinished()
     {
+        Debug.Log("La animación terminó");
         if(isRanged)
         {
             StartCoroutine(FinishRangedAttack());
@@ -137,8 +123,7 @@ public class UnitCombat : MonoBehaviour
             }
 
             StartCoroutine(
-                movement.ReturnToOriginalPosition(
-                    () =>
+                movement.ReturnToOriginalPosition(() =>
                     {
                         turnManager.EndTurn();
                     }
@@ -146,31 +131,24 @@ public class UnitCombat : MonoBehaviour
             );
         }
     }
-
     IEnumerator FinishRangedAttack()
     {
-        yield return new WaitForSeconds(0.5f);
-
+        yield return new WaitForSeconds(0.1f);
         turnManager.EndTurn();
     }
 
     public void SpawnProjectile()
     {
         UnitStats target = currentTargets[0];
-
         GameObject obj =
             Instantiate(
                 projectilePrefab,
                 projectileSpawnPoint.position,
                 Quaternion.identity
             );
+        Projectile projectile = obj.GetComponent<Projectile>();
 
-        Projectile projectile =
-            obj.GetComponent<Projectile>();
-
-        projectile.Initialize(
-            target.transform,
-            () =>
+        projectile.Initialize(target.transform,() =>
             {
                 foreach(UnitStats t in currentTargets)
                 {
@@ -179,13 +157,10 @@ public class UnitCombat : MonoBehaviour
 
                     ApplySkill(currentSkill, t);
                 }
-            });
+            }
+        );
     }
-
-    void ApplySkill(
-        BattleSkill skill,
-        UnitStats target
-    )
+    void ApplySkill(BattleSkill skill,UnitStats target)
     {
         int amount =
             Mathf.RoundToInt(
@@ -194,26 +169,17 @@ public class UnitCombat : MonoBehaviour
             );
 
         if(skill.isHealing)
-        {
             target.Heal(amount);
-        }
         else
-        {
             target.TakeDamage(amount);
-        }
 
-        if(skill.applyEffect !=
-        EnumFigthList.StatusEffect.None)
+        if(skill.applyEffect != EnumFigthList.StatusEffect.None)
         {
             if(Random.value <= skill.effectChance)
             {
-                UnitStatus targetStatus =
-                    target.GetComponent<UnitStatus>();
+                UnitStatus targetStatus = target.GetComponent<UnitStatus>();
 
-                targetStatus.ApplyStatus(
-                    skill.applyEffect,
-                    skill.effectDuration
-                );
+                targetStatus.ApplyStatus(skill.applyEffect,skill.effectDuration);
             }
         }
     }
@@ -224,38 +190,23 @@ public class UnitCombat : MonoBehaviour
         {
             return null;
         }
-
-        List<BattleSkill> possibleSkills =
-            new();
-
+        List<BattleSkill> possibleSkills =new();
         foreach(BattleSkill skill in skills)
         {
             if(lastSkillType ==
             EnumFigthList.SkillCategory.Support &&
-            skill.category ==
-            EnumFigthList.SkillCategory.Support)
+            skill.category ==EnumFigthList.SkillCategory.Support)
             {
                 continue;
             }
-
             possibleSkills.Add(skill);
         }
-
         if(possibleSkills.Count == 0)
         {
             possibleSkills = skills;
         }
-
-        BattleSkill selected =
-            possibleSkills[
-                Random.Range(
-                    0,
-                    possibleSkills.Count
-                )
-            ];
-
+        BattleSkill selected = possibleSkills[Random.Range(0,possibleSkills.Count) ];
         lastSkillType = selected.category;
-
         return selected;
     }
 }
