@@ -199,8 +199,8 @@ GameObject:
   m_Component:
   - component: {fileID: 5460789039817427492}
   - component: {fileID: 6530500665609977225}
-  - component: {fileID: 6057417717223562973}
   - component: {fileID: 2758217843899222007}
+  - component: {fileID: 6057417717223562973}
   - component: {fileID: 4047941890778131997}
   - component: {fileID: 8709048288382439381}
   m_Layer: 0
@@ -246,6 +246,20 @@ MonoBehaviour:
   lineNumber: 0
   hasActedThisRound: 0
   faction: 0
+--- !u!114 &2758217843899222007
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 776287462742014486}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 1b56fef87cd6c4710af35df464055341, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: Assembly-CSharp::UnitMovement
+  moveSpeed: 1
+  modelRotationOffset: {x: 0, y: -180, z: 0}
 --- !u!114 &6057417717223562973
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -280,20 +294,6 @@ MonoBehaviour:
   isRanged: 1
   projectilePrefab: {fileID: 2436672157599599998, guid: ad94a89575f41a2958618e8f952caa38, type: 3}
   projectileSpawnPoint: {fileID: 1633403928137430457}
---- !u!114 &2758217843899222007
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 776287462742014486}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 1b56fef87cd6c4710af35df464055341, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: Assembly-CSharp::UnitMovement
-  moveSpeed: 1
-  modelRotationOffset: {x: 0, y: -180, z: 0}
 --- !u!114 &4047941890778131997
 MonoBehaviour:
   m_ObjectHideFlags: 0
