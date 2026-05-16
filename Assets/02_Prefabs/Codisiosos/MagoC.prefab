@@ -620,7 +620,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: Assembly-CSharp::UnitMovement
   moveSpeed: 1
-  modelRotationOffset: {x: 0, y: -90, z: 0}
+  modelRotationOffset: {x: 0, y: 0, z: 0}
 --- !u!114 &5743072312105560993
 MonoBehaviour:
   m_ObjectHideFlags: 0

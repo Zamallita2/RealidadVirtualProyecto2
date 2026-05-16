@@ -31,11 +31,14 @@ public class UnitMovement : MonoBehaviour
     }
 
     public IEnumerator MoveToPositionAndAttack(
-        Vector3 targetPos,
-        System.Action onArrive
+    Vector3 targetPos,
+    System.Action onArrive
     )
     {
         animator.SetBool("IsWalking", true);
+
+        // Bloquear Y
+        targetPos.y = transform.position.y;
 
         Vector3 lookDir =
             targetPos - transform.position;
@@ -54,12 +57,17 @@ public class UnitMovement : MonoBehaviour
 
         while(Vector3.Distance(transform.position, targetPos) > 0.1f)
         {
-            transform.position =
+            Vector3 newPos =
                 Vector3.MoveTowards(
                     transform.position,
                     targetPos,
                     moveSpeed * Time.deltaTime
                 );
+
+            // Mantener Y fija
+            newPos.y = transform.position.y;
+
+            transform.position = newPos;
 
             yield return null;
         }
@@ -77,7 +85,7 @@ public class UnitMovement : MonoBehaviour
 
         Vector3 lookDir =
             originalPosition - transform.position;
-
+        originalPosition.y = transform.position.y;
         lookDir.y = 0f;
 
         if(lookDir != Vector3.zero)
@@ -92,12 +100,17 @@ public class UnitMovement : MonoBehaviour
 
         while(Vector3.Distance(transform.position, originalPosition) > 0.1f)
         {
-            transform.position =
+            Vector3 newPos =
                 Vector3.MoveTowards(
                     transform.position,
                     originalPosition,
                     moveSpeed * Time.deltaTime
                 );
+
+            newPos.y = transform.position.y;
+
+            transform.position = newPos;
+            
 
             yield return null;
         }
