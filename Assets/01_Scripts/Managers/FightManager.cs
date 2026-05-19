@@ -70,8 +70,15 @@ public class FightManager : MonoBehaviour
             UnitStats stats = obj.GetComponent<UnitStats>();
 
             stats.lineNumber = point.lineNumber;
-
             stats.faction = EnumFigthList.Faction.Ally;
+
+            // Aplicar rotación inicial
+            UnitMovement movement = obj.GetComponent<UnitMovement>();
+
+            if(movement != null)
+            {
+                obj.transform.rotation *= Quaternion.Euler(movement.modelRotationOffset);
+            }
 
             aliveAllies.Add(stats);
         }
@@ -117,8 +124,15 @@ public class FightManager : MonoBehaviour
             UnitStats stats = obj.GetComponent<UnitStats>();
 
             stats.lineNumber = point.lineNumber;
-
             stats.faction = EnumFigthList.Faction.Enemy;
+
+            // Aplicar rotación inicial
+            UnitMovement movement = obj.GetComponent<UnitMovement>();
+
+            if(movement != null)
+            {
+                obj.transform.rotation *= Quaternion.Euler(movement.modelRotationOffset);
+            }
 
             aliveEnemies.Add(stats);
         }
