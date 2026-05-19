@@ -3,44 +3,127 @@ using UnityEngine;
 
 public class WaveManager : MonoBehaviour
 {
-    [Header("Enemy Waves")]
-    public List<GameObject> wave1;
-    public List<GameObject> wave2;
-    public List<GameObject> wave3;
+    [Header("Dungeon Rooms")]
+    [SerializeField] private List<FightRoom> rooms = new();
 
-    private int currentWave = 0;
+    private readonly List<FightRoom> runtimeRooms = new();
+    private int currentRoomIndex = -1;
+    private int currentWave;
+
+    public void AddRoom(FightRoom room)
+    {
+        if(room == null)
+            return;
+
+        rooms.Add(room);
+    }
+
+    public void ClearRooms()
+    {
+        rooms.Clear();
+    }
+
+    public IReadOnlyList<FightRoom> GetConfiguredRooms()
+    {
+        return rooms;
+    }
+
+    public void PrepareForFight()
+    {
+        runtimeRooms.Clear();
+
+        foreach(FightRoom room in rooms)
+        {
+            runtimeRooms.Add(room.Clone());
+        }
+
+        currentRoomIndex = -1;
+        currentWave = 0;
+    }
+
+    public bool EnterNextRoom()
+    {
+        currentRoomIndex++;
+        currentWave = 0;
+
+        while(currentRoomIndex < runtimeRooms.Count
+            && runtimeRooms[currentRoomIndex].IsEmpty())
+        {
+            currentRoomIndex++;
+        }
+
+        if(currentRoomIndex < runtimeRooms.Count)
+            runtimeRooms[currentRoomIndex].isBeingAttacked = true;
+
+        return currentRoomIndex < runtimeRooms.Count;
+    }
+
+    public void ClearCurrentWave()
+    {
+        if(currentRoomIndex < 0 || currentRoomIndex >= runtimeRooms.Count)
+            return;
+
+        if(currentWave < 1 || currentWave > 3)
+            return;
+
+        runtimeRooms[currentRoomIndex]
+            .GetWave(currentWave)?
+            .Clear();
+    }
+
+    public void FinishCurrentRoom()
+    {
+        if(currentRoomIndex < 0 || currentRoomIndex >= runtimeRooms.Count)
+            return;
+
+        FightRoom room = runtimeRooms[currentRoomIndex];
+
+        room.ClearAllWaves();
+        room.isBeingAttacked = false;
+    }
 
     public List<GameObject> StartNextWave()
     {
         currentWave++;
 
-        return GetCurrentWave();
+        if(currentRoomIndex < 0 || currentRoomIndex >= runtimeRooms.Count)
+            return null;
+
+        if(currentWave > 3)
+            return null;
+
+        return runtimeRooms[currentRoomIndex].GetWave(currentWave);
     }
 
-    List<GameObject> GetCurrentWave()
+    public void RemoveEnemyFromCurrentWave(GameObject prefab)
     {
-        switch(currentWave)
-        {
-            case 1:
-                return wave1;
+        if(prefab == null)
+            return;
 
-            case 2:
-                return wave2;
+        if(currentRoomIndex < 0 || currentRoomIndex >= runtimeRooms.Count)
+            return;
 
-            case 3:
-                return wave3;
-        }
+        if(currentWave < 1 || currentWave > 3)
+            return;
 
-        return null;
+        List<GameObject> wave =
+            runtimeRooms[currentRoomIndex].GetWave(currentWave);
+
+        wave?.Remove(prefab);
     }
 
-    public void ResetWaves()
+    public int GetCurrentRoomIndex()
     {
-        currentWave = 0;
+        return currentRoomIndex;
     }
 
     public int GetCurrentWaveNumber()
     {
         return currentWave;
+    }
+
+    public bool HasConfiguredRooms()
+    {
+        return rooms.Count > 0;
     }
 }

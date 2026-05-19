@@ -8,26 +8,53 @@ public class TurnManager : MonoBehaviour
     private UnitStats currentUnit;
     private List<UnitStats> allies;
     private List<UnitStats> enemies;
+    private bool isCombatActive;
+
+    public bool IsCombatActive => isCombatActive;
 
     public void StartTurns(
-    List<UnitStats> allies,
-    List<UnitStats> enemies)
+        List<UnitStats> allies,
+        List<UnitStats> enemies)
+    {
+        isCombatActive = true;
+        this.allies = allies;
+        this.enemies = enemies;
+
+        ResetActionFlags(allies);
+        ResetActionFlags(enemies);
+        RefreshTurnOrder();
+
+        StartTurn();
+    }
+
+    public void BeginNewWave(
+        List<UnitStats> allies,
+        List<UnitStats> enemies)
+    {
+        StartTurns(allies, enemies);
+    }
+
+    public void StopCombat()
+    {
+        isCombatActive = false;
+    }
+
+    public void UpdateCombatants(
+        List<UnitStats> allies,
+        List<UnitStats> enemies)
     {
         this.allies = allies;
         this.enemies = enemies;
 
         RefreshTurnOrder();
-
-        StartTurn();
     }
+
     public void RefreshTurnOrder()
     {
         attackOrder.Clear();
 
-        attackOrder.AddRange(allies);
-        attackOrder.AddRange(enemies);
-
-        attackOrder.RemoveAll(x => x == null);
+        AddLivingUnits(attackOrder, allies);
+        AddLivingUnits(attackOrder, enemies);
 
         attackOrder.Sort((a, b) =>
         {
@@ -55,6 +82,9 @@ public class TurnManager : MonoBehaviour
 
     void StartTurn()
     {
+        if(!isCombatActive)
+            return;
+
         currentUnit = GetNextUnit();
 
         if(currentUnit == null)
@@ -78,7 +108,7 @@ public class TurnManager : MonoBehaviour
     {
         foreach(UnitStats unit in attackOrder)
         {
-            if(unit == null)
+            if(!UnitStats.IsCombatReady(unit))
                 continue;
 
             if(unit.hasActedThisRound)
@@ -92,11 +122,14 @@ public class TurnManager : MonoBehaviour
 
     void StartNewRound()
     {
+        if(!isCombatActive)
+            return;
+
         Debug.Log("NUEVA RONDA");
 
         foreach(UnitStats unit in attackOrder)
         {
-            if(unit == null)
+            if(!UnitStats.IsCombatReady(unit))
                 continue;
 
             unit.hasActedThisRound = false;
@@ -107,12 +140,53 @@ public class TurnManager : MonoBehaviour
 
     public void EndTurn()
     {
+        if(!isCombatActive)
+            return;
+
         Debug.Log("Turno acabado");
+
+        FightManager fightManager =
+            FindFirstObjectByType<FightManager>();
+
+        bool continueCombat =
+            fightManager == null || fightManager.OnTurnEnded();
+
+        if(!isCombatActive || !continueCombat)
+            return;
+
         StartTurn();
     }
 
     public void RemoveUnit(UnitStats unit)
     {
         attackOrder.Remove(unit);
+    }
+
+    static void ResetActionFlags(List<UnitStats> units)
+    {
+        if(units == null)
+            return;
+
+        foreach(UnitStats unit in units)
+        {
+            if(!UnitStats.IsCombatReady(unit))
+                continue;
+
+            unit.hasActedThisRound = false;
+        }
+    }
+
+    static void AddLivingUnits(
+        List<UnitStats> destination,
+        List<UnitStats> source)
+    {
+        if(source == null)
+            return;
+
+        foreach(UnitStats unit in source)
+        {
+            if(UnitStats.IsCombatReady(unit))
+                destination.Add(unit);
+        }
     }
 }

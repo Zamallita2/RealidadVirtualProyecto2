@@ -922,7 +922,7 @@ RectTransform:
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0.5, y: 0.5}
   m_AnchorMax: {x: 0.5, y: 0.5}
-  m_AnchoredPosition: {x: -80, y: -75}
+  m_AnchoredPosition: {x: -317, y: -200}
   m_SizeDelta: {x: 160, y: 30}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!114 &670458582
@@ -969,9 +969,9 @@ MonoBehaviour:
   m_OnClick:
     m_PersistentCalls:
       m_Calls:
-      - m_Target: {fileID: 1276014282}
-        m_TargetAssemblyTypeName: FightManager, Assembly-CSharp
-        m_MethodName: StartFight
+      - m_Target: {fileID: 1247986547}
+        m_TargetAssemblyTypeName: Iniciar, Assembly-CSharp
+        m_MethodName: iniciar
         m_Mode: 1
         m_Arguments:
           m_ObjectArgument: {fileID: 0}
@@ -1326,6 +1326,61 @@ MonoBehaviour:
   m_ShadowLayerMask: 1
   m_RenderingLayers: 1
   m_ShadowRenderingLayers: 1
+--- !u!1 &1247986545
+GameObject:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  serializedVersion: 6
+  m_Component:
+  - component: {fileID: 1247986546}
+  - component: {fileID: 1247986547}
+  m_Layer: 0
+  m_Name: Iniciar
+  m_TagString: Untagged
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
+--- !u!4 &1247986546
+Transform:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1247986545}
+  serializedVersion: 2
+  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
+  m_LocalPosition: {x: 104.70804, y: -0, z: -87.54279}
+  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_ConstrainProportionsScale: 0
+  m_Children: []
+  m_Father: {fileID: 0}
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!114 &1247986547
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1247986545}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 1a0200bdb530c03e09498210d5c0ae39, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: Assembly-CSharp::Iniciar
+  Alies:
+  - prefab: {fileID: 3207577810400515543, guid: 3bbca94e52fdad1ecb3fcbc2c974ccb7, type: 3}
+    level: 1
+  - prefab: {fileID: 6108273667369040895, guid: 0653454b434302889ae23dc0f05eeb7a, type: 3}
+    level: 1
+  - prefab: {fileID: 6767868986443984454, guid: a84a3d5c48277aeb9967fcd844220632, type: 3}
+    level: 1
+  - prefab: {fileID: 776287462742014486, guid: 90f443170b107486cba53a92e8daa470, type: 3}
+    level: 1
+  - prefab: {fileID: 1305646359629266846, guid: 9a620f813a58d6e0b8c2e16013483d40, type: 3}
+    level: 1
 --- !u!1 &1276014281
 GameObject:
   m_ObjectHideFlags: 0
@@ -1336,10 +1391,12 @@ GameObject:
   m_Component:
   - component: {fileID: 1276014283}
   - component: {fileID: 1276014282}
-  - component: {fileID: 1276014284}
   - component: {fileID: 1276014285}
+  - component: {fileID: 1276014287}
+  - component: {fileID: 1276014286}
+  - component: {fileID: 1276014284}
   m_Layer: 0
-  m_Name: FigthManager
+  m_Name: Managers
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -1358,12 +1415,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: Assembly-CSharp::FightManager
   currentMap: {fileID: 417526264}
-  adventurerPrefabs:
-  - {fileID: 3207577810400515543, guid: 3bbca94e52fdad1ecb3fcbc2c974ccb7, type: 3}
-  - {fileID: 776287462742014486, guid: 90f443170b107486cba53a92e8daa470, type: 3}
-  - {fileID: 6108273667369040895, guid: 0653454b434302889ae23dc0f05eeb7a, type: 3}
-  - {fileID: 6767868986443984454, guid: a84a3d5c48277aeb9967fcd844220632, type: 3}
-  - {fileID: 1305646359629266846, guid: 9a620f813a58d6e0b8c2e16013483d40, type: 3}
+  roomTransitionDelay: 10
 --- !u!4 &1276014283
 Transform:
   m_ObjectHideFlags: 0
@@ -1391,20 +1443,19 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 446cd0e1fccc1ad9fa9b6af545a14665, type: 3}
   m_Name: 
   m_EditorClassIdentifier: Assembly-CSharp::WaveManager
-  wave1:
-  - {fileID: 6077719647948029169, guid: 8f50033e63582c56394c6ce5b24223e4, type: 3}
-  - {fileID: 5144600447889281789, guid: 354fe04c75c445b0f8d85394c2b82de0, type: 3}
-  - {fileID: 7904305542069724169, guid: f5bb89e7e9b87cd68be5f0925a6dfe6a, type: 3}
-  - {fileID: 2708113035643015981, guid: 3a6eb02d8c5ac2b5a87381eb68a21843, type: 3}
-  - {fileID: 5144600447889281789, guid: 354fe04c75c445b0f8d85394c2b82de0, type: 3}
-  wave2:
-  - {fileID: 6077719647948029169, guid: 8f50033e63582c56394c6ce5b24223e4, type: 3}
-  - {fileID: 6077719647948029169, guid: 8f50033e63582c56394c6ce5b24223e4, type: 3}
-  - {fileID: 6077719647948029169, guid: 8f50033e63582c56394c6ce5b24223e4, type: 3}
-  wave3:
-  - {fileID: 6077719647948029169, guid: 8f50033e63582c56394c6ce5b24223e4, type: 3}
-  - {fileID: 6077719647948029169, guid: 8f50033e63582c56394c6ce5b24223e4, type: 3}
-  - {fileID: 6077719647948029169, guid: 8f50033e63582c56394c6ce5b24223e4, type: 3}
+  rooms:
+  - wave1:
+    - {fileID: 6077719647948029169, guid: 8f50033e63582c56394c6ce5b24223e4, type: 3}
+    wave2:
+    - {fileID: 5144600447889281789, guid: 354fe04c75c445b0f8d85394c2b82de0, type: 3}
+    wave3:
+    - {fileID: 7904305542069724169, guid: f5bb89e7e9b87cd68be5f0925a6dfe6a, type: 3}
+  - wave1:
+    - {fileID: 2708113035643015981, guid: 3a6eb02d8c5ac2b5a87381eb68a21843, type: 3}
+    wave2:
+    - {fileID: 7904305542069724169, guid: f5bb89e7e9b87cd68be5f0925a6dfe6a, type: 3}
+    wave3:
+    - {fileID: 5144600447889281789, guid: 354fe04c75c445b0f8d85394c2b82de0, type: 3}
 --- !u!114 &1276014285
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -1417,6 +1468,32 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 95a3fdab310db140abe003f13ef28aaf, type: 3}
   m_Name: 
   m_EditorClassIdentifier: Assembly-CSharp::TurnManager
+--- !u!114 &1276014286
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1276014281}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 4537bcd8c73e0e542bd355b93a61a489, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: Assembly-CSharp::NodeManager
+--- !u!114 &1276014287
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1276014281}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 81c2f3193faf43f6f85c740ef1cdcf5e, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: Assembly-CSharp::AdventurerManager
+  fightManager: {fileID: 1276014282}
+  nodeManager: {fileID: 1276014286}
 --- !u!1 &1323715968
 GameObject:
   m_ObjectHideFlags: 0
@@ -1809,7 +1886,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 0cd44c1031e13a943bb63640046fad76, type: 3}
   m_Name: 
   m_EditorClassIdentifier: UnityEngine.UI::UnityEngine.UI.CanvasScaler
-  m_UiScaleMode: 0
+  m_UiScaleMode: 1
   m_ReferencePixelsPerUnit: 100
   m_ScaleFactor: 1
   m_ReferenceResolution: {x: 800, y: 600}
@@ -2331,3 +2408,4 @@ SceneRoots:
   - {fileID: 1276014283}
   - {fileID: 1402884410}
   - {fileID: 1969977294}
+  - {fileID: 1247986546}

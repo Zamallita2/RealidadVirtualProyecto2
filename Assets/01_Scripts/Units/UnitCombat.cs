@@ -36,6 +36,9 @@ public class UnitCombat : MonoBehaviour
     }
     public void TakeTurn()
     {
+        if(turnManager != null && !turnManager.IsCombatActive)
+            return;
+
         BattleSkill selectedSkill =
             ChooseSkill();
 

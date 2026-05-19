@@ -30,7 +30,7 @@ public static class TargetSystem
 
             case EnumFigthList.TargetType.AllEnemies:
 
-                result.AddRange(enemies);
+                result.AddRange(GetLivingUnits(enemies));
                 break;
 
             case EnumFigthList.TargetType.RandomEnemyWithoutStatus:
@@ -39,9 +39,22 @@ public static class TargetSystem
                 break;
         }
 
-        result.RemoveAll(x => x == null);
+        result.RemoveAll(x => !UnitStats.IsCombatReady(x));
 
         return result;
+    }
+
+    static List<UnitStats> GetLivingUnits(List<UnitStats> units)
+    {
+        List<UnitStats> living = new();
+
+        foreach(UnitStats unit in units)
+        {
+            if(UnitStats.IsCombatReady(unit))
+                living.Add(unit);
+        }
+
+        return living;
     }
 
     static UnitStats GetEnemyWithoutStatus(
@@ -51,7 +64,7 @@ public static class TargetSystem
 
         foreach(UnitStats unit in units)
         {
-            if(unit == null)
+            if(!UnitStats.IsCombatReady(unit))
                 continue;
 
             UnitStatus status =
@@ -83,16 +96,18 @@ public static class TargetSystem
     static UnitStats GetFrontPriorityRandom(
         List<UnitStats> units)
     {
-        if(units.Count == 0)
+        List<UnitStats> living = GetLivingUnits(units);
+
+        if(living.Count == 0)
             return null;
 
-        units.Sort((a, b) =>
+        living.Sort((a, b) =>
             a.lineNumber.CompareTo(b.lineNumber));
 
         int maxIndex =
-            Mathf.Min(2, units.Count);
+            Mathf.Min(2, living.Count);
 
-        return units[
+        return living[
             Random.Range(0, maxIndex)
         ];
     }
@@ -100,12 +115,14 @@ public static class TargetSystem
     static UnitStats GetLowestHealth(
         List<UnitStats> units)
     {
-        if(units.Count == 0)
+        List<UnitStats> living = GetLivingUnits(units);
+
+        if(living.Count == 0)
             return null;
 
-        UnitStats lowest = units[0];
+        UnitStats lowest = living[0];
 
-        foreach(UnitStats unit in units)
+        foreach(UnitStats unit in living)
         {
             if(unit.currentHealth <
                 lowest.currentHealth)
