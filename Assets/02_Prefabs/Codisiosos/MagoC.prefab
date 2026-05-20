@@ -53,15 +53,15 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: -8679921383154817045, guid: fd8d7d667533ea9df8942054f6d87f06, type: 3}
       propertyPath: m_LocalPosition.x
-      value: -0.242
+      value: -0.09354065
       objectReference: {fileID: 0}
     - target: {fileID: -8679921383154817045, guid: fd8d7d667533ea9df8942054f6d87f06, type: 3}
       propertyPath: m_LocalPosition.y
-      value: 0.7
+      value: 2.3731
       objectReference: {fileID: 0}
     - target: {fileID: -8679921383154817045, guid: fd8d7d667533ea9df8942054f6d87f06, type: 3}
       propertyPath: m_LocalPosition.z
-      value: -8
+      value: -7.71067
       objectReference: {fileID: 0}
     - target: {fileID: -8679921383154817045, guid: fd8d7d667533ea9df8942054f6d87f06, type: 3}
       propertyPath: m_LocalRotation.w
@@ -600,12 +600,16 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 095cbac8bf0da764f99910378a7f2152, type: 3}
   m_Name: 
   m_EditorClassIdentifier: Assembly-CSharp::UnitStats
+  level: 1
   maxHealth: 20
   currentHealth: 0
   strength: 5
   speed: 3
+  isAlive: 1
   lineNumber: 0
   hasActedThisRound: 0
+  partyIndex: -1
+  sourceEnemyPrefab: {fileID: 0}
   faction: 0
 --- !u!114 &954399751630153986
 MonoBehaviour:
@@ -662,7 +666,7 @@ MonoBehaviour:
     effectChance: 0.5
     effectDuration: 2
   isRanged: 1
-  projectilePrefab: {fileID: 2436672157599599998, guid: ad94a89575f41a2958618e8f952caa38, type: 3}
+  projectilePrefab: {fileID: 654237713483918599, guid: 36f97b0cacb16074186058773d54fe69, type: 3}
   projectileSpawnPoint: {fileID: 1300401610927293154}
 --- !u!114 &3254825091897603018
 MonoBehaviour:

@@ -239,12 +239,16 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 095cbac8bf0da764f99910378a7f2152, type: 3}
   m_Name: 
   m_EditorClassIdentifier: Assembly-CSharp::UnitStats
+  level: 1
   maxHealth: 25
   currentHealth: 0
   strength: 9
   speed: 3
+  isAlive: 1
   lineNumber: 0
   hasActedThisRound: 0
+  partyIndex: -1
+  sourceEnemyPrefab: {fileID: 0}
   faction: 0
 --- !u!114 &2758217843899222007
 MonoBehaviour:
@@ -292,7 +296,7 @@ MonoBehaviour:
     effectChance: 0
     effectDuration: 0
   isRanged: 1
-  projectilePrefab: {fileID: 2436672157599599998, guid: ad94a89575f41a2958618e8f952caa38, type: 3}
+  projectilePrefab: {fileID: 6837982506185293005, guid: d896748c082456b45b433909fb85e60e, type: 3}
   projectileSpawnPoint: {fileID: 1633403928137430457}
 --- !u!114 &4047941890778131997
 MonoBehaviour:
