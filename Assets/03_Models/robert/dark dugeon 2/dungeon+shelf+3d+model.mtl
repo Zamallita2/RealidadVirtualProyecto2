@@ -1,0 +1,6 @@
+newmtl tripo_material_f2643acd_40c9_4e77_97be_79758de0fad8
+Kd 1.000000000 1.000000000 1.000000000
+d 1.000000000
+illum 2
+map_Kd dungeon+shelf+3d+model_basecolor.jpg
+
