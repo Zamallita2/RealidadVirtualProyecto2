@@ -522,7 +522,7 @@ MonoBehaviour:
     effectChance: 0
     effectDuration: 0
   isRanged: 1
-  projectilePrefab: {fileID: 2436672157599599998, guid: ad94a89575f41a2958618e8f952caa38, type: 3}
+  projectilePrefab: {fileID: 1573207234115018630, guid: e43f9e6216b43fb468aa9617ca761ce1, type: 3}
   projectileSpawnPoint: {fileID: 3334024142509161063}
 --- !u!114 &6314614628323818356
 MonoBehaviour:
