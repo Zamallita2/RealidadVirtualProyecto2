@@ -77,6 +77,8 @@ public class UnitStats : MonoBehaviour
             return;
         }
 
+        hasActedThisRound = true;
+
         combat.TakeTurn();
     }
     

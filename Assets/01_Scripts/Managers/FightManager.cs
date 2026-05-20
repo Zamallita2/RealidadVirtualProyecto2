@@ -304,7 +304,6 @@ public class FightManager : MonoBehaviour
     void OnDungeonComplete()
     {
         SyncPartyFromFight();
-        HealAllAllies();
         SyncPartyFromFight();
 
         adventurerManager?.OnFightWon(currentParty);
@@ -323,22 +322,6 @@ public class FightManager : MonoBehaviour
         adventurerManager?.OnFightLost();
 
         Debug.Log("PERDISTE");
-    }
-
-    void HealAllAllies()
-    {
-        foreach(UnitStats stats in allySlots)
-        {
-            if(!UnitStats.IsCombatReady(stats))
-                continue;
-
-            stats.currentHealth = stats.maxHealth;
-
-            if(stats.partyIndex < 0 || stats.partyIndex >= currentParty.Count)
-                continue;
-
-            currentParty[stats.partyIndex].currentHealth = stats.maxHealth;
-        }
     }
 
     void SyncPartyFromFight()

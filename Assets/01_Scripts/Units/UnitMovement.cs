@@ -5,6 +5,7 @@ public class UnitMovement : MonoBehaviour
 {
     [Header("Movement")]
     public float moveSpeed = 4f;
+    public float distanciaMinima = 0.5f;
 
     [Header("Rotation")]
     public Vector3 modelRotationOffset;
@@ -55,7 +56,7 @@ public class UnitMovement : MonoBehaviour
                 Quaternion.Euler(modelRotationOffset);
         }
 
-        while(Vector3.Distance(transform.position, targetPos) > 0.1f)
+        while(Vector3.Distance(transform.position, targetPos) > distanciaMinima)
         {
             Vector3 newPos =
                 Vector3.MoveTowards(
@@ -75,8 +76,61 @@ public class UnitMovement : MonoBehaviour
         animator.SetBool("IsWalking", false);
 
         onArrive?.Invoke();
-    }
+    }public IEnumerator LookTargetPosition(
+    Vector3 targetPos,
+    System.Action onArrive
+    )
+    {
+        Vector3 lookDir =
+            targetPos - transform.position;
 
+        lookDir.y = 0f;
+
+        if(lookDir != Vector3.zero)
+        {
+            Quaternion targetRotation =
+                Quaternion.LookRotation(lookDir);
+
+            transform.rotation =
+                targetRotation *
+                Quaternion.Euler(modelRotationOffset);
+        }
+        
+
+        yield return null;
+        onArrive?.Invoke();
+    }
+    
+    public IEnumerator LookOriginalPosition(
+        System.Action onFinish
+    )
+    {
+        float timer = 0f;
+        float rotateDuration = 0.25f;
+
+        Quaternion startRotation =
+            transform.rotation;
+
+        while(timer < rotateDuration)
+        {
+            timer += Time.deltaTime;
+
+            transform.rotation =
+                Quaternion.Slerp(
+                    startRotation,
+                    originalRotation,
+                    timer / rotateDuration
+                );
+
+            yield return null;
+        }
+
+        transform.rotation = originalRotation;
+
+        yield return new WaitForSeconds(0.5f);
+
+        onFinish?.Invoke();
+    }
     public IEnumerator ReturnToOriginalPosition(
         System.Action onFinish
     )

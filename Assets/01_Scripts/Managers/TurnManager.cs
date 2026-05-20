@@ -1,3 +1,4 @@
+using System;
 using System.Collections.Generic;
 using UnityEngine;
 
@@ -9,6 +10,7 @@ public class TurnManager : MonoBehaviour
     private List<UnitStats> allies;
     private List<UnitStats> enemies;
     private bool isCombatActive;
+    private bool isTurn=false;
 
     public bool IsCombatActive => isCombatActive;
 
@@ -84,22 +86,25 @@ public class TurnManager : MonoBehaviour
     {
         if(!isCombatActive)
             return;
-
+        if(isTurn){
+            Debug.Log("Lo intentó");
+            return;
+        }
         currentUnit = GetNextUnit();
 
         if(currentUnit == null)
         {
             StartNewRound();
-
+            Debug.Log("Primer nulo");
             currentUnit = GetNextUnit();
 
-            if(currentUnit == null)
-                return;
+            if(currentUnit == null){
+                Debug.Log("Segundo nulo");
+                return;}
         }
 
         Debug.Log("Turno de: " + currentUnit.name);
-
-        currentUnit.hasActedThisRound = true;
+        isTurn=true;
 
         currentUnit.TakeTurn();
     }
@@ -144,6 +149,7 @@ public class TurnManager : MonoBehaviour
             return;
 
         Debug.Log("Turno acabado");
+        isTurn=false;
 
         FightManager fightManager =
             FindFirstObjectByType<FightManager>();
