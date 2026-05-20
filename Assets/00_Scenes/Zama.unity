@@ -1415,6 +1415,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: Assembly-CSharp::FightManager
   currentMap: {fileID: 417526264}
+  waveTransitionDelay: 5
   roomTransitionDelay: 10
 --- !u!4 &1276014283
 Transform:
@@ -1447,15 +1448,14 @@ MonoBehaviour:
   - wave1:
     - {fileID: 6077719647948029169, guid: 8f50033e63582c56394c6ce5b24223e4, type: 3}
     wave2:
-    - {fileID: 5144600447889281789, guid: 354fe04c75c445b0f8d85394c2b82de0, type: 3}
-    wave3:
-    - {fileID: 7904305542069724169, guid: f5bb89e7e9b87cd68be5f0925a6dfe6a, type: 3}
-  - wave1:
     - {fileID: 2708113035643015981, guid: 3a6eb02d8c5ac2b5a87381eb68a21843, type: 3}
-    wave2:
-    - {fileID: 7904305542069724169, guid: f5bb89e7e9b87cd68be5f0925a6dfe6a, type: 3}
     wave3:
-    - {fileID: 5144600447889281789, guid: 354fe04c75c445b0f8d85394c2b82de0, type: 3}
+    - {fileID: 7904305542069724169, guid: f5bb89e7e9b87cd68be5f0925a6dfe6a, type: 3}
+    isBeingAttacked: 0
+  - wave1: []
+    wave2: []
+    wave3: []
+    isBeingAttacked: 0
 --- !u!114 &1276014285
 MonoBehaviour:
   m_ObjectHideFlags: 0
