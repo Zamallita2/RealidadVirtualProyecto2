@@ -1373,8 +1373,6 @@ MonoBehaviour:
   Alies:
   - prefab: {fileID: 3207577810400515543, guid: 3bbca94e52fdad1ecb3fcbc2c974ccb7, type: 3}
     level: 1
-  - prefab: {fileID: 6108273667369040895, guid: 0653454b434302889ae23dc0f05eeb7a, type: 3}
-    level: 1
   - prefab: {fileID: 6767868986443984454, guid: a84a3d5c48277aeb9967fcd844220632, type: 3}
     level: 1
   - prefab: {fileID: 776287462742014486, guid: 90f443170b107486cba53a92e8daa470, type: 3}

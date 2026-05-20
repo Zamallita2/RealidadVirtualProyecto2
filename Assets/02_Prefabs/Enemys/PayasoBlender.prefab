@@ -133,12 +133,16 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 095cbac8bf0da764f99910378a7f2152, type: 3}
   m_Name: 
   m_EditorClassIdentifier: Assembly-CSharp::UnitStats
-  maxHealth: 10
+  level: 1
+  maxHealth: 100
   currentHealth: 0
   strength: 2
-  speed: 5
+  speed: 0
+  isAlive: 1
   lineNumber: 0
   hasActedThisRound: 0
+  partyIndex: -1
+  sourceEnemyPrefab: {fileID: 0}
   faction: 0
 --- !u!114 &-378782801347835447
 MonoBehaviour:
