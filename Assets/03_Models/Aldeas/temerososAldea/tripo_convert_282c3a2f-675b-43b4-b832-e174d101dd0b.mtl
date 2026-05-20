@@ -1,0 +1,16 @@
+# Blender 5.0.1 MTL File: 'None'
+# www.blender.org
+
+newmtl tripo_mat_282c3a2f-675b-43b4-b832-e174d101dd0b
+Ka 1.000000 1.000000 1.000000
+Ks 0.500000 0.500000 0.500000
+Ke 0.000000 0.000000 0.000000
+Ni 1.500000
+d 1.000000
+illum 2
+map_Kd temerososAldea_basecolor.JPEG
+map_Ns temerososAldea_roughness.JPEG
+map_Pr temerososAldea_roughness.JPEG
+map_refl temerososAldea_metallic.JPEG
+map_Pm temerososAldea_metallic.JPEG
+map_Bump -bm 1.000000 temerososAldea_normal.JPEG

@@ -1,0 +1,17 @@
+%YAML 1.1
+%TAG !u! tag:unity3d.com,2011:
+--- !u!221 &22100000
+AnimatorOverrideController:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_Name: LuchadorC_Controller
+  m_Controller: {fileID: 9100000, guid: 0e9f2a9d5bc371dc2aa955a8280966b2, type: 2}
+  m_Clips:
+  - m_OriginalClip: {fileID: 7400000, guid: d90c7c314965ee62d8c73d0372653bbd, type: 2}
+    m_OverrideClip: {fileID: -203655887218126122, guid: b83ec2cb61b3fcf03bb05606bbaa0eea, type: 3}
+  - m_OriginalClip: {fileID: 7400000, guid: 90af1bd2e8aa285019d717ab70c48c00, type: 2}
+    m_OverrideClip: {fileID: 7400000, guid: 926c7c03f5d2870c082acbb29a379dbe, type: 2}
+  - m_OriginalClip: {fileID: 7400000, guid: e66a5b4283801721e8871aaa2d6e69d3, type: 2}
+    m_OverrideClip: {fileID: 7400000, guid: ff25fd58c56d92108a11943d2a485423, type: 2}
