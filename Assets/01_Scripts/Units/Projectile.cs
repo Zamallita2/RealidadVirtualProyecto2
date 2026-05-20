@@ -24,17 +24,17 @@ public class Projectile : MonoBehaviour
             Destroy(gameObject);
             return;
         }
-
+        Vector3 dir = new Vector3(target.position.x,target.position.y+0.3f,target.position.z);
         transform.position =
             Vector3.MoveTowards(
                 transform.position,
-                target.position,
+                dir,
                 speed * Time.deltaTime
             );
 
         if(Vector3.Distance(
             transform.position,
-            target.position) < 0.1f)
+            dir) < 0.1f)
         {
             onHit?.Invoke();
 
