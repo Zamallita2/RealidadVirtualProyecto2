@@ -1,0 +1,30 @@
+%YAML 1.1
+%TAG !u! tag:unity3d.com,2011:
+--- !u!114 &11400000
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 8f5c8b38697bddc4cba8b30b7dfd55d5, type: 3}
+  m_Name: GD_PayasoCaja
+  m_EditorClassIdentifier: Assembly-CSharp::EnemyGachaData
+  enemyId: ' payaso_caja'
+  enemyName: Payaso Caja
+  rarity: 1
+  description: 
+  hp: 130
+  attack: 22
+  defense: 10
+  speed: 12
+  skillName: 
+  skillDescription: 
+  cardFrontSprite: {fileID: 21300000, guid: d57ff694174ca9d4e8bf9920a1e9505a, type: 3}
+  cardBackSprite: {fileID: 21300000, guid: 879190fc819a9984ebd041a0739c379c, type: 3}
+  newRewardPanelSprite: {fileID: 21300000, guid: 8c8c0b6f74a1433429dbb3ca4f88f4af, type: 3}
+  duplicateRewardPanelSprite: {fileID: 21300000, guid: c5335aa2f82943f47875655f43ceec09, type: 3}
+  enemyPrefab: {fileID: 6077719647948029169, guid: 8f50033e63582c56394c6ce5b24223e4, type: 3}
+  duplicateFragments: 15

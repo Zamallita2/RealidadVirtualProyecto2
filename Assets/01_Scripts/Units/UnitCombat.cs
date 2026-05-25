@@ -106,7 +106,22 @@ public class UnitCombat : MonoBehaviour
     }
     void StartRangedAttack()
     {
-        movement.PlayAttackAnimation();
+        UnitStats target = currentTargets[0];
+        Vector3 dir =
+            (transform.position -
+            target.transform.position).normalized;
+        Vector3 targetPos =
+            target.transform.position +
+            dir * 0.2f;
+        StartCoroutine(
+            movement.LookTargetPosition(
+                targetPos,
+                () =>
+                {
+                    movement.PlayAttackAnimation();
+                }
+            )
+        );
     }
     public void AttackAnimationFinished()
     {
@@ -137,7 +152,14 @@ public class UnitCombat : MonoBehaviour
     IEnumerator FinishRangedAttack()
     {
         yield return new WaitForSeconds(0.1f);
-        turnManager.EndTurn();
+        stats.hasActedThisRound=true;
+        StartCoroutine(
+            movement.LookOriginalPosition(() =>
+                {
+                    turnManager.EndTurn();
+                }
+            )
+        );
     }
 
     public void SpawnProjectile()
