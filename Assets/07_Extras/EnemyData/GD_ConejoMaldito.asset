@@ -1,0 +1,30 @@
+%YAML 1.1
+%TAG !u! tag:unity3d.com,2011:
+--- !u!114 &11400000
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 8f5c8b38697bddc4cba8b30b7dfd55d5, type: 3}
+  m_Name: GD_ConejoMaldito
+  m_EditorClassIdentifier: Assembly-CSharp::EnemyGachaData
+  enemyId: conejo_maldito
+  enemyName: Conejo Maldito
+  rarity: 1
+  description: 
+  hp: 125
+  attack: 20
+  defense: 11
+  speed: 10
+  skillName: 
+  skillDescription: 
+  cardFrontSprite: {fileID: 21300000, guid: 8ced2382ad71f0344b2e58f679179068, type: 3}
+  cardBackSprite: {fileID: 21300000, guid: 879190fc819a9984ebd041a0739c379c, type: 3}
+  newRewardPanelSprite: {fileID: 21300000, guid: 4ff03b8db36228e48be204b10682b539, type: 3}
+  duplicateRewardPanelSprite: {fileID: 21300000, guid: 4628c94792b8fff4d8c1d528fd04b9a6, type: 3}
+  enemyPrefab: {fileID: 5144600447889281789, guid: 354fe04c75c445b0f8d85394c2b82de0, type: 3}
+  duplicateFragments: 15
