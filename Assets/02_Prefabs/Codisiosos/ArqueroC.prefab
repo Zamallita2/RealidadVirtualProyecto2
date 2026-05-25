@@ -488,7 +488,8 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 1b56fef87cd6c4710af35df464055341, type: 3}
   m_Name: 
   m_EditorClassIdentifier: Assembly-CSharp::UnitMovement
-  moveSpeed: 1
+  moveSpeed: 5
+  distanciaMinima: 0.5
   modelRotationOffset: {x: 0, y: 0, z: 0}
 --- !u!114 &63649480689444723
 MonoBehaviour:
