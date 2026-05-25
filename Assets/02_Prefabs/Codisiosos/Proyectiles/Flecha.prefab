@@ -48,7 +48,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 502ab1694a73b15e7b31cd5279209b12, type: 3}
   m_Name: 
   m_EditorClassIdentifier: Assembly-CSharp::Projectile
-  speed: 4
+  speed: 8
 --- !u!33 &7209271878313998588
 MeshFilter:
   m_ObjectHideFlags: 0

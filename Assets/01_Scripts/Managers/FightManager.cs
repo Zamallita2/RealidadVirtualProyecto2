@@ -254,8 +254,9 @@ public class FightManager : MonoBehaviour
         turnManager.StopCombat();
 
         waveManager.ClearCurrentWave();
-
+        FadeImage.Instance.Mostrar();
         yield return new WaitForSeconds(waveTransitionDelay);
+        FadeImage.Instance.Ocultar();
 
         isTransitioning = false;
 
@@ -290,8 +291,9 @@ public class FightManager : MonoBehaviour
         SyncPartyFromFight();
 
         Debug.Log("GANASTE");
-
+        FadeImage.Instance.Mostrar();
         yield return new WaitForSeconds(roomTransitionDelay);
+        FadeImage.Instance.Ocultar();
 
         isTransitioning = false;
 
