@@ -1,0 +1,30 @@
+%YAML 1.1
+%TAG !u! tag:unity3d.com,2011:
+--- !u!114 &11400000
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 8f5c8b38697bddc4cba8b30b7dfd55d5, type: 3}
+  m_Name: GD_MunecaSinOjos
+  m_EditorClassIdentifier: Assembly-CSharp::EnemyGachaData
+  enemyId: muneca_sin_ojos
+  enemyName: "Mu\xF1eca Sin Ojos"
+  rarity: 0
+  description: "Una mu\xF1eca antigua sin ojos que observa desde la oscuridad."
+  hp: 110
+  attack: 16
+  defense: 12
+  speed: 8
+  skillName: " Mirada Vac\xEDa"
+  skillDescription: 
+  cardFrontSprite: {fileID: 21300000, guid: 39748c6e154213a4e8b526694a03805f, type: 3}
+  cardBackSprite: {fileID: 21300000, guid: 879190fc819a9984ebd041a0739c379c, type: 3}
+  newRewardPanelSprite: {fileID: 21300000, guid: 28f91cfcfa4aa6b4190a55ff6eec27ac, type: 3}
+  duplicateRewardPanelSprite: {fileID: 21300000, guid: fd39bed37bf9fd1458103070c40ff676, type: 3}
+  enemyPrefab: {fileID: 0}
+  duplicateFragments: 10
