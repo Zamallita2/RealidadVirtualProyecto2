@@ -14,6 +14,7 @@ public class GachaOwnedEnemy
 public class GachaSaveData
 {
     public int essence;
+    public int shopCoins;
     public int pityCounter;
     public List<GachaOwnedEnemy> ownedEnemies = new List<GachaOwnedEnemy>();
 }

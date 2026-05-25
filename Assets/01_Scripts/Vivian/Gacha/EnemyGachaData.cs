@@ -44,6 +44,10 @@ public class EnemyGachaData : ScriptableObject
     [Header("Prefab para salas")]
     public GameObject enemyPrefab;
 
-    [Header("Duplicado")]
+    [Header("Duplicado de gacha")]
     public int duplicateFragments = 10;
+
+    [Header("Tienda")]
+    public int shopPrice = 50;
+    public Sprite shopIcon;
 }

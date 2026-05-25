@@ -29,8 +29,9 @@ public class GachaSystem : MonoBehaviour
     public List<EnemyGachaData> epicPool = new();
     public List<EnemyGachaData> legendaryPool = new();
 
-    [Header("UI que ya tienes")]
+    [Header("UI")]
     public TMP_Text essenceText;
+    public TMP_Text shopCoinsText;
     public GachaButtonVisual summonOneButton;
     public GachaButtonVisual summonTenButton;
 
@@ -49,6 +50,7 @@ public class GachaSystem : MonoBehaviour
     public bool forceLegendary = false;
     public bool forceEpic = false;
     public int addEssenceTestAmount = 1000;
+    public int addShopCoinsTestAmount = 500;
 
     private bool isSummoning;
 
@@ -134,20 +136,19 @@ public class GachaSystem : MonoBehaviour
                     )
                 );
             }
+
             bool isNew = inventory.AddEnemy(reward, out int fragments);
 
             if (!isNew && fragments > 0)
             {
-                inventory.AddEssence(fragments);
+                inventory.AddShopCoins(fragments);
                 UpdateUI();
             }
 
             if (rewardPopup != null)
             {
                 rewardPopup.Show(reward, isNew);
-
                 yield return rewardPopup.WaitUntilClosed();
-
                 yield return new WaitForSeconds(0.2f);
             }
         }
@@ -244,10 +245,13 @@ public class GachaSystem : MonoBehaviour
         return pool[Random.Range(0, pool.Count)];
     }
 
-    private void UpdateUI()
+    public void UpdateUI()
     {
         if (essenceText != null && inventory != null)
             essenceText.text = inventory.GetEssence().ToString();
+
+        if (shopCoinsText != null && inventory != null)
+            shopCoinsText.text = inventory.GetShopCoins().ToString();
 
         UpdateButtonStates();
     }
@@ -274,6 +278,12 @@ public class GachaSystem : MonoBehaviour
     public void AddEssenceForTest()
     {
         inventory.AddEssence(addEssenceTestAmount);
+        UpdateUI();
+    }
+
+    public void AddShopCoinsForTest()
+    {
+        inventory.AddShopCoins(addShopCoinsTestAmount);
         UpdateUI();
     }
 

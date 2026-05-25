@@ -10,6 +10,7 @@ public class GachaInventoryManager : MonoBehaviour
 
     [Header("Pruebas")]
     public int startEssence = 450;
+    public int startShopCoins = 300;
     public bool resetSaveOnStart = false;
 
     private const string SaveKey = "GACHA_SAVE_DATA";
@@ -36,10 +37,7 @@ public class GachaInventoryManager : MonoBehaviour
     {
         if (!PlayerPrefs.HasKey(SaveKey))
         {
-            SaveData = new GachaSaveData();
-            SaveData.essence = startEssence;
-            SaveData.pityCounter = 0;
-            Save();
+            CreateNewSave();
             return;
         }
 
@@ -48,12 +46,16 @@ public class GachaInventoryManager : MonoBehaviour
         );
 
         if (SaveData == null)
-        {
-            SaveData = new GachaSaveData();
-            SaveData.essence = startEssence;
-            SaveData.pityCounter = 0;
-            Save();
-        }
+            CreateNewSave();
+    }
+
+    private void CreateNewSave()
+    {
+        SaveData = new GachaSaveData();
+        SaveData.essence = startEssence;
+        SaveData.shopCoins = startShopCoins;
+        SaveData.pityCounter = 0;
+        Save();
     }
 
     public void Save()
@@ -67,9 +69,20 @@ public class GachaInventoryManager : MonoBehaviour
         return SaveData.essence;
     }
 
+    public int GetShopCoins()
+    {
+        return SaveData.shopCoins;
+    }
+
     public void AddEssence(int amount)
     {
         SaveData.essence += amount;
+        Save();
+    }
+
+    public void AddShopCoins(int amount)
+    {
+        SaveData.shopCoins += amount;
         Save();
     }
 
@@ -79,6 +92,16 @@ public class GachaInventoryManager : MonoBehaviour
             return false;
 
         SaveData.essence -= amount;
+        Save();
+        return true;
+    }
+
+    public bool SpendShopCoins(int amount)
+    {
+        if (SaveData.shopCoins < amount)
+            return false;
+
+        SaveData.shopCoins -= amount;
         Save();
         return true;
     }
@@ -98,6 +121,9 @@ public class GachaInventoryManager : MonoBehaviour
     {
         fragments = 0;
 
+        if (enemy == null)
+            return false;
+
         GachaOwnedEnemy owned = GetOwned(enemy.enemyId);
 
         if (owned == null)
@@ -115,12 +141,40 @@ public class GachaInventoryManager : MonoBehaviour
             return true;
         }
 
+        owned.unlocked = true;
         owned.copies++;
         owned.fragments += enemy.duplicateFragments;
         fragments = enemy.duplicateFragments;
 
         Save();
         return false;
+    }
+
+    public bool BuyEnemyCopy(EnemyGachaData enemy)
+    {
+        if (enemy == null)
+            return false;
+
+        if (!HasEnemy(enemy.enemyId))
+            return false;
+
+        if (!SpendShopCoins(enemy.shopPrice))
+            return false;
+
+        GachaOwnedEnemy owned = GetOwned(enemy.enemyId);
+
+        if (owned == null)
+            return false;
+
+        owned.copies++;
+        Save();
+        return true;
+    }
+
+    public int GetCopies(string enemyId)
+    {
+        GachaOwnedEnemy owned = GetOwned(enemyId);
+        return owned != null ? owned.copies : 0;
     }
 
     public List<GameObject> GetUnlockedEnemyPrefabs()
