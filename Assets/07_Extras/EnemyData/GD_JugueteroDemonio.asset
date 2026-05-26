@@ -16,15 +16,13 @@ MonoBehaviour:
   enemyName: Juguetero Demonio
   rarity: 3
   description: 
-  hp: 1000
-  attack: 30
-  defense: 20
-  speed: 14
-  skillName: 
-  skillDescription: 
   cardFrontSprite: {fileID: 21300000, guid: b5d63cfb316f6ea40b9553d6c9ec6873, type: 3}
   cardBackSprite: {fileID: 21300000, guid: 879190fc819a9984ebd041a0739c379c, type: 3}
   newRewardPanelSprite: {fileID: 21300000, guid: 97a1dbc0cb75fe042848506029a6a5a5, type: 3}
   duplicateRewardPanelSprite: {fileID: 21300000, guid: a5e70f4f1a167da44a19f624a0ebbe83, type: 3}
+  shopUnlockedCardSprite: {fileID: 21300000, guid: b5d63cfb316f6ea40b9553d6c9ec6873, type: 3}
+  shopLockedCardSprite: {fileID: 21300000, guid: e13ec96998b08fc4e89902a466ae9ff6, type: 3}
+  shopBigUnlockedCardSprite: {fileID: 21300000, guid: b5d63cfb316f6ea40b9553d6c9ec6873, type: 3}
+  shopBigLockedCardSprite: {fileID: 21300000, guid: e13ec96998b08fc4e89902a466ae9ff6, type: 3}
   enemyPrefab: {fileID: 5144600447889281789, guid: 354fe04c75c445b0f8d85394c2b82de0, type: 3}
-  duplicateFragments: 50
+  shopPrice: 100

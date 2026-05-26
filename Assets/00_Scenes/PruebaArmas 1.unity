@@ -1411,7 +1411,7 @@ MonoBehaviour:
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 1828110326}
-  m_Enabled: 1
+  m_Enabled: 0
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: b5d59b7ef5355604ea5c7d559961bf6c, type: 3}
   m_Name: 
@@ -1445,7 +1445,7 @@ MonoBehaviour:
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 1828110326}
-  m_Enabled: 1
+  m_Enabled: 0
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: ec8aeeac4495c3d42b8df72554c0e0f3, type: 3}
   m_Name: 
@@ -1553,7 +1553,7 @@ MonoBehaviour:
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 1828110326}
-  m_Enabled: 1
+  m_Enabled: 0
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: d40829c36644b0a46a51543d4aea9cb4, type: 3}
   m_Name: 
@@ -1611,9 +1611,21 @@ PrefabInstance:
       propertyPath: m_LocalEulerAnglesHint.z
       value: 0
       objectReference: {fileID: 0}
+    - target: {fileID: 897454451722136068, guid: b9631dd7f8ff584498cc2dfd44776aca, type: 3}
+      propertyPath: m_Name
+      value: mixamorig:LeftLeg
+      objectReference: {fileID: 0}
     - target: {fileID: 919132149155446097, guid: b9631dd7f8ff584498cc2dfd44776aca, type: 3}
       propertyPath: m_Name
       value: "Mu\xF1eca"
+      objectReference: {fileID: 0}
+    - target: {fileID: 1301882728584474780, guid: b9631dd7f8ff584498cc2dfd44776aca, type: 3}
+      propertyPath: m_Name
+      value: mixamorig:LeftUpLeg
+      objectReference: {fileID: 0}
+    - target: {fileID: 3489497601361014436, guid: b9631dd7f8ff584498cc2dfd44776aca, type: 3}
+      propertyPath: m_Name
+      value: Armature
       objectReference: {fileID: 0}
     m_RemovedComponents: []
     m_RemovedGameObjects: []
