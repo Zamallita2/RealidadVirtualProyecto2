@@ -346,6 +346,8 @@ MonoBehaviour:
     rol: 4
     prefab: {fileID: 1305646359629266846, guid: 9a620f813a58d6e0b8c2e16013483d40, type: 3}
     nivel: 0
+  vidas: 3
+  victorias: 0
 --- !u!4 &364419986
 Transform:
   m_ObjectHideFlags: 0
@@ -412,6 +414,8 @@ MonoBehaviour:
     rol: 4
     prefab: {fileID: 1561813422154253682, guid: 0e268c52a97e24a48a22a5b677385e7a, type: 3}
     nivel: 0
+  vidas: 3
+  victorias: 0
 --- !u!4 &519190547
 Transform:
   m_ObjectHideFlags: 0
@@ -570,6 +574,8 @@ MonoBehaviour:
     rol: 4
     prefab: {fileID: 5853257844873112955, guid: 1e1d22f54d39701489764eb279f29e4d, type: 3}
     nivel: 0
+  vidas: 3
+  victorias: 0
 --- !u!4 &641881788
 Transform:
   m_ObjectHideFlags: 0
@@ -636,6 +642,8 @@ MonoBehaviour:
     rol: 4
     prefab: {fileID: 9108114369414345305, guid: 7b843b400dcfaa44e88d12df63d0d0af, type: 3}
     nivel: 0
+  vidas: 3
+  victorias: 0
 --- !u!4 &1098254829
 Transform:
   m_ObjectHideFlags: 0
@@ -682,6 +690,8 @@ MonoBehaviour:
   m_EditorClassIdentifier: Assembly-CSharp::Aldea
   tipoAldea: 0
   aventureros: []
+  vidas: 3
+  victorias: 0
 --- !u!4 &1330155840
 Transform:
   m_ObjectHideFlags: 0
