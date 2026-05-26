@@ -16,15 +16,13 @@ MonoBehaviour:
   enemyName: "Osito Pose\xEDdo"
   rarity: 0
   description: 
-  hp: 120
-  attack: 18
-  defense: 10
-  speed: 12
-  skillName: 
-  skillDescription: 
   cardFrontSprite: {fileID: 21300000, guid: ab2358d7006ccc0459cd6367579d70c8, type: 3}
   cardBackSprite: {fileID: 21300000, guid: 879190fc819a9984ebd041a0739c379c, type: 3}
   newRewardPanelSprite: {fileID: 21300000, guid: 96ffa20019e24d54daf5ec4df8b29eaf, type: 3}
   duplicateRewardPanelSprite: {fileID: 21300000, guid: fe511c651e24ed9459db61a3986ee594, type: 3}
+  shopUnlockedCardSprite: {fileID: 21300000, guid: ab2358d7006ccc0459cd6367579d70c8, type: 3}
+  shopLockedCardSprite: {fileID: 21300000, guid: 19943f761ae112d46af4d862dbabd787, type: 3}
+  shopBigUnlockedCardSprite: {fileID: 21300000, guid: ab2358d7006ccc0459cd6367579d70c8, type: 3}
+  shopBigLockedCardSprite: {fileID: 21300000, guid: 19943f761ae112d46af4d862dbabd787, type: 3}
   enemyPrefab: {fileID: 5144600447889281789, guid: 354fe04c75c445b0f8d85394c2b82de0, type: 3}
-  duplicateFragments: 10
+  shopPrice: 100
