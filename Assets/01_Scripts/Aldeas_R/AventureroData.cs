@@ -18,5 +18,6 @@ public class AventureroData
 
     public GameObject prefab;
 
+    [Min(1)]
     public int nivel = 1;
 }
