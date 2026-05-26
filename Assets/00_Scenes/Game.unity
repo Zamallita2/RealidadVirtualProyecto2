@@ -1069,8 +1069,8 @@ MonoBehaviour:
   - {fileID: 404143330}
   - {fileID: 706053745}
   - {fileID: 1295530467}
-  - {fileID: 2122928942}
   - {fileID: 629335667}
+  - {fileID: 2122928942}
   shopCoinsText: {fileID: 1956488937}
   crystalText: {fileID: 857408622}
   messageText: {fileID: 0}
