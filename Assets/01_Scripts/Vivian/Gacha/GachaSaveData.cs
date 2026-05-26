@@ -6,7 +6,6 @@ public class GachaOwnedEnemy
 {
     public string enemyId;
     public int copies;
-    public int fragments;
     public bool unlocked;
 }
 

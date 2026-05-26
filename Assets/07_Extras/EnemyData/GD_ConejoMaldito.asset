@@ -16,15 +16,13 @@ MonoBehaviour:
   enemyName: Conejo Maldito
   rarity: 1
   description: 
-  hp: 125
-  attack: 20
-  defense: 11
-  speed: 10
-  skillName: 
-  skillDescription: 
   cardFrontSprite: {fileID: 21300000, guid: 8ced2382ad71f0344b2e58f679179068, type: 3}
   cardBackSprite: {fileID: 21300000, guid: 879190fc819a9984ebd041a0739c379c, type: 3}
   newRewardPanelSprite: {fileID: 21300000, guid: 4ff03b8db36228e48be204b10682b539, type: 3}
   duplicateRewardPanelSprite: {fileID: 21300000, guid: 4628c94792b8fff4d8c1d528fd04b9a6, type: 3}
+  shopUnlockedCardSprite: {fileID: 21300000, guid: 8ced2382ad71f0344b2e58f679179068, type: 3}
+  shopLockedCardSprite: {fileID: 21300000, guid: 49e4fdc0697f71a488ced99665d97c29, type: 3}
+  shopBigUnlockedCardSprite: {fileID: 21300000, guid: 8ced2382ad71f0344b2e58f679179068, type: 3}
+  shopBigLockedCardSprite: {fileID: 21300000, guid: 49e4fdc0697f71a488ced99665d97c29, type: 3}
   enemyPrefab: {fileID: 5144600447889281789, guid: 354fe04c75c445b0f8d85394c2b82de0, type: 3}
-  duplicateFragments: 15
+  shopPrice: 100

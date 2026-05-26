@@ -5,13 +5,18 @@ public class GachaInventoryManager : MonoBehaviour
 {
     public static GachaInventoryManager Instance;
 
-    [Header("Todos los enemigos")]
+    [Header("Todos los enemigos del juego")]
     public List<EnemyGachaData> allEnemies = new List<EnemyGachaData>();
 
-    [Header("Pruebas")]
+    [Header("Valores iniciales")]
     public int startEssence = 450;
     public int startShopCoins = 300;
+
+    [Header("Pruebas desde Inspector")]
     public bool resetSaveOnStart = false;
+    public bool useInspectorCurrencyOnStart = true;
+    public int inspectorEssence = 450;
+    public int inspectorShopCoins = 300;
 
     private const string SaveKey = "GACHA_SAVE_DATA";
 
@@ -31,6 +36,13 @@ public class GachaInventoryManager : MonoBehaviour
             PlayerPrefs.DeleteKey(SaveKey);
 
         Load();
+
+        if (useInspectorCurrencyOnStart)
+        {
+            SaveData.essence = inspectorEssence;
+            SaveData.shopCoins = inspectorShopCoins;
+            Save();
+        }
     }
 
     public void Load()
@@ -51,10 +63,13 @@ public class GachaInventoryManager : MonoBehaviour
 
     private void CreateNewSave()
     {
-        SaveData = new GachaSaveData();
-        SaveData.essence = startEssence;
-        SaveData.shopCoins = startShopCoins;
-        SaveData.pityCounter = 0;
+        SaveData = new GachaSaveData
+        {
+            essence = startEssence,
+            shopCoins = startShopCoins,
+            pityCounter = 0
+        };
+
         Save();
     }
 
@@ -80,7 +95,7 @@ public class GachaInventoryManager : MonoBehaviour
         Save();
     }
 
-    public void AddShopCoins(int amount)
+    public void AddShopCoinsFromBattle(int amount)
     {
         SaveData.shopCoins += amount;
         Save();
@@ -117,10 +132,14 @@ public class GachaInventoryManager : MonoBehaviour
         return owned != null && owned.unlocked;
     }
 
-    public bool AddEnemy(EnemyGachaData enemy, out int fragments)
+    public int GetCopies(string enemyId)
     {
-        fragments = 0;
+        GachaOwnedEnemy owned = GetOwned(enemyId);
+        return owned != null ? owned.copies : 0;
+    }
 
+    public bool AddEnemyFromGacha(EnemyGachaData enemy)
+    {
         if (enemy == null)
             return false;
 
@@ -132,7 +151,6 @@ public class GachaInventoryManager : MonoBehaviour
             {
                 enemyId = enemy.enemyId,
                 copies = 1,
-                fragments = 0,
                 unlocked = true
             };
 
@@ -143,9 +161,6 @@ public class GachaInventoryManager : MonoBehaviour
 
         owned.unlocked = true;
         owned.copies++;
-        owned.fragments += enemy.duplicateFragments;
-        fragments = enemy.duplicateFragments;
-
         Save();
         return false;
     }
@@ -169,24 +184,5 @@ public class GachaInventoryManager : MonoBehaviour
         owned.copies++;
         Save();
         return true;
-    }
-
-    public int GetCopies(string enemyId)
-    {
-        GachaOwnedEnemy owned = GetOwned(enemyId);
-        return owned != null ? owned.copies : 0;
-    }
-
-    public List<GameObject> GetUnlockedEnemyPrefabs()
-    {
-        List<GameObject> prefabs = new List<GameObject>();
-
-        foreach (EnemyGachaData enemy in allEnemies)
-        {
-            if (enemy != null && HasEnemy(enemy.enemyId) && enemy.enemyPrefab != null)
-                prefabs.Add(enemy.enemyPrefab);
-        }
-
-        return prefabs;
     }
 }

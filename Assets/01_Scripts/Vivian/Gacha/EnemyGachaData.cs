@@ -5,7 +5,8 @@ public enum GachaRarity
     Comun,
     Raro,
     Epico,
-    Legendario
+    Legendario,
+    Mitico
 }
 
 [CreateAssetMenu(fileName = "EnemyGachaData", menuName = "Gacha/Enemy Gacha Data")]
@@ -14,40 +15,28 @@ public class EnemyGachaData : ScriptableObject
     [Header("ID único")]
     public string enemyId;
 
-    [Header("Información")]
+    [Header("Datos")]
     public string enemyName;
     public GachaRarity rarity;
 
     [TextArea(2, 5)]
     public string description;
 
-    [Header("Stats")]
-    public int hp;
-    public int attack;
-    public int defense;
-    public int speed;
-
-    [Header("Habilidad")]
-    public string skillName;
-
-    [TextArea(2, 4)]
-    public string skillDescription;
-
-    [Header("Visuales")]
+    [Header("Visual Gacha")]
     public Sprite cardFrontSprite;
     public Sprite cardBackSprite;
-
-    [Header("Paneles ya hechos")]
     public Sprite newRewardPanelSprite;
     public Sprite duplicateRewardPanelSprite;
 
-    [Header("Prefab para salas")]
+    [Header("Visual Tienda")]
+    public Sprite shopUnlockedCardSprite;
+    public Sprite shopLockedCardSprite;
+    public Sprite shopBigUnlockedCardSprite;
+    public Sprite shopBigLockedCardSprite;
+
+    [Header("Prefab")]
     public GameObject enemyPrefab;
 
-    [Header("Duplicado de gacha")]
-    public int duplicateFragments = 10;
-
-    [Header("Tienda")]
-    public int shopPrice = 50;
-    public Sprite shopIcon;
+    [Header("Precio tienda")]
+    public int shopPrice = 100;
 }
