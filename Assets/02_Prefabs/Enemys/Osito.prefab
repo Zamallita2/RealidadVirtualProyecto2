@@ -441,12 +441,16 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 095cbac8bf0da764f99910378a7f2152, type: 3}
   m_Name: 
   m_EditorClassIdentifier: Assembly-CSharp::UnitStats
+  level: 1
   maxHealth: 20
   currentHealth: 0
   strength: 5
   speed: 3
+  isAlive: 1
   lineNumber: 0
   hasActedThisRound: 0
+  partyIndex: -1
+  sourceEnemyPrefab: {fileID: 0}
   faction: 0
 --- !u!114 &2194928911064326126
 MonoBehaviour:
@@ -494,7 +498,8 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 1b56fef87cd6c4710af35df464055341, type: 3}
   m_Name: 
   m_EditorClassIdentifier: Assembly-CSharp::UnitMovement
-  moveSpeed: 1
+  moveSpeed: 5
+  distanciaMinima: 0.5
   modelRotationOffset: {x: 0, y: 0, z: 0}
 --- !u!114 &2665932746493310699
 MonoBehaviour:
