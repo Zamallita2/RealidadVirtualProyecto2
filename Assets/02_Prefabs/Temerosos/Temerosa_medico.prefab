@@ -64,6 +64,10 @@ PrefabInstance:
       propertyPath: m_Name
       value: Temerosa_medico
       objectReference: {fileID: 0}
+    - target: {fileID: 919132149155446097, guid: 04020141357c0314482048529de0ecbd, type: 3}
+      propertyPath: m_TagString
+      value: FightUnit
+      objectReference: {fileID: 0}
     m_RemovedComponents:
     - {fileID: 5866666021909216657, guid: 04020141357c0314482048529de0ecbd, type: 3}
     m_RemovedGameObjects: []
@@ -125,7 +129,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 1b56fef87cd6c4710af35df464055341, type: 3}
   m_Name: 
   m_EditorClassIdentifier: Assembly-CSharp::UnitMovement
-  moveSpeed: 1
+  moveSpeed: 5
   distanciaMinima: 0.5
   modelRotationOffset: {x: 0, y: 0, z: 0}
 --- !u!114 &7855843840205262271

@@ -111,7 +111,96 @@ public class WaveManager : MonoBehaviour
 
         wave?.Remove(prefab);
     }
+    public float GetPartyHealthPercent(List<AdventurerData> party)
+    {
+        if(party == null || party.Count == 0)
+            return 0;
 
+        float totalCurrent = 0;
+        float totalMax = 0;
+
+        foreach(var p in party)
+        {
+            totalCurrent += p.currentHealth;
+            totalMax += p.maxHealth;
+        }
+
+        return totalMax <= 0 ? 0 : (totalCurrent / totalMax) * 100f;
+    }
+    public bool ShouldPartyRetreat(Aldea aldea, List<AdventurerData> party)
+    {
+        if(aldea == null || party == null)
+            return false;
+
+        float hp = GetPartyHealthPercent(party);
+
+        int roomIndex = GetCurrentRoomIndex();
+        int wave = GetCurrentWaveNumber();
+
+        bool nextRoomIsHighDrop = GetNextRoomDrop() > 50f;
+        bool nextRoomMultiple5 = (roomIndex + 1) % 5 == 0;
+
+        return aldea.tipoAldea switch
+        {
+            TipoAldea.Temerosos => CheckTemerosos(party, hp),
+            TipoAldea.Codiciosos => CheckCodiciosos(hp, nextRoomIsHighDrop),
+            TipoAldea.Cautelosos => CheckCautelosos(hp, nextRoomMultiple5),
+            TipoAldea.Vengativos => CheckVengativos(hp, party),
+            TipoAldea.Eruditos => CheckEruditos(hp, nextRoomMultiple5),
+            _ => false
+        };
+    }
+    float GetNextRoomDrop()
+    {
+        return(rooms[currentRoomIndex].loot);
+    }
+    bool CheckTemerosos(List<AdventurerData> party, float hp)
+    {
+        bool hasDead = party.Exists(p => !p.isAlive);
+        return hasDead || hp < 40f;
+    }
+    bool CheckCodiciosos(float hp, bool nextRoomHighDrop)
+    {
+        if(hp < 30f)
+            return true;
+
+        if(nextRoomHighDrop && hp < 20f)
+            return true;
+
+        return false;
+    }
+    bool CheckCautelosos(float hp, bool nextRoomMultiple5)
+    {
+        if(hp < 30f)
+            return true;
+
+        if(nextRoomMultiple5 && hp < 50f)
+            return true;
+
+        return false;
+    }
+    bool CheckVengativos(float hp, List<AdventurerData> party)
+    {
+        foreach(var p in party)
+        {
+            if(p.currentHealth / p.maxHealth * 100f < 15f)
+            {
+                p.currentHealth = p.maxHealth * 0.5f;
+            }
+        }
+
+        return hp < 30f;
+    }
+    bool CheckEruditos(float hp, bool nextRoomMultiple5)
+    {
+        if(nextRoomMultiple5)
+        {
+            // buff de curación global
+            // (esto idealmente en FightManager)
+        }
+
+        return hp < 30f;
+    }
     public int GetCurrentRoomIndex()
     {
         return currentRoomIndex;

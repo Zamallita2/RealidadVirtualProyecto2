@@ -11,7 +11,9 @@ public class EnumFigthList : MonoBehaviour
     public enum StatusEffect
     {
         None,
-        Paralysis
+        Paralysis,
+        Blind,   // 👈 nuevo
+        Weakness 
     }
     public enum TargetType
     {

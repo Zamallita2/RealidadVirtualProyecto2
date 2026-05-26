@@ -244,6 +244,10 @@ PrefabInstance:
       propertyPath: m_Name
       value: Osito
       objectReference: {fileID: 0}
+    - target: {fileID: 919132149155446097, guid: b517b40484b745959adf2d96e468ce4b, type: 3}
+      propertyPath: m_TagString
+      value: FightUnit
+      objectReference: {fileID: 0}
     - target: {fileID: 1330755669629619180, guid: b517b40484b745959adf2d96e468ce4b, type: 3}
       propertyPath: m_LocalEulerAnglesHint.x
       value: 24.746258

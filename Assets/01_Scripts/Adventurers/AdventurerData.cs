@@ -13,8 +13,8 @@ public class AdventurerData
     public GameObject prefab;
     public int level = 1;
 
-    public int maxHealth;
-    public int currentHealth;
+    public float maxHealth;
+    public float currentHealth;
     public int strength;
     public int speed;
     public bool isAlive = true;

@@ -6,8 +6,8 @@ public class UnitStats : MonoBehaviour
 {
     [Header("Stats")]
     public int level = 1;
-    public int maxHealth = 10;
-    public int currentHealth;
+    public float maxHealth = 10;
+    public float currentHealth;
 
     public int strength = 2;
     public int speed = 5;
@@ -96,7 +96,8 @@ public class UnitStats : MonoBehaviour
     {
         if(!isAlive)
             return;
-
+        if(status.currentStatus==EnumFigthList.StatusEffect.Weakness)
+            damage=damage*2;
         currentHealth -= damage;
 
         if(currentHealth <= 0)
