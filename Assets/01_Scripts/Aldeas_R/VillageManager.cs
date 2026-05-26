@@ -3,37 +3,48 @@ using System.Collections.Generic;
 
 public class VillageManager : MonoBehaviour
 {
-    [Header("Lista de aldeas")]
-    public List<AldeaData> aldeas =
-        new List<AldeaData>();
+    public List<Aldea>
+    aldeas =
+    new List<Aldea>();
 
 
     public List<AventureroData>
-        GenerarGrupo(string nombreAldea)
+    GenerarGrupo()
     {
-        List<AventureroData> grupo =
-            new List<AventureroData>();
+        List<AventureroData>
+        grupo =
+        new List<AventureroData>();
 
 
-        AldeaData aldea =
-            aldeas.Find(
-                a => a.nombreAldea ==
-                nombreAldea
-            );
-
-        if (aldea == null)
+        if (aldeas.Count == 0)
         {
-            Debug.Log("No existe");
-
             return grupo;
         }
 
 
+        int randomAldea =
+        Random.Range(
+            0,
+            aldeas.Count
+        );
+
+
+        Aldea aldeaSeleccionada =
+        aldeas[randomAldea];
+
+
+        Debug.Log(
+            "Aldea seleccionada: "
+            + aldeaSeleccionada.tipoAldea
+        );
+
+
         List<AventureroData>
-            disponibles =
-            new List<AventureroData>(
-                aldea.personajes
-            );
+        disponibles =
+        new List<AventureroData>(
+            aldeaSeleccionada
+            .aventureros
+        );
 
 
         while (
@@ -50,17 +61,17 @@ public class VillageManager : MonoBehaviour
             AventureroData npc =
             disponibles[random];
 
-
             npc.nivel = 1;
 
-
-            grupo.Add(npc);
-
+            grupo.Add(
+                npc
+            );
 
             disponibles.RemoveAt(
                 random
             );
         }
+
 
         return grupo;
     }
