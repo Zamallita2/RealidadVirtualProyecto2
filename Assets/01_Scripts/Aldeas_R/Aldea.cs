@@ -15,14 +15,11 @@ public class Aldea : MonoBehaviour
     [Header("Datos")]
     public TipoAldea tipoAldea;
 
-    [Header("Personajes Base")]
-    public List<AventureroData> plantillaAventureros =
-        new List<AventureroData>();
 
-
-    [Header("Aventureros Actuales")]
-    public List<AventureroData> aventureros =
-        new List<AventureroData>();
+    [Header("Aventureros")]
+    public List<AventureroData>
+    aventureros =
+    new List<AventureroData>();
 
 
     [Header("Estado")]
@@ -31,75 +28,7 @@ public class Aldea : MonoBehaviour
     public int victorias = 0;
 
 
-    void Awake()
-    {
-        if (aventureros.Count == 0)
-        {
-            GenerarNuevoEquipo();
-        }
-    }
-
-
-    //Genera equipo inicial
-    public void GenerarNuevoEquipo()
-    {
-        aventureros.Clear();
-
-
-        List<AventureroData>
-        disponibles =
-        new List<AventureroData>(
-            plantillaAventureros
-        );
-
-
-        while (
-            aventureros.Count < 4 &&
-            disponibles.Count > 0
-        )
-        {
-            int random =
-            Random.Range(
-                0,
-                disponibles.Count
-            );
-
-            AventureroData original =
-            disponibles[random];
-
-
-            AventureroData nuevo =
-            new AventureroData();
-
-            nuevo.nombre =
-            original.nombre;
-
-            nuevo.rol =
-            original.rol;
-
-            nuevo.prefab =
-            original.prefab;
-
-            nuevo.nivel = 1;
-
-
-            aventureros.Add(
-                nuevo
-            );
-
-            disponibles.RemoveAt(
-                random
-            );
-        }
-
-        Debug.Log(
-            tipoAldea +
-            " generó equipo nuevo"
-        );
-    }
-
-
-    //Actualizar personajes
+    //Actualizar aventureros
     public void ActualizarEquipo(
         List<AventureroData>
         nuevosDatos,
@@ -110,15 +39,12 @@ public class Aldea : MonoBehaviour
         nuevosDatos;
 
 
-        if (ganaron)
+        if (
+            ganaron
+        )
         {
             victorias++;
         }
-
-        Debug.Log(
-            tipoAldea +
-            " actualizó equipo"
-        );
     }
 
 
@@ -136,12 +62,8 @@ public class Aldea : MonoBehaviour
 
 
         if (
-            vidas > 0
+            vidas <= 0
         )
-        {
-            GenerarNuevoEquipo();
-        }
-        else
         {
             Debug.Log(
                 tipoAldea +
