@@ -122,7 +122,8 @@ public class GachaSystem : MonoBehaviour
                 continue;
 
             if (reward.rarity == GachaRarity.Epico ||
-                reward.rarity == GachaRarity.Legendario)
+                reward.rarity == GachaRarity.Legendario ||
+                reward.rarity == GachaRarity.Mitico)
             {
                 hasEpicOrBetter = true;
             }
@@ -137,13 +138,8 @@ public class GachaSystem : MonoBehaviour
                 );
             }
 
-            bool isNew = inventory.AddEnemy(reward, out int fragments);
-
-            if (!isNew && fragments > 0)
-            {
-                inventory.AddShopCoins(fragments);
-                UpdateUI();
-            }
+            bool isNew = inventory.AddEnemyFromGacha(reward);
+            UpdateUI();
 
             if (rewardPopup != null)
             {
@@ -179,8 +175,11 @@ public class GachaSystem : MonoBehaviour
 
         GachaRarity rarity = RollRarity(forceEpicOrBetter);
 
-        if (rarity == GachaRarity.Legendario)
+        if (rarity == GachaRarity.Legendario ||
+            rarity == GachaRarity.Mitico)
+        {
             inventory.SaveData.pityCounter = 0;
+        }
 
         inventory.Save();
 
@@ -196,6 +195,7 @@ public class GachaSystem : MonoBehaviour
                 return GetRandomFromPool(epicPool);
 
             case GachaRarity.Legendario:
+            case GachaRarity.Mitico:
                 return GetRandomFromPool(legendaryPool);
 
             default:
@@ -283,7 +283,7 @@ public class GachaSystem : MonoBehaviour
 
     public void AddShopCoinsForTest()
     {
-        inventory.AddShopCoins(addShopCoinsTestAmount);
+        inventory.AddShopCoinsFromBattle(addShopCoinsTestAmount);
         UpdateUI();
     }
 

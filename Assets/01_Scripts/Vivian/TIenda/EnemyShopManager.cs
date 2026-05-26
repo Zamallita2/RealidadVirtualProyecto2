@@ -1,56 +1,61 @@
 ﻿using System.Collections.Generic;
 using TMPro;
 using UnityEngine;
+using UnityEngine.UI;
 
 public class EnemyShopManager : MonoBehaviour
 {
     [Header("Inventario")]
     public GachaInventoryManager inventory;
 
-    [Header("Panel")]
+    [Header("Panel tienda")]
     public GameObject shopPanel;
 
-    [Header("Lista")]
-    public Transform contentParent;
-    public EnemyShopItemUI itemPrefab;
+    [Header("Cartas que aparecerán")]
+    public List<EnemyGachaData> shopCards = new List<EnemyGachaData>();
 
-    [Header("UI")]
+    [Header("Cards pequeñas")]
+    public List<EnemyShopItemUI> cardSlots = new List<EnemyShopItemUI>();
+
+    [Header("Textos")]
     public TMP_Text shopCoinsText;
+    public TMP_Text crystalText;
     public TMP_Text messageText;
 
-    [Header("Audio")]
+    [Header("Carta grande simple")]
+    public GameObject bigImagePanel;
+    public Image bigCardImage;
+
+    [Header("Animación")]
+    public float delayBetweenCards = 0.08f;
+
+    [Header("Sonidos")]
     public AudioSource audioSource;
     public AudioClip openSound;
+    public AudioClip closeSound;
+    public AudioClip hoverSound;
+    public AudioClip clickSound;
     public AudioClip buySound;
     public AudioClip errorSound;
 
-    private readonly List<EnemyShopItemUI> spawnedItems = new List<EnemyShopItemUI>();
+    [Header("Pruebas")]
+    public int addBattleCoinsAmount = 100;
+
+    private EnemyGachaData selectedEnemy;
+    private bool shopBuilt;
 
     private void Start()
     {
         if (inventory == null)
             inventory = GachaInventoryManager.Instance;
 
+        if (bigImagePanel != null)
+            bigImagePanel.SetActive(false);
+
+        RefreshCurrencyTexts();
+
         if (shopPanel != null)
             shopPanel.SetActive(false);
-
-        BuildShop();
-        RefreshUI();
-    }
-
-    public void ToggleShop()
-    {
-        if (shopPanel == null) return;
-
-        bool newState = !shopPanel.activeSelf;
-        shopPanel.SetActive(newState);
-
-        if (newState)
-        {
-            Play(openSound);
-            BuildShop();
-            RefreshUI();
-        }
     }
 
     public void OpenShop()
@@ -58,72 +63,136 @@ public class EnemyShopManager : MonoBehaviour
         if (shopPanel != null)
             shopPanel.SetActive(true);
 
-        Play(openSound);
         BuildShop();
-        RefreshUI();
+        RefreshAll();
+        Play(openSound);
     }
 
     public void CloseShop()
     {
+        if (bigImagePanel != null)
+            bigImagePanel.SetActive(false);
+
         if (shopPanel != null)
             shopPanel.SetActive(false);
+
+        Play(closeSound);
+    }
+
+    public void ToggleShop()
+    {
+        if (shopPanel == null)
+            return;
+
+        if (shopPanel.activeSelf)
+            CloseShop();
+        else
+            OpenShop();
     }
 
     public void BuildShop()
     {
-        if (inventory == null || contentParent == null || itemPrefab == null)
-            return;
-
-        ClearShop();
-
-        foreach (EnemyGachaData enemy in inventory.allEnemies)
+        for (int i = 0; i < cardSlots.Count; i++)
         {
-            if (enemy == null)
+            if (cardSlots[i] == null)
                 continue;
 
-            EnemyShopItemUI item = Instantiate(itemPrefab, contentParent);
-            item.Setup(enemy, this);
-            spawnedItems.Add(item);
+            if (i < shopCards.Count && shopCards[i] != null)
+            {
+                cardSlots[i].gameObject.SetActive(true);
+                cardSlots[i].Setup(shopCards[i], this, i * delayBetweenCards);
+                cardSlots[i].PlayAppear(i * delayBetweenCards);
+            }
+            else
+            {
+                cardSlots[i].gameObject.SetActive(false);
+            }
         }
+
+        shopBuilt = true;
     }
 
-    private void ClearShop()
+    public void ShowBigCardImage(EnemyGachaData enemy)
     {
-        for (int i = contentParent.childCount - 1; i >= 0; i--)
-            Destroy(contentParent.GetChild(i).gameObject);
+        if (enemy == null || inventory == null)
+            return;
 
-        spawnedItems.Clear();
+        selectedEnemy = enemy;
+
+        bool unlocked = inventory.HasEnemy(enemy.enemyId);
+
+        if (bigImagePanel != null)
+            bigImagePanel.SetActive(true);
+
+        if (bigCardImage != null)
+            bigCardImage.sprite = unlocked ? enemy.shopBigUnlockedCardSprite : enemy.shopBigLockedCardSprite;
+
+        Play(clickSound);
+    }
+
+    public void HideBigCardImage()
+    {
+        if (bigImagePanel != null)
+            bigImagePanel.SetActive(false);
+
+        selectedEnemy = null;
+        Play(closeSound);
     }
 
     public void BuyEnemy(EnemyGachaData enemy)
     {
-        if (inventory == null || enemy == null)
+        if (enemy == null || inventory == null)
             return;
 
         if (!inventory.HasEnemy(enemy.enemyId))
         {
-            ShowMessage("Primero debes desbloquearlo en el gacha.");
+            ShowMessage("Primero debes obtenerlo en el gacha.");
             Play(errorSound);
-            RefreshUI();
+            RefreshAll();
             return;
         }
 
-        bool bought = inventory.BuyEnemyCopy(enemy);
-
-        if (!bought)
+        if (!inventory.BuyEnemyCopy(enemy))
         {
-            ShowMessage("No tienes suficientes monedas de tienda.");
+            ShowMessage("No tienes monedas suficientes.");
             Play(errorSound);
-            RefreshUI();
+            RefreshAll();
             return;
         }
 
         ShowMessage("Compraste una copia de " + enemy.enemyName + ".");
         Play(buySound);
-        RefreshUI();
+        RefreshAll();
+
+        if (selectedEnemy == enemy)
+            ShowBigCardImage(enemy);
     }
 
-    public void RefreshUI()
+    public void AddBattleCoinsForTest()
+    {
+        if (inventory == null)
+            return;
+
+        inventory.AddShopCoinsFromBattle(addBattleCoinsAmount);
+        RefreshAll();
+        ShowMessage("Ganaste " + addBattleCoinsAmount + " monedas de batalla.");
+    }
+
+    public void RefreshAll()
+    {
+        RefreshCurrencyTexts();
+
+        if (!shopBuilt)
+            return;
+
+        foreach (EnemyShopItemUI card in cardSlots)
+        {
+            if (card != null)
+                card.Refresh();
+        }
+    }
+
+    private void RefreshCurrencyTexts()
     {
         if (inventory == null)
             return;
@@ -131,8 +200,13 @@ public class EnemyShopManager : MonoBehaviour
         if (shopCoinsText != null)
             shopCoinsText.text = inventory.GetShopCoins().ToString();
 
-        foreach (EnemyShopItemUI item in spawnedItems)
-            item.Refresh();
+        if (crystalText != null)
+            crystalText.text = inventory.GetEssence().ToString();
+    }
+
+    public void PlayHoverSound()
+    {
+        Play(hoverSound);
     }
 
     private void ShowMessage(string message)
