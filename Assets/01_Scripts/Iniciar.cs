@@ -45,17 +45,16 @@ public class Iniciar : MonoBehaviour
     {
         while(true)
         {
-
-            if(!adventurerManager.IsFightRunning){
-                float wait =
-                    Random.Range(minIntervalSeconds, maxIntervalSeconds);
-
+            if (!adventurerManager.IsFightRunning)
+            {
+                float wait = Random.Range(minIntervalSeconds, maxIntervalSeconds);
                 yield return new WaitForSeconds(wait);
 
-                // Si la pelea todavía está en curso, esperamos hasta que termine.
-                while(!TryStartRandomVillageFight())
-                    yield return new WaitForSeconds(retryDelaySeconds);   
+                while (!TryStartRandomVillageFight())
+                    yield return new WaitForSeconds(retryDelaySeconds);
             }
+
+            yield return null; // 👈 CLAVE: evita el spin loop
         }
     }
 

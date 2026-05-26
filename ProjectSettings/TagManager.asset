@@ -5,6 +5,7 @@ TagManager:
   serializedVersion: 3
   tags:
   - FightUnit
+  - FightCamera
   layers:
   - Default
   - TransparentFX

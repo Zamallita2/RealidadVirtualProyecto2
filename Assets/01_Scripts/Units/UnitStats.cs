@@ -1,6 +1,7 @@
 using UnityEngine;
-using System.Collections.Generic;
+using UnityEngine.UI;
 using System.Collections;
+using System.Collections.Generic;
 
 public class UnitStats : MonoBehaviour
 {
@@ -14,6 +15,9 @@ public class UnitStats : MonoBehaviour
 
     [Header("State")]
     public bool isAlive = true;
+
+    [Header("UI Health")]
+    public Image healthFillImage;
 
     [Header("Battle")]
     public int lineNumber;
@@ -38,6 +42,18 @@ public class UnitStats : MonoBehaviour
 
         fightManager = FindFirstObjectByType<FightManager>();
         turnManager = FindFirstObjectByType<TurnManager>();
+
+        UpdateHealthUI(); // 💛 inicializa bonito owo
+    }
+
+    // 💖 ACTUALIZA LA BARRA
+    public void UpdateHealthUI()
+    {
+        if (healthFillImage == null)
+            return;
+
+        float fill = currentHealth / maxHealth;
+        healthFillImage.fillAmount = Mathf.Clamp01(fill);
     }
 
     public void ApplyFromData(AdventurerData data)
@@ -48,6 +64,8 @@ public class UnitStats : MonoBehaviour
         strength = data.strength;
         speed = data.speed;
         isAlive = data.isAlive;
+
+        UpdateHealthUI();
     }
 
     public void CopyToData(AdventurerData data)
@@ -73,37 +91,42 @@ public class UnitStats : MonoBehaviour
         if(!status.CanAct())
         {
             turnManager.EndTurn();
-
             return;
         }
 
         hasActedThisRound = true;
-
         combat.TakeTurn();
     }
-    
+
     public void Heal(int amount)
     {
         currentHealth += amount;
 
         if(currentHealth > maxHealth)
-        {
             currentHealth = maxHealth;
-        }
+
+        UpdateHealthUI(); // 💚 cuando cura
     }
 
     public virtual void TakeDamage(int damage)
     {
         if(!isAlive)
             return;
-        if(status.currentStatus==EnumFigthList.StatusEffect.Weakness)
-            damage=damage*2;
+
+        if(status.currentStatus == EnumFigthList.StatusEffect.Weakness)
+            damage = damage * 2;
+
         currentHealth -= damage;
 
         if(currentHealth <= 0)
         {
+            currentHealth = 0;
+            UpdateHealthUI();
             Die();
+            return;
         }
+
+        UpdateHealthUI(); // 💔 cuando recibe daño
     }
 
     protected virtual void Die()

@@ -2832,7 +2832,7 @@ MonoBehaviour:
   - wave1:
     - {fileID: 6077719647948029169, guid: 8f50033e63582c56394c6ce5b24223e4, type: 3}
     wave2:
-    - {fileID: 5144600447889281789, guid: 354fe04c75c445b0f8d85394c2b82de0, type: 3}
+    - {fileID: 7904305542069724169, guid: f5bb89e7e9b87cd68be5f0925a6dfe6a, type: 3}
     wave3:
     - {fileID: 6077719647948029169, guid: 8f50033e63582c56394c6ce5b24223e4, type: 3}
     loot: 50
@@ -2845,6 +2845,11 @@ MonoBehaviour:
     - {fileID: 6077719647948029169, guid: 8f50033e63582c56394c6ce5b24223e4, type: 3}
     loot: 50
     isBeingAttacked: 0
+  shop: {fileID: 0}
+  minCoins: 20
+  maxCoins: 50
+  minEssence: 20
+  maxEssence: 50
 --- !u!114 &1276014285
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -3392,7 +3397,7 @@ GameObject:
   - component: {fileID: 1576469496}
   m_Layer: 0
   m_Name: FigthCamera
-  m_TagString: MainCamera
+  m_TagString: FightCamera
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
