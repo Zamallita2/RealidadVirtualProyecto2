@@ -55,13 +55,30 @@ public class UnitCombat : MonoBehaviour
     }
     void UseSkill(BattleSkill skill)
     {
-         List<UnitStats> targets =
-            TargetSystem.GetTargets(
+        bool isConfused =
+            stats.GetComponent<UnitStatus>()
+            .HasStatus(EnumFigthList.StatusEffect.Blind);
+        List<UnitStats> targets;
+
+        if (isConfused && Random.value < 0.5f)
+        {
+            // atacar aliados en vez de enemigos
+            targets = TargetSystem.GetTargets(
+                stats,
+                skill.targetType,
+                fightManager.GetEnemies(stats.faction),
+                fightManager.GetAllies(stats.faction)
+            );
+        }
+        else
+        {
+            targets = TargetSystem.GetTargets(
                 stats,
                 skill.targetType,
                 fightManager.GetAllies(stats.faction),
                 fightManager.GetEnemies(stats.faction)
             );
+        }
 
         if(targets == null || targets.Count == 0)
         {

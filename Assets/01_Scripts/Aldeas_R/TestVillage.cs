@@ -1,5 +1,4 @@
 using UnityEngine;
-using System.Collections.Generic;
 
 public class TestVillage : MonoBehaviour
 {
@@ -7,22 +6,42 @@ public class TestVillage : MonoBehaviour
 
     void Start()
     {
-        List<AventureroData>
-        grupo =
-        villageManager.GenerarGrupo(
-            "Codiciosos"
-        );
-
         foreach (
-            AventureroData npc
-            in grupo
+            Aldea aldea
+            in villageManager.aldeas
         )
         {
             Debug.Log(
-                npc.nombre +
-                " Nivel:" +
-                npc.nivel
+                "=============="
             );
+
+            Debug.Log(
+                "ALDEA: " +
+                aldea.tipoAldea
+            );
+
+            Debug.Log(
+                "Vidas: " +
+                aldea.vidas
+            );
+
+            Debug.Log(
+                "Victorias: " +
+                aldea.victorias
+            );
+
+
+            foreach (
+                AventureroData npc
+                in aldea.aventureros
+            )
+            {
+                Debug.Log(
+                    npc.nombre +
+                    " Nivel:" +
+                    npc.nivel
+                );
+            }
         }
     }
 }

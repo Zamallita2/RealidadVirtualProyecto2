@@ -20,24 +20,28 @@ public class UnitStatus : MonoBehaviour
     {
         bool skippedTurn = false;
 
-        switch(currentStatus)
+        switch (currentStatus)
         {
             case EnumFigthList.StatusEffect.Paralysis:
-
-                if(Random.value <= 0.5f)
+            {
+                if (Random.value <= 0.5f)
                 {
-                    Debug.Log(
-                        name + " está paralizado"
-                    );
-
+                    Debug.Log(name + " está paralizado");
                     skippedTurn = true;
                 }
-
                 break;
+            }
+
+            case EnumFigthList.StatusEffect.Blind:
+
+            case EnumFigthList.StatusEffect.Weakness:
+            {
+                Debug.Log(name + " recibe más daño");
+                break;
+            }
         }
 
         ProcessStatusTurn();
-
         return !skippedTurn;
     }
 
@@ -86,6 +90,7 @@ public class UnitStatus : MonoBehaviour
             statusTurnsRemaining = 0;
         }
     }
+    
 
     public bool HasStatus()
     {

@@ -7,7 +7,7 @@ public class FightRoom
     public List<GameObject> wave1 = new();
     public List<GameObject> wave2 = new();
     public List<GameObject> wave3 = new();
-
+    public float loot=50;
     public bool isBeingAttacked;
 
     public FightRoom Clone()
