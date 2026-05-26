@@ -1,0 +1,6 @@
+newmtl tripo_material_b6e84c73_45ea_4ebd_80e1_e2e64890c2a5
+Kd 1.000000000 1.000000000 1.000000000
+d 1.000000000
+illum 2
+map_Kd toys+crate+3d+model_basecolor.jpg
+

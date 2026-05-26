@@ -1,0 +1,6 @@
+newmtl tripo_material_c84ee303_d57e_4bce_80b9_e6928614d24c
+Kd 1.000000000 1.000000000 1.000000000
+d 1.000000000
+illum 2
+map_Kd eyeball+3d+model_basecolor.jpg
+

@@ -1,0 +1,203 @@
+%YAML 1.1
+%TAG !u! tag:unity3d.com,2011:
+--- !u!1001 &421359468013009121
+PrefabInstance:
+  m_ObjectHideFlags: 0
+  serializedVersion: 2
+  m_Modification:
+    serializedVersion: 3
+    m_TransformParent: {fileID: 0}
+    m_Modifications:
+    - target: {fileID: -8679921383154817045, guid: 2abae72ab735b7b4dbea9eba9a469c73, type: 3}
+      propertyPath: m_LocalScale.x
+      value: 0.5
+      objectReference: {fileID: 0}
+    - target: {fileID: -8679921383154817045, guid: 2abae72ab735b7b4dbea9eba9a469c73, type: 3}
+      propertyPath: m_LocalScale.y
+      value: 0.5
+      objectReference: {fileID: 0}
+    - target: {fileID: -8679921383154817045, guid: 2abae72ab735b7b4dbea9eba9a469c73, type: 3}
+      propertyPath: m_LocalScale.z
+      value: 0.5
+      objectReference: {fileID: 0}
+    - target: {fileID: -8679921383154817045, guid: 2abae72ab735b7b4dbea9eba9a469c73, type: 3}
+      propertyPath: m_LocalPosition.x
+      value: 0.6106071
+      objectReference: {fileID: 0}
+    - target: {fileID: -8679921383154817045, guid: 2abae72ab735b7b4dbea9eba9a469c73, type: 3}
+      propertyPath: m_LocalPosition.y
+      value: 0.9701212
+      objectReference: {fileID: 0}
+    - target: {fileID: -8679921383154817045, guid: 2abae72ab735b7b4dbea9eba9a469c73, type: 3}
+      propertyPath: m_LocalPosition.z
+      value: -3.3460596
+      objectReference: {fileID: 0}
+    - target: {fileID: -8679921383154817045, guid: 2abae72ab735b7b4dbea9eba9a469c73, type: 3}
+      propertyPath: m_LocalRotation.w
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: -8679921383154817045, guid: 2abae72ab735b7b4dbea9eba9a469c73, type: 3}
+      propertyPath: m_LocalRotation.x
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: -8679921383154817045, guid: 2abae72ab735b7b4dbea9eba9a469c73, type: 3}
+      propertyPath: m_LocalRotation.y
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: -8679921383154817045, guid: 2abae72ab735b7b4dbea9eba9a469c73, type: 3}
+      propertyPath: m_LocalRotation.z
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: -8679921383154817045, guid: 2abae72ab735b7b4dbea9eba9a469c73, type: 3}
+      propertyPath: m_LocalEulerAnglesHint.x
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: -8679921383154817045, guid: 2abae72ab735b7b4dbea9eba9a469c73, type: 3}
+      propertyPath: m_LocalEulerAnglesHint.y
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: -8679921383154817045, guid: 2abae72ab735b7b4dbea9eba9a469c73, type: 3}
+      propertyPath: m_LocalEulerAnglesHint.z
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 919132149155446097, guid: 2abae72ab735b7b4dbea9eba9a469c73, type: 3}
+      propertyPath: m_Name
+      value: cau_medico
+      objectReference: {fileID: 0}
+    - target: {fileID: 4436688111662040078, guid: 2abae72ab735b7b4dbea9eba9a469c73, type: 3}
+      propertyPath: 'm_Materials.Array.data[0]'
+      value: 
+      objectReference: {fileID: 2100000, guid: 19a35f513a289054582bda2945c5c8c3, type: 2}
+    m_RemovedComponents: []
+    m_RemovedGameObjects: []
+    m_AddedGameObjects: []
+    m_AddedComponents:
+    - targetCorrespondingSourceObject: {fileID: 919132149155446097, guid: 2abae72ab735b7b4dbea9eba9a469c73, type: 3}
+      insertIndex: -1
+      addedObject: {fileID: 3675090818744096828}
+    - targetCorrespondingSourceObject: {fileID: 919132149155446097, guid: 2abae72ab735b7b4dbea9eba9a469c73, type: 3}
+      insertIndex: -1
+      addedObject: {fileID: 3395340352229571139}
+    - targetCorrespondingSourceObject: {fileID: 919132149155446097, guid: 2abae72ab735b7b4dbea9eba9a469c73, type: 3}
+      insertIndex: -1
+      addedObject: {fileID: 1575055004838169041}
+    - targetCorrespondingSourceObject: {fileID: 919132149155446097, guid: 2abae72ab735b7b4dbea9eba9a469c73, type: 3}
+      insertIndex: -1
+      addedObject: {fileID: 5417884403403237743}
+    - targetCorrespondingSourceObject: {fileID: 919132149155446097, guid: 2abae72ab735b7b4dbea9eba9a469c73, type: 3}
+      insertIndex: -1
+      addedObject: {fileID: 3037792118006823235}
+  m_SourcePrefab: {fileID: 100100000, guid: 2abae72ab735b7b4dbea9eba9a469c73, type: 3}
+--- !u!1 &655715636741440944 stripped
+GameObject:
+  m_CorrespondingSourceObject: {fileID: 919132149155446097, guid: 2abae72ab735b7b4dbea9eba9a469c73, type: 3}
+  m_PrefabInstance: {fileID: 421359468013009121}
+  m_PrefabAsset: {fileID: 0}
+--- !u!114 &3675090818744096828
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 655715636741440944}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 095cbac8bf0da764f99910378a7f2152, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: Assembly-CSharp::UnitStats
+  level: 1
+  maxHealth: 25
+  currentHealth: 0
+  strength: 9
+  speed: 3
+  isAlive: 1
+  lineNumber: 0
+  hasActedThisRound: 0
+  partyIndex: -1
+  sourceEnemyPrefab: {fileID: 0}
+  faction: 0
+--- !u!114 &3395340352229571139
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 655715636741440944}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 1b56fef87cd6c4710af35df464055341, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: Assembly-CSharp::UnitMovement
+  moveSpeed: 1
+  distanciaMinima: 0.5
+  modelRotationOffset: {x: 0, y: 0, z: 0}
+--- !u!114 &1575055004838169041
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 655715636741440944}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 3b5470f98de607530948e952a7132fd7, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: Assembly-CSharp::UnitCombat
+  skills:
+  - skillName: Heal
+    category: 1
+    isHealing: 1
+    isAOE: 0
+    strengthMultiplier: 1
+    targetType: 2
+    applyEffect: 0
+    effectChance: 0
+    effectDuration: 0
+  - skillName: Atack
+    category: 0
+    isHealing: 0
+    isAOE: 0
+    strengthMultiplier: 0.7
+    targetType: 0
+    applyEffect: 0
+    effectChance: 0
+    effectDuration: 0
+  isRanged: 1
+  projectilePrefab: {fileID: 6837982506185293005, guid: d896748c082456b45b433909fb85e60e, type: 3}
+  projectileSpawnPoint: {fileID: 0}
+--- !u!114 &5417884403403237743
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 655715636741440944}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 023b6e7846ec6bb6b8883dee27f6f548, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: Assembly-CSharp::UnitStatus
+  currentStatus: 0
+  statusTurnsRemaining: 0
+--- !u!95 &3037792118006823235
+Animator:
+  serializedVersion: 7
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 655715636741440944}
+  m_Enabled: 1
+  m_Avatar: {fileID: 0}
+  m_Controller: {fileID: 22100000, guid: 353fef60c51a1af37ba00cc7c0a00787, type: 2}
+  m_CullingMode: 0
+  m_UpdateMode: 0
+  m_ApplyRootMotion: 0
+  m_LinearVelocityBlending: 0
+  m_StabilizeFeet: 0
+  m_AnimatePhysics: 0
+  m_WarningMessage: 
+  m_HasTransformHierarchy: 1
+  m_AllowConstantClipSamplingOptimization: 1
+  m_KeepAnimatorStateOnDisable: 0
+  m_WriteDefaultValuesOnDisable: 0

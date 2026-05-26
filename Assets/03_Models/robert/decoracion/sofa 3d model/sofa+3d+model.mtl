@@ -1,0 +1,6 @@
+newmtl tripo_material_deb2b10c_df88_44bc_aa08_817a1e913a8a
+Kd 1.000000000 1.000000000 1.000000000
+d 1.000000000
+illum 2
+map_Kd sofa+3d+model_basecolor.jpg
+
