@@ -706,15 +706,15 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: -8679921383154817045, guid: 70382e8ef5deabf43bd75a3c5eb9c9e7, type: 3}
       propertyPath: m_LocalPosition.x
-      value: 0.44
+      value: 0
       objectReference: {fileID: 0}
     - target: {fileID: -8679921383154817045, guid: 70382e8ef5deabf43bd75a3c5eb9c9e7, type: 3}
       propertyPath: m_LocalPosition.y
-      value: 0.97012115
+      value: 0
       objectReference: {fileID: 0}
     - target: {fileID: -8679921383154817045, guid: 70382e8ef5deabf43bd75a3c5eb9c9e7, type: 3}
       propertyPath: m_LocalPosition.z
-      value: -1.913
+      value: 0
       objectReference: {fileID: 0}
     - target: {fileID: -8679921383154817045, guid: 70382e8ef5deabf43bd75a3c5eb9c9e7, type: 3}
       propertyPath: m_LocalRotation.w
@@ -951,10 +951,6 @@ PrefabInstance:
     - target: {fileID: 919132149155446097, guid: 70382e8ef5deabf43bd75a3c5eb9c9e7, type: 3}
       propertyPath: m_Name
       value: vengativo_tanque
-      objectReference: {fileID: 0}
-    - target: {fileID: 919132149155446097, guid: 70382e8ef5deabf43bd75a3c5eb9c9e7, type: 3}
-      propertyPath: m_IsActive
-      value: 0
       objectReference: {fileID: 0}
     - target: {fileID: 919132149155446097, guid: 70382e8ef5deabf43bd75a3c5eb9c9e7, type: 3}
       propertyPath: m_TagString
@@ -1228,8 +1224,6 @@ MonoBehaviour:
   isRanged: 0
   projectilePrefab: {fileID: 0}
   projectileSpawnPoint: {fileID: 0}
-  clip: {fileID: 8300000, guid: 5c502d11ded5e6743813a75668d4d21e, type: 3}
-  source: {fileID: 0}
 --- !u!114 &6724741418794230347
 MonoBehaviour:
   m_ObjectHideFlags: 0

@@ -628,15 +628,15 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: -8679921383154817045, guid: e28285f71b1f2934d8b4d97432f08702, type: 3}
       propertyPath: m_LocalPosition.x
-      value: 0
+      value: 0.40141183
       objectReference: {fileID: 0}
     - target: {fileID: -8679921383154817045, guid: e28285f71b1f2934d8b4d97432f08702, type: 3}
       propertyPath: m_LocalPosition.y
-      value: 0.948
+      value: 0.000000011367689
       objectReference: {fileID: 0}
     - target: {fileID: -8679921383154817045, guid: e28285f71b1f2934d8b4d97432f08702, type: 3}
       propertyPath: m_LocalPosition.z
-      value: 0
+      value: 0.38198102
       objectReference: {fileID: 0}
     - target: {fileID: -8679921383154817045, guid: e28285f71b1f2934d8b4d97432f08702, type: 3}
       propertyPath: m_LocalRotation.w
@@ -873,10 +873,6 @@ PrefabInstance:
     - target: {fileID: 919132149155446097, guid: e28285f71b1f2934d8b4d97432f08702, type: 3}
       propertyPath: m_Name
       value: vengativo_medico
-      objectReference: {fileID: 0}
-    - target: {fileID: 919132149155446097, guid: e28285f71b1f2934d8b4d97432f08702, type: 3}
-      propertyPath: m_IsActive
-      value: 0
       objectReference: {fileID: 0}
     - target: {fileID: 919132149155446097, guid: e28285f71b1f2934d8b4d97432f08702, type: 3}
       propertyPath: m_TagString
@@ -1142,9 +1138,7 @@ MonoBehaviour:
     effectDuration: 0
   isRanged: 1
   projectilePrefab: {fileID: 6837982506185293005, guid: d896748c082456b45b433909fb85e60e, type: 3}
-  projectileSpawnPoint: {fileID: 0}
-  clip: {fileID: 8300000, guid: b2549cfdc433de342a05ca67108e52de, type: 3}
-  source: {fileID: 0}
+  projectileSpawnPoint: {fileID: 4238501315974186042}
 --- !u!114 &7564203654684473221
 MonoBehaviour:
   m_ObjectHideFlags: 0

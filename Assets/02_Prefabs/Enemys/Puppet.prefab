@@ -1019,8 +1019,6 @@ MonoBehaviour:
   isRanged: 0
   projectilePrefab: {fileID: 0}
   projectileSpawnPoint: {fileID: 0}
-  clip: {fileID: 8300000, guid: bb68e0b5e92daa345b28290235643f79, type: 3}
-  source: {fileID: 0}
 --- !u!114 &3062731349879973372
 MonoBehaviour:
   m_ObjectHideFlags: 0

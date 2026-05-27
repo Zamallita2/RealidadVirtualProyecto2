@@ -628,15 +628,15 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: -8679921383154817045, guid: 33d2f81237364a744a52fa8e2a3f7d49, type: 3}
       propertyPath: m_LocalPosition.x
-      value: -1.03
+      value: 0.3454705
       objectReference: {fileID: 0}
     - target: {fileID: -8679921383154817045, guid: 33d2f81237364a744a52fa8e2a3f7d49, type: 3}
       propertyPath: m_LocalPosition.y
-      value: 0.9701209
+      value: 0.000000016884542
       objectReference: {fileID: 0}
     - target: {fileID: -8679921383154817045, guid: 33d2f81237364a744a52fa8e2a3f7d49, type: 3}
       propertyPath: m_LocalPosition.z
-      value: -4.3
+      value: -0.15636238
       objectReference: {fileID: 0}
     - target: {fileID: -8679921383154817045, guid: 33d2f81237364a744a52fa8e2a3f7d49, type: 3}
       propertyPath: m_LocalRotation.w
@@ -873,10 +873,6 @@ PrefabInstance:
     - target: {fileID: 919132149155446097, guid: 33d2f81237364a744a52fa8e2a3f7d49, type: 3}
       propertyPath: m_Name
       value: vengativo_mago
-      objectReference: {fileID: 0}
-    - target: {fileID: 919132149155446097, guid: 33d2f81237364a744a52fa8e2a3f7d49, type: 3}
-      propertyPath: m_IsActive
-      value: 0
       objectReference: {fileID: 0}
     - target: {fileID: 919132149155446097, guid: 33d2f81237364a744a52fa8e2a3f7d49, type: 3}
       propertyPath: m_TagString
@@ -1147,9 +1143,7 @@ MonoBehaviour:
     effectDuration: 2
   isRanged: 1
   projectilePrefab: {fileID: 654237713483918599, guid: 36f97b0cacb16074186058773d54fe69, type: 3}
-  projectileSpawnPoint: {fileID: 0}
-  clip: {fileID: 8300000, guid: 3a63fab4925501e48b806b9822c79444, type: 3}
-  source: {fileID: 0}
+  projectileSpawnPoint: {fileID: 9200526728687346246}
 --- !u!114 &5282431894722683368
 MonoBehaviour:
   m_ObjectHideFlags: 0

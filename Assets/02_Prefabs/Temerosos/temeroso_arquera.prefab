@@ -659,15 +659,15 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: -8679921383154817045, guid: 8a9f98aee8dbfdf439402cc2926d5c36, type: 3}
       propertyPath: m_LocalPosition.x
-      value: -2.078
+      value: 0.42024562
       objectReference: {fileID: 0}
     - target: {fileID: -8679921383154817045, guid: 8a9f98aee8dbfdf439402cc2926d5c36, type: 3}
       propertyPath: m_LocalPosition.y
-      value: 0.9701214
+      value: 0.000000016618166
       objectReference: {fileID: 0}
     - target: {fileID: -8679921383154817045, guid: 8a9f98aee8dbfdf439402cc2926d5c36, type: 3}
       propertyPath: m_LocalPosition.z
-      value: -7.817325
+      value: -0.06918349
       objectReference: {fileID: 0}
     - target: {fileID: -8679921383154817045, guid: 8a9f98aee8dbfdf439402cc2926d5c36, type: 3}
       propertyPath: m_LocalRotation.w
@@ -974,10 +974,6 @@ PrefabInstance:
       value: temeroso_arquera
       objectReference: {fileID: 0}
     - target: {fileID: 919132149155446097, guid: 8a9f98aee8dbfdf439402cc2926d5c36, type: 3}
-      propertyPath: m_IsActive
-      value: 0
-      objectReference: {fileID: 0}
-    - target: {fileID: 919132149155446097, guid: 8a9f98aee8dbfdf439402cc2926d5c36, type: 3}
       propertyPath: m_TagString
       value: FightUnit
       objectReference: {fileID: 0}
@@ -1277,8 +1273,6 @@ MonoBehaviour:
   isRanged: 1
   projectilePrefab: {fileID: 1573207234115018630, guid: e43f9e6216b43fb468aa9617ca761ce1, type: 3}
   projectileSpawnPoint: {fileID: 2489243375357537093}
-  clip: {fileID: 8300000, guid: e8fba0eccd37c3e45b62ab9ae6d46a68, type: 3}
-  source: {fileID: 0}
 --- !u!114 &4303521761702579366
 MonoBehaviour:
   m_ObjectHideFlags: 0

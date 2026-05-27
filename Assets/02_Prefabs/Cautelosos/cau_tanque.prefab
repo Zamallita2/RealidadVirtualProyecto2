@@ -784,15 +784,15 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: -8679921383154817045, guid: ef1571b656b08a94780d8098681ca321, type: 3}
       propertyPath: m_LocalPosition.x
-      value: 0.53
+      value: 0
       objectReference: {fileID: 0}
     - target: {fileID: -8679921383154817045, guid: ef1571b656b08a94780d8098681ca321, type: 3}
       propertyPath: m_LocalPosition.y
-      value: 0.989
+      value: 0
       objectReference: {fileID: 0}
     - target: {fileID: -8679921383154817045, guid: ef1571b656b08a94780d8098681ca321, type: 3}
       propertyPath: m_LocalPosition.z
-      value: -1.844
+      value: 0
       objectReference: {fileID: 0}
     - target: {fileID: -8679921383154817045, guid: ef1571b656b08a94780d8098681ca321, type: 3}
       propertyPath: m_LocalRotation.w
@@ -1053,10 +1053,6 @@ PrefabInstance:
     - target: {fileID: 919132149155446097, guid: ef1571b656b08a94780d8098681ca321, type: 3}
       propertyPath: m_Name
       value: cau_tanque
-      objectReference: {fileID: 0}
-    - target: {fileID: 919132149155446097, guid: ef1571b656b08a94780d8098681ca321, type: 3}
-      propertyPath: m_IsActive
-      value: 0
       objectReference: {fileID: 0}
     - target: {fileID: 919132149155446097, guid: ef1571b656b08a94780d8098681ca321, type: 3}
       propertyPath: m_TagString
@@ -1368,8 +1364,6 @@ MonoBehaviour:
   isRanged: 0
   projectilePrefab: {fileID: 0}
   projectileSpawnPoint: {fileID: 0}
-  clip: {fileID: 8300000, guid: 5c502d11ded5e6743813a75668d4d21e, type: 3}
-  source: {fileID: 0}
 --- !u!114 &3022220706516287231
 MonoBehaviour:
   m_ObjectHideFlags: 0

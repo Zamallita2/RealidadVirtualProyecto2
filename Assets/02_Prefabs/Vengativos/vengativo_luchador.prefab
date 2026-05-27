@@ -628,15 +628,15 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: -8679921383154817045, guid: 8e722f0ed43dc39419cd4454d57791a9, type: 3}
       propertyPath: m_LocalPosition.x
-      value: -0.4557287
+      value: 0
       objectReference: {fileID: 0}
     - target: {fileID: -8679921383154817045, guid: 8e722f0ed43dc39419cd4454d57791a9, type: 3}
       propertyPath: m_LocalPosition.y
-      value: 0.9701209
+      value: 0
       objectReference: {fileID: 0}
     - target: {fileID: -8679921383154817045, guid: 8e722f0ed43dc39419cd4454d57791a9, type: 3}
       propertyPath: m_LocalPosition.z
-      value: -8.746138
+      value: 0
       objectReference: {fileID: 0}
     - target: {fileID: -8679921383154817045, guid: 8e722f0ed43dc39419cd4454d57791a9, type: 3}
       propertyPath: m_LocalRotation.w
@@ -873,10 +873,6 @@ PrefabInstance:
     - target: {fileID: 919132149155446097, guid: 8e722f0ed43dc39419cd4454d57791a9, type: 3}
       propertyPath: m_Name
       value: vengativo_luchador
-      objectReference: {fileID: 0}
-    - target: {fileID: 919132149155446097, guid: 8e722f0ed43dc39419cd4454d57791a9, type: 3}
-      propertyPath: m_IsActive
-      value: 0
       objectReference: {fileID: 0}
     - target: {fileID: 919132149155446097, guid: 8e722f0ed43dc39419cd4454d57791a9, type: 3}
       propertyPath: m_TagString
@@ -1138,8 +1134,6 @@ MonoBehaviour:
   isRanged: 0
   projectilePrefab: {fileID: 0}
   projectileSpawnPoint: {fileID: 0}
-  clip: {fileID: 8300000, guid: 45488946a51edf94cbc2ff10753bd3db, type: 3}
-  source: {fileID: 0}
 --- !u!114 &4504601673773860838
 MonoBehaviour:
   m_ObjectHideFlags: 0

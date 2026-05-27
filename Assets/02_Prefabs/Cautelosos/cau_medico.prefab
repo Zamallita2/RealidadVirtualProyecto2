@@ -628,15 +628,15 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: -8679921383154817045, guid: 2abae72ab735b7b4dbea9eba9a469c73, type: 3}
       propertyPath: m_LocalPosition.x
-      value: 0.6106071
+      value: 0.52793515
       objectReference: {fileID: 0}
     - target: {fileID: -8679921383154817045, guid: 2abae72ab735b7b4dbea9eba9a469c73, type: 3}
       propertyPath: m_LocalPosition.y
-      value: 0.9701212
+      value: 0.000000024737481
       objectReference: {fileID: 0}
     - target: {fileID: -8679921383154817045, guid: 2abae72ab735b7b4dbea9eba9a469c73, type: 3}
       propertyPath: m_LocalPosition.z
-      value: -3.3460596
+      value: -0.08222363
       objectReference: {fileID: 0}
     - target: {fileID: -8679921383154817045, guid: 2abae72ab735b7b4dbea9eba9a469c73, type: 3}
       propertyPath: m_LocalRotation.w
@@ -669,10 +669,6 @@ PrefabInstance:
     - target: {fileID: 919132149155446097, guid: 2abae72ab735b7b4dbea9eba9a469c73, type: 3}
       propertyPath: m_Name
       value: cau_medico
-      objectReference: {fileID: 0}
-    - target: {fileID: 919132149155446097, guid: 2abae72ab735b7b4dbea9eba9a469c73, type: 3}
-      propertyPath: m_IsActive
-      value: 0
       objectReference: {fileID: 0}
     - target: {fileID: 919132149155446097, guid: 2abae72ab735b7b4dbea9eba9a469c73, type: 3}
       propertyPath: m_TagString
@@ -787,9 +783,7 @@ MonoBehaviour:
     effectDuration: 0
   isRanged: 1
   projectilePrefab: {fileID: 6837982506185293005, guid: d896748c082456b45b433909fb85e60e, type: 3}
-  projectileSpawnPoint: {fileID: 0}
-  clip: {fileID: 8300000, guid: b2549cfdc433de342a05ca67108e52de, type: 3}
-  source: {fileID: 0}
+  projectileSpawnPoint: {fileID: 167267919482642186}
 --- !u!114 &5417884403403237743
 MonoBehaviour:
   m_ObjectHideFlags: 0
