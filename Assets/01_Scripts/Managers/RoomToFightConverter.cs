@@ -18,6 +18,9 @@ public class RoomToFightConverter : MonoBehaviour
                 continue;
 
             enemyLookup[enemy.enemyId] = enemy;
+            Debug.Log(
+                $"Registrado: [{enemy.enemyId}]"
+            );
         }
     }
 
