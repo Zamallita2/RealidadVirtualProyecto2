@@ -3,7 +3,9 @@ using UnityEngine;
 using UnityEngine.EventSystems;
 using UnityEngine.UI;
 
-public class RoomEditorSlotUI : MonoBehaviour, IDropHandler
+public class RoomEditorSlotUI :
+    MonoBehaviour,
+    IDropHandler
 {
     [Header("UI")]
     public Image iconImage;
@@ -11,60 +13,114 @@ public class RoomEditorSlotUI : MonoBehaviour, IDropHandler
     public Button clearButton;
     public Sprite emptyPlusSprite;
 
-    [HideInInspector] public int slotIndex;
-    [HideInInspector] public RoomEditorPanelController controller;
+    [HideInInspector]
+    public int slotIndex;
 
-    public void Setup(RoomEditorPanelController editorController, int index)
+    [HideInInspector]
+    public RoomEditorPanelController controller;
+
+    public void Setup(
+        RoomEditorPanelController editorController,
+        int index
+    )
     {
-        controller = editorController;
-        slotIndex = index;
+        controller =
+            editorController;
+
+        slotIndex =
+            index;
 
         if (clearButton != null)
-            clearButton.onClick.AddListener(ClearSlot);
+        {
+            clearButton.onClick
+            .AddListener(
+                ClearSlot
+            );
+        }
     }
 
     public void SetEmpty()
     {
-        if (iconImage != null)
-            iconImage.sprite = emptyPlusSprite;
+        iconImage.sprite =
+            emptyPlusSprite;
 
-        if (labelText != null)
-            labelText.text = "+";
+        labelText.text =
+            "+";
 
-        if (clearButton != null)
-            clearButton.gameObject.SetActive(false);
+        clearButton.gameObject
+        .SetActive(false);
     }
 
-    public void SetEnemy(EnemyGachaData data)
+    public void SetEnemy(
+        EnemyGachaData data
+    )
     {
-        if (iconImage != null)
-            iconImage.sprite = data.cardFrontSprite;
+        iconImage.sprite =
+            data.cardFrontSprite;
 
-        if (labelText != null)
-            labelText.text = data.enemyName;
+        labelText.text =
+            data.enemyName;
 
-        if (clearButton != null)
-            clearButton.gameObject.SetActive(true);
+        clearButton.gameObject
+        .SetActive(true);
     }
 
-    public void OnDrop(PointerEventData eventData)
+    public void OnDrop(
+        PointerEventData eventData
+    )
     {
         if (controller == null)
             return;
 
-        EnemyPaletteItemUI dragged = eventData.pointerDrag
-            ? eventData.pointerDrag.GetComponent<EnemyPaletteItemUI>()
-            : null;
+        EnemyPaletteItemUI dragged =
+        eventData.pointerDrag
+        ?
+        eventData.pointerDrag
+        .GetComponent<
+        EnemyPaletteItemUI>()
+        :
+        null;
 
-        if (dragged != null)
+        if (dragged == null)
+            return;
+
+        EnemyGachaData enemy =
+        GachaInventoryManager.Instance
+        .GetEnemyData(
+            dragged.enemyId
+        );
+
+        if (enemy == null)
+            return;
+
+
+        // Boss solo slot 5
+        if (
+            enemy.isBoss &&
+            slotIndex != 4
+        )
         {
-            controller.TryAssignEnemyToSlot(dragged.enemyId, slotIndex);
+            Debug.Log(
+            "Boss solo puede ir en Slot 5"
+            );
+
+            return;
         }
+
+        controller.TryAssignEnemyToSlot(
+            dragged.enemyId,
+            slotIndex
+        );
     }
 
     private void ClearSlot()
     {
         if (controller != null)
-            controller.RemoveEnemyFromSlot(slotIndex);
+        {
+            controller
+            .RemoveEnemyFromSlot(
+                slotIndex
+            );
+        }
     }
 }
