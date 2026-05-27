@@ -28,5 +28,5 @@ MonoBehaviour:
   enemyPrefab: {fileID: 919132149155446097, guid: b9631dd7f8ff584498cc2dfd44776aca, type: 3}
   roomScale: {x: 0.1, y: 0.1, z: 0.1}
   roomRotation: {x: 0, y: 90, z: 0}
-  shopPrice: 100
+  shopPrice: 150
   isBoss: 0

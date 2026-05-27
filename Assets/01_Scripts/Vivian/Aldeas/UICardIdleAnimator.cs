@@ -14,6 +14,11 @@ public class UICardIdleAnimator : MonoBehaviour, IPointerEnterHandler, IPointerE
     public float glowMin = 0.04f;
     public float glowMax = 0.18f;
 
+    [Header("Sonido Hover")]
+    public AudioSource audioSource;
+    public AudioClip hoverSound;
+    public float hoverVolume = 0.7f;
+
     private Vector3 baseScale;
     private Vector3 targetScale;
     private CanvasGroup canvasGroup;
@@ -28,6 +33,9 @@ public class UICardIdleAnimator : MonoBehaviour, IPointerEnterHandler, IPointerE
             canvasGroup = gameObject.AddComponent<CanvasGroup>();
 
         canvasGroup.alpha = 0f;
+
+        if (audioSource == null)
+            audioSource = GetComponent<AudioSource>();
     }
 
     private void Start()
@@ -71,6 +79,11 @@ public class UICardIdleAnimator : MonoBehaviour, IPointerEnterHandler, IPointerE
     public void OnPointerEnter(PointerEventData eventData)
     {
         targetScale = baseScale * hoverScale;
+
+        if (audioSource != null && hoverSound != null)
+        {
+            audioSource.PlayOneShot(hoverSound, hoverVolume);
+        }
     }
 
     public void OnPointerExit(PointerEventData eventData)
