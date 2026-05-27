@@ -74,15 +74,18 @@ public class Aldea : MonoBehaviour
 
     public void TodosMurieron()
     {
-        aventureros.Clear();
         vidas--;
-
-        Debug.Log(tipoAldea + " perdió equipo");
-
         if (vidas <= 0)
-            Debug.Log(tipoAldea + " se quedó sin vidas");
+        {
+            aventureros.Clear();
 
-        ActualizarEvolucionVisual(false);
+            Debug.Log(tipoAldea + " perdió equipo");
+
+            if (vidas <= 0)
+                Debug.Log(tipoAldea + " se quedó sin vidas");
+
+            ActualizarEvolucionVisual(false);
+        }
     }
 
     public void ActualizarEvolucionVisual(bool playEffect)

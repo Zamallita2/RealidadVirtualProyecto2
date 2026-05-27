@@ -21,8 +21,11 @@ public class RoomToFightConverter : MonoBehaviour
         }
     }
 
-    public List<FightRoom> ConvertRooms(RoomConfigSaveData saveData)
+    public List<FightRoom> ConvertRooms(
+    RoomConfigSaveData saveData)
     {
+        EnsureLookup();
+
         List<FightRoom> result = new();
 
         foreach(var roomData in saveData.rooms)
@@ -31,6 +34,21 @@ public class RoomToFightConverter : MonoBehaviour
         }
 
         return result;
+    }
+    private void EnsureLookup()
+    {
+        if(enemyLookup != null)
+            return;
+
+        enemyLookup = new();
+
+        foreach(var enemy in enemyDatabase)
+        {
+            if(enemy == null)
+                continue;
+
+            enemyLookup[enemy.enemyId] = enemy;
+        }
     }
 
     private FightRoom ConvertRoom(RoomConfigData data)
@@ -51,33 +69,41 @@ public class RoomToFightConverter : MonoBehaviour
     }
 
     private void AddEnemy(
-        List<AdventurerSetup> wave,
-        string enemyId,
-        int difficulty,
-        int amount)
+    List<AdventurerSetup> wave,
+    string enemyId,
+    int difficulty,
+    int amount)
     {
+        Debug.Log($"Intentando agregar: [{enemyId}]");
+
         if(string.IsNullOrEmpty(enemyId))
+        {
+            Debug.Log("Vacío");
             return;
+        }
+
+        if(enemyLookup == null)
+        {
+            Debug.LogError("enemyLookup es NULL");
+            return;
+        }
+
+        Debug.Log(
+            $"enemyLookup tiene {enemyLookup.Count} enemigos"
+        );
 
         if(!enemyLookup.TryGetValue(
             enemyId,
             out EnemyGachaData enemy))
-            return;
-
-        bool isBoss =
-            enemyId == "juguetero_demonio";
-
-        int count = isBoss ? 1 : amount;
-
-        int level = difficulty * 5;
-
-        for(int i = 0; i < count; i++)
         {
-            wave.Add(new AdventurerSetup
-            {
-                prefab = enemy.enemyPrefab,
-                level = level
-            });
+            Debug.LogError(
+                $"No encontrado: [{enemyId}]"
+            );
+            return;
         }
+
+        Debug.Log(
+            $"Encontrado: {enemy.enemyId}"
+        );
     }
 }

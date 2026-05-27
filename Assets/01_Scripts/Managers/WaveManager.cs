@@ -238,11 +238,15 @@ public class WaveManager : MonoBehaviour
     }
     void LoadRoomsFromConfig()
     {
+        Debug.Log("Cargando salas");
         rooms.Clear();
 
         if(RoomConfigManager.Instance == null ||
         RoomConfigManager.Instance.SaveData == null)
+        {
+            Debug.Log("Son nulas");
             return;
+        }
 
         List<FightRoom> convertedRooms =
             converter.ConvertRooms(
@@ -250,7 +254,6 @@ public class WaveManager : MonoBehaviour
             );
 
         rooms.AddRange(convertedRooms);
-
         // Garantizar que existan salas aunque estén vacías
         if(rooms.Count == 0)
         {
