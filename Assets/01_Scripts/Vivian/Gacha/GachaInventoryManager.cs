@@ -185,4 +185,54 @@ public class GachaInventoryManager : MonoBehaviour
         Save();
         return true;
     }
+
+
+    public EnemyGachaData GetEnemyData(string enemyId)
+    {
+        return allEnemies.Find(x => x.enemyId == enemyId);
+    }
+
+    public GameObject GetEnemyPrefab(string enemyId)
+    {
+        EnemyGachaData data = GetEnemyData(enemyId);
+        return data != null ? data.enemyPrefab : null;
+    }
+
+    public bool IsBoss(string enemyId)
+    {
+        EnemyGachaData data = GetEnemyData(enemyId);
+        return data != null && data.isBoss;
+    }
+
+    public bool UseEnemyCopy(string enemyId)
+    {
+        GachaOwnedEnemy owned = GetOwned(enemyId);
+
+        if (owned == null || !owned.unlocked || owned.copies <= 0)
+            return false;
+
+        owned.copies--;
+        Save();
+        return true;
+    }
+
+    public void ReturnEnemyCopy(string enemyId)
+    {
+        GachaOwnedEnemy owned = GetOwned(enemyId);
+
+        if (owned == null)
+        {
+            owned = new GachaOwnedEnemy
+            {
+                enemyId = enemyId,
+                copies = 0,
+                unlocked = true
+            };
+
+            SaveData.ownedEnemies.Add(owned);
+        }
+
+        owned.copies++;
+        Save();
+    }
 }
