@@ -98,13 +98,13 @@ public class WaveManager : MonoBehaviour
 
     public List<GameObject> StartNextWave()
     {
-        currentWave++;
-        if (currentRoomIndex != 0)
+        if (currentWave!=0)
         {
+            FM.HandleLevels(true);
             shop.AddEssence(Random.Range(minEssence,maxEssence));
             shop.AddShopCoinsFromBattle(Random.Range(minCoins,maxCoins));
-            FM.HandleLevels(true);
         }
+        currentWave++;
 
         if(currentRoomIndex < 0 || currentRoomIndex >= runtimeRooms.Count)
             return null;

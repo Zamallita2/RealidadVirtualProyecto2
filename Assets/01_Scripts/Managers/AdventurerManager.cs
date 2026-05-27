@@ -10,10 +10,6 @@ public class AdventurerManager : MonoBehaviour
     private readonly List<AdventurerData> party = new();
     private bool isFightRunning;
 
-    const float HealthPerLevel = 0.12f;
-    const float StrengthPerLevel = 0.10f;
-    const float SpeedPerLevel = 0.05f;
-
     public bool IsFightRunning => isFightRunning;
     public bool CanStartFight => !isFightRunning && party.Count > 0;
 
@@ -99,48 +95,24 @@ public class AdventurerManager : MonoBehaviour
 
     static AdventurerData CreateAdventurerData(AdventurerSetup setup)
     {
-        UnitStats prefabStats = setup.prefab.GetComponent<UnitStats>();
 
-        float maxHealth = prefabStats != null ? prefabStats.maxHealth : 10;
-        int strength = prefabStats != null ? prefabStats.strength : 2;
-        int speed = prefabStats != null ? prefabStats.speed : 5;
+        AdventurerData temp = new AdventurerData
+        {
+            prefab = setup.prefab,
+            level = setup.level
+        };
 
-        ApplyLevelScaling(setup.level, ref maxHealth, ref strength, ref speed);
+        StatCalculator.Recalculate(temp);
 
         return new AdventurerData
         {
             prefab = setup.prefab,
             level = setup.level,
-            maxHealth = maxHealth,
-            currentHealth = maxHealth,
-            strength = strength,
-            speed = speed,
+            maxHealth = temp.maxHealth,
+            currentHealth = temp.maxHealth,
+            strength = temp.strength,
+            speed = temp.speed,
             isAlive = true
         };
-    }
-
-    public static void ApplyLevelScaling(
-        int level,
-        ref float maxHealth,
-        ref int strength,
-        ref int speed)
-    {
-        if(level <= 1)
-            return;
-
-        int bonusLevels = level - 1;
-
-        maxHealth = Mathf.RoundToInt(
-            maxHealth * (1f + HealthPerLevel * bonusLevels)
-        );
-
-        strength = Mathf.RoundToInt(
-            strength * (1f + StrengthPerLevel * bonusLevels)
-        );
-
-        speed = Mathf.Max(
-            1,
-            Mathf.RoundToInt(speed * (1f + SpeedPerLevel * bonusLevels))
-        );
     }
 }
