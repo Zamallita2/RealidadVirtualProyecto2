@@ -23,12 +23,13 @@ public class FightManager : MonoBehaviour
     private Aldea currentAldea;
     private readonly List<AventureroData> currentAldeaTeamSnapshot = new();
 
-    private List<AdventurerData> currentParty = new();
+    public List<AdventurerData> currentParty = new();
     private List<UnitStats> allySlots = new();
     private List<UnitStats> aliveEnemies = new();
     private bool isFightActive;
     private bool isTransitioning;
-    private readonly List<GameObject> spawnedFightObjects = new();
+    private readonly List<GameObject> spawnedAllyObjects = new();
+    private readonly List<GameObject> spawnedEnemyObjects = new();
 
     public bool IsFightActive => isFightActive;
 
@@ -96,6 +97,11 @@ public class FightManager : MonoBehaviour
         waveManager.PrepareForFight();
 
         SpawnAllies();
+
+        foreach (var adv in currentParty)
+        {
+            StatCalculator.RecalculateWithHealthPreserved(adv);
+        }
 
         if(!BeginCurrentRoom())
         {
@@ -174,7 +180,7 @@ public class FightManager : MonoBehaviour
     void SpawnAllies()
     {
         allySlots.Clear();
-        spawnedFightObjects.Clear();
+        spawnedAllyObjects.Clear();
 
         for(int i = 0; i < currentParty.Count; i++)
         {
@@ -197,7 +203,7 @@ public class FightManager : MonoBehaviour
                 point.transform.rotation
             );
             TryAssignFightTag(obj);
-            spawnedFightObjects.Add(obj);
+            spawnedAllyObjects.Add(obj);
 
             UnitStats stats = obj.GetComponent<UnitStats>();
 
@@ -220,7 +226,7 @@ public class FightManager : MonoBehaviour
     void SpawnWave(List<GameObject> wave)
     {
         aliveEnemies.Clear();
-
+        spawnedEnemyObjects.Clear();
         for(int i = 0; i < wave.Count; i++)
         {
             if(i >= currentMap.enemyPoints.Count)
@@ -239,7 +245,7 @@ public class FightManager : MonoBehaviour
                 point.transform.rotation
             );
             TryAssignFightTag(obj);
-            spawnedFightObjects.Add(obj);
+            spawnedEnemyObjects.Add(obj);
 
             UnitStats stats = obj.GetComponent<UnitStats>();
 
@@ -493,15 +499,59 @@ public class FightManager : MonoBehaviour
     void CleanupFightObjects()
     {
         // Destroy only what this FightManager spawned to avoid deleting other scene objects.
-        for(int i = spawnedFightObjects.Count - 1; i >= 0; i--)
+        for(int i = spawnedEnemyObjects.Count - 1; i >= 0; i--)
         {
-            GameObject obj = spawnedFightObjects[i];
+            GameObject obj = spawnedEnemyObjects[i];
+            if(obj != null)
+                Destroy(obj);
+        }
+        for(int i = spawnedAllyObjects.Count - 1; i >= 0; i--)
+        {
+            GameObject obj = spawnedAllyObjects[i];
             if(obj != null)
                 Destroy(obj);
         }
 
-        spawnedFightObjects.Clear();
+        spawnedAllyObjects.Clear();
+        spawnedEnemyObjects.Clear();
         allySlots.Clear();
         aliveEnemies.Clear();
+    }
+    public void HandleLevels(bool isWave)
+    {
+        SyncPartyFromFight();
+
+        float chance = waveManager.GetNextRoomDrop();
+
+        int num=0;
+
+        foreach(var adv in currentParty)
+        {
+            if(Random.Range(0f,100f)<=chance)
+            {
+                adv.level++;
+
+                if(!isWave)
+                    adv.level++;
+
+                StatCalculator.RecalculateWithHealthPreserved(adv);
+
+                ApplyStatsToUnit(num,adv);
+            }
+
+            num++;
+        }
+    }
+    void ApplyStatsToUnit(int num, AdventurerData adv)
+    {
+        if(num >= allySlots.Count)
+            return;
+
+        UnitStats unit=allySlots[num];
+
+        if(unit==null)
+            return;
+
+        unit.ApplyFromData(adv);
     }
 }

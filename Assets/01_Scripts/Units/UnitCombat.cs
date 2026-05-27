@@ -19,6 +19,8 @@ public class UnitCombat : MonoBehaviour
     private TurnManager turnManager;
     private Animator animator;
     private EnumFigthList.SkillCategory lastSkillType;
+    [SerializeField] public AudioClip clip;
+    [SerializeField] private AudioSource source;
     void Awake()
     {
         fightManager =
@@ -33,6 +35,14 @@ public class UnitCombat : MonoBehaviour
         {
             animator = GetComponentInChildren<Animator>();
         }
+        if (source == null)
+            source = gameObject.GetComponent<AudioSource>();
+
+        if (source == null)
+            source = gameObject.AddComponent<AudioSource>();
+
+        source.playOnAwake = false;
+        source.clip = clip;
     }
     public void TakeTurn()
     {
@@ -110,7 +120,7 @@ public class UnitCombat : MonoBehaviour
         Vector3 targetPos =
             target.transform.position +
             dir * 0.2f;
-
+        source.PlayOneShot(clip);
         StartCoroutine(
             movement.MoveToPositionAndAttack(
                 targetPos,
@@ -181,6 +191,7 @@ public class UnitCombat : MonoBehaviour
 
     public void SpawnProjectile()
     {
+        source.PlayOneShot(clip);
         UnitStats target = currentTargets[0];
         GameObject obj =
             Instantiate(

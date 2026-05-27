@@ -91,12 +91,14 @@ public class GachaInventoryManager : MonoBehaviour
 
     public void AddEssence(int amount)
     {
+        Debug.Log("Ganaste " + amount + " de Escencia");
         SaveData.essence += amount;
         Save();
     }
 
     public void AddShopCoinsFromBattle(int amount)
     {
+        Debug.Log("Ganaste " + amount + " monedas");
         SaveData.shopCoins += amount;
         Save();
     }
