@@ -19,6 +19,11 @@ public class RoomConfigSaveData
 
 public class RoomConfigManager : MonoBehaviour
 {
+
+    [Header("Guardar datos")]
+    public bool saveToDisk = false;
+
+
     public static RoomConfigManager Instance;
 
     private const string SaveKey = "ROOM_CONFIG_SAVE";
@@ -42,23 +47,25 @@ public class RoomConfigManager : MonoBehaviour
 
     private void Load()
     {
+        if (!saveToDisk)
+        {
+            CreateNewSave();
+            return;
+        }
+
         if (!PlayerPrefs.HasKey(SaveKey))
         {
             CreateNewSave();
             return;
         }
 
-        SaveData = JsonUtility.FromJson<RoomConfigSaveData>(
+        SaveData =
+        JsonUtility.FromJson<RoomConfigSaveData>(
             PlayerPrefs.GetString(SaveKey)
         );
 
         if (SaveData == null)
-        {
             CreateNewSave();
-            return;
-        }
-
-        NormalizeAllRooms();
     }
 
     private void CreateNewSave()
@@ -125,9 +132,20 @@ public class RoomConfigManager : MonoBehaviour
             room.enemyIds.RemoveAt(room.enemyIds.Count - 1);
     }
 
+
     public void Save()
     {
-        PlayerPrefs.SetString(SaveKey, JsonUtility.ToJson(SaveData, true));
+        if (!saveToDisk)
+            return;
+
+        PlayerPrefs.SetString(
+            SaveKey,
+            JsonUtility.ToJson(
+                SaveData,
+                true
+            )
+        );
+
         PlayerPrefs.Save();
     }
 
