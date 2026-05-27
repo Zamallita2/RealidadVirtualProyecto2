@@ -1,4 +1,5 @@
 using System;
+using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 
@@ -10,7 +11,8 @@ public class TurnManager : MonoBehaviour
     private List<UnitStats> allies;
     private List<UnitStats> enemies;
     private bool isCombatActive;
-    private bool isTurn=false;
+    private bool isTurn = false;
+    private Coroutine turnTimeoutCoroutine;
 
     public bool IsCombatActive => isCombatActive;
 
@@ -92,12 +94,13 @@ public class TurnManager : MonoBehaviour
         if(isTurn && !UnitStats.IsCombatReady(currentUnit))
         {
             Debug.Log($"[TurnManager] {(currentUnit != null ? currentUnit.name : "null")} murió durante su turno — forzando avance.");
+            CancelTurnTimeout();
             isTurn = false;
         }
 
         if(isTurn)
         {
-            Debug.Log("Lo intentó");
+            Debug.LogWarning($"[TurnManager] Lo intentó — turno ya activo para: {(currentUnit != null ? currentUnit.name : "null")} (isTurn={isTurn})");
             return;
         }
 
@@ -119,7 +122,31 @@ public class TurnManager : MonoBehaviour
         Debug.Log("Turno de: " + currentUnit.name);
         isTurn = true;
 
+        // Seguro: si el turno no termina en 10 seg, se fuerza EndTurn
+        CancelTurnTimeout();
+        turnTimeoutCoroutine = StartCoroutine(TurnTimeoutCoroutine(currentUnit));
+
         currentUnit.TakeTurn();
+    }
+
+    IEnumerator TurnTimeoutCoroutine(UnitStats unit)
+    {
+        yield return new WaitForSeconds(10f);
+
+        if(isTurn && currentUnit == unit)
+        {
+            Debug.LogWarning($"[TurnManager] TIMEOUT — el turno de {(unit != null ? unit.name : "null")} no terminó en 10 seg. Forzando EndTurn.");
+            EndTurn();
+        }
+    }
+
+    void CancelTurnTimeout()
+    {
+        if(turnTimeoutCoroutine != null)
+        {
+            StopCoroutine(turnTimeoutCoroutine);
+            turnTimeoutCoroutine = null;
+        }
     }
 
     UnitStats GetNextUnit()
@@ -162,7 +189,8 @@ public class TurnManager : MonoBehaviour
             return;
 
         Debug.Log("Turno acabado");
-        isTurn=false;
+        CancelTurnTimeout();
+        isTurn = false;
 
         FightManager fightManager =
             FindFirstObjectByType<FightManager>();
