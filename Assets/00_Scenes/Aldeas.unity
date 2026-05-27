@@ -431,7 +431,7 @@ Camera:
   far clip plane: 1000
   field of view: 60
   orthographic: 1
-  orthographic size: 0.5
+  orthographic size: 1.3
   m_Depth: 0
   m_CullingMask:
     serializedVersion: 2
@@ -463,7 +463,7 @@ MonoBehaviour:
   offset: {x: 0, y: 8, z: -6}
   orthographicSize: 0.5
   autoZoomByStage: 1
-  villageEvolution: {fileID: 0}
+  villageEvolution: {fileID: 1737780457}
   campamentoZoom: 1.3
   ciudadZoom: 1.6
   metropolisZoom: 2.1
@@ -2707,7 +2707,6 @@ MonoBehaviour:
     - {fileID: 21300000, guid: 5af8b4c51898616428e60bc7e1051f0a, type: 3}
   cardPrefab: {fileID: 263414343483499489, guid: 39d73beca7529bf458183ef7f812e4a4, type: 3}
   contentParent: {fileID: 1720804190}
-  delayBetweenCards: 0.1
 --- !u!1001 &1851472836
 PrefabInstance:
   m_ObjectHideFlags: 0
@@ -2960,7 +2959,7 @@ MonoBehaviour:
   m_TargetGraphic: {fileID: 1823643654}
   m_HandleRect: {fileID: 1823643653}
   m_Direction: 2
-  m_Value: 1
+  m_Value: 0
   m_Size: 1
   m_NumberOfSteps: 0
   m_OnValueChanged:
