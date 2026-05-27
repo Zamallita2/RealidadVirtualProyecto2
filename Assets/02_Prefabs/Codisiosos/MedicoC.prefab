@@ -284,7 +284,7 @@ GameObject:
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
-  m_IsActive: 1
+  m_IsActive: 0
 --- !u!4 &5460789039817427492
 Transform:
   m_ObjectHideFlags: 0
@@ -376,6 +376,8 @@ MonoBehaviour:
   isRanged: 1
   projectilePrefab: {fileID: 6837982506185293005, guid: d896748c082456b45b433909fb85e60e, type: 3}
   projectileSpawnPoint: {fileID: 1633403928137430457}
+  clip: {fileID: 8300000, guid: b2549cfdc433de342a05ca67108e52de, type: 3}
+  source: {fileID: 0}
 --- !u!114 &4047941890778131997
 MonoBehaviour:
   m_ObjectHideFlags: 0

@@ -628,15 +628,15 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: -8679921383154817045, guid: 7cdb9673efe3dab49bd1dfead9f36ee6, type: 3}
       propertyPath: m_LocalPosition.x
-      value: 0.46926877
+      value: 0.9313829
       objectReference: {fileID: 0}
     - target: {fileID: -8679921383154817045, guid: 7cdb9673efe3dab49bd1dfead9f36ee6, type: 3}
       propertyPath: m_LocalPosition.y
-      value: -0.000000021521988
+      value: 0.9701214
       objectReference: {fileID: 0}
     - target: {fileID: -8679921383154817045, guid: 7cdb9673efe3dab49bd1dfead9f36ee6, type: 3}
       propertyPath: m_LocalPosition.z
-      value: -0.028795768
+      value: -7.770041
       objectReference: {fileID: 0}
     - target: {fileID: -8679921383154817045, guid: 7cdb9673efe3dab49bd1dfead9f36ee6, type: 3}
       propertyPath: m_LocalRotation.w
@@ -873,6 +873,10 @@ PrefabInstance:
     - target: {fileID: 919132149155446097, guid: 7cdb9673efe3dab49bd1dfead9f36ee6, type: 3}
       propertyPath: m_Name
       value: Temeroso_mago
+      objectReference: {fileID: 0}
+    - target: {fileID: 919132149155446097, guid: 7cdb9673efe3dab49bd1dfead9f36ee6, type: 3}
+      propertyPath: m_IsActive
+      value: 0
       objectReference: {fileID: 0}
     - target: {fileID: 919132149155446097, guid: 7cdb9673efe3dab49bd1dfead9f36ee6, type: 3}
       propertyPath: m_TagString
@@ -1150,6 +1154,8 @@ MonoBehaviour:
   isRanged: 1
   projectilePrefab: {fileID: 654237713483918599, guid: 36f97b0cacb16074186058773d54fe69, type: 3}
   projectileSpawnPoint: {fileID: 422217521738995831}
+  clip: {fileID: 8300000, guid: 3a63fab4925501e48b806b9822c79444, type: 3}
+  source: {fileID: 0}
 --- !u!114 &4669560696736336416
 MonoBehaviour:
   m_ObjectHideFlags: 0

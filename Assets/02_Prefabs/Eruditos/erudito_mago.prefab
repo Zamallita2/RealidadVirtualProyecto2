@@ -628,15 +628,15 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: -8679921383154817045, guid: e0433ed0e2388304e9fb3c2cdc32e5fa, type: 3}
       propertyPath: m_LocalPosition.x
-      value: 0.46926877
+      value: -0.951
       objectReference: {fileID: 0}
     - target: {fileID: -8679921383154817045, guid: e0433ed0e2388304e9fb3c2cdc32e5fa, type: 3}
       propertyPath: m_LocalPosition.y
-      value: -0.000000021521988
+      value: 0.97012115
       objectReference: {fileID: 0}
     - target: {fileID: -8679921383154817045, guid: e0433ed0e2388304e9fb3c2cdc32e5fa, type: 3}
       propertyPath: m_LocalPosition.z
-      value: -0.028795768
+      value: -4.352
       objectReference: {fileID: 0}
     - target: {fileID: -8679921383154817045, guid: e0433ed0e2388304e9fb3c2cdc32e5fa, type: 3}
       propertyPath: m_LocalRotation.w
@@ -669,6 +669,10 @@ PrefabInstance:
     - target: {fileID: 919132149155446097, guid: e0433ed0e2388304e9fb3c2cdc32e5fa, type: 3}
       propertyPath: m_Name
       value: erudito_mago
+      objectReference: {fileID: 0}
+    - target: {fileID: 919132149155446097, guid: e0433ed0e2388304e9fb3c2cdc32e5fa, type: 3}
+      propertyPath: m_IsActive
+      value: 0
       objectReference: {fileID: 0}
     - target: {fileID: 919132149155446097, guid: e0433ed0e2388304e9fb3c2cdc32e5fa, type: 3}
       propertyPath: m_TagString
@@ -784,7 +788,9 @@ MonoBehaviour:
     effectDuration: 2
   isRanged: 1
   projectilePrefab: {fileID: 654237713483918599, guid: 36f97b0cacb16074186058773d54fe69, type: 3}
-  projectileSpawnPoint: {fileID: 7999708411605575029}
+  projectileSpawnPoint: {fileID: 0}
+  clip: {fileID: 8300000, guid: 3a63fab4925501e48b806b9822c79444, type: 3}
+  source: {fileID: 0}
 --- !u!114 &8349475415727435390
 MonoBehaviour:
   m_ObjectHideFlags: 0

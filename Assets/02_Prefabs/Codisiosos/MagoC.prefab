@@ -659,15 +659,15 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: -8679921383154817045, guid: fd8d7d667533ea9df8942054f6d87f06, type: 3}
       propertyPath: m_LocalPosition.x
-      value: 0
+      value: -0.621
       objectReference: {fileID: 0}
     - target: {fileID: -8679921383154817045, guid: fd8d7d667533ea9df8942054f6d87f06, type: 3}
       propertyPath: m_LocalPosition.y
-      value: 0
+      value: 0.97012115
       objectReference: {fileID: 0}
     - target: {fileID: -8679921383154817045, guid: fd8d7d667533ea9df8942054f6d87f06, type: 3}
       propertyPath: m_LocalPosition.z
-      value: 0
+      value: -4.214251
       objectReference: {fileID: 0}
     - target: {fileID: -8679921383154817045, guid: fd8d7d667533ea9df8942054f6d87f06, type: 3}
       propertyPath: m_LocalRotation.w
@@ -982,6 +982,10 @@ PrefabInstance:
       value: MagoC
       objectReference: {fileID: 0}
     - target: {fileID: 919132149155446097, guid: fd8d7d667533ea9df8942054f6d87f06, type: 3}
+      propertyPath: m_IsActive
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 919132149155446097, guid: fd8d7d667533ea9df8942054f6d87f06, type: 3}
       propertyPath: m_TagString
       value: FightUnit
       objectReference: {fileID: 0}
@@ -1288,6 +1292,8 @@ MonoBehaviour:
   isRanged: 1
   projectilePrefab: {fileID: 654237713483918599, guid: 36f97b0cacb16074186058773d54fe69, type: 3}
   projectileSpawnPoint: {fileID: 1300401610927293154}
+  clip: {fileID: 8300000, guid: 3a63fab4925501e48b806b9822c79444, type: 3}
+  source: {fileID: 0}
 --- !u!114 &3254825091897603018
 MonoBehaviour:
   m_ObjectHideFlags: 0

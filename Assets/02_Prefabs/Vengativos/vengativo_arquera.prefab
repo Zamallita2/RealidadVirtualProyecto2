@@ -659,15 +659,15 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: -8679921383154817045, guid: d5bfdb494715f0d479e6995b5a7a3c2b, type: 3}
       propertyPath: m_LocalPosition.x
-      value: -0.44098175
+      value: 0.6036965
       objectReference: {fileID: 0}
     - target: {fileID: -8679921383154817045, guid: d5bfdb494715f0d479e6995b5a7a3c2b, type: 3}
       propertyPath: m_LocalPosition.y
-      value: -0.000000006194931
+      value: 1.072
       objectReference: {fileID: 0}
     - target: {fileID: -8679921383154817045, guid: d5bfdb494715f0d479e6995b5a7a3c2b, type: 3}
       propertyPath: m_LocalPosition.z
-      value: 0.05816639
+      value: -5.588
       objectReference: {fileID: 0}
     - target: {fileID: -8679921383154817045, guid: d5bfdb494715f0d479e6995b5a7a3c2b, type: 3}
       propertyPath: m_LocalRotation.w
@@ -904,6 +904,10 @@ PrefabInstance:
     - target: {fileID: 919132149155446097, guid: d5bfdb494715f0d479e6995b5a7a3c2b, type: 3}
       propertyPath: m_Name
       value: vengativo_arquera
+      objectReference: {fileID: 0}
+    - target: {fileID: 919132149155446097, guid: d5bfdb494715f0d479e6995b5a7a3c2b, type: 3}
+      propertyPath: m_IsActive
+      value: 0
       objectReference: {fileID: 0}
     - target: {fileID: 919132149155446097, guid: d5bfdb494715f0d479e6995b5a7a3c2b, type: 3}
       propertyPath: m_TagString
@@ -1185,7 +1189,9 @@ MonoBehaviour:
     effectDuration: 0
   isRanged: 1
   projectilePrefab: {fileID: 1573207234115018630, guid: e43f9e6216b43fb468aa9617ca761ce1, type: 3}
-  projectileSpawnPoint: {fileID: 1643138537373696753}
+  projectileSpawnPoint: {fileID: 0}
+  clip: {fileID: 8300000, guid: e8fba0eccd37c3e45b62ab9ae6d46a68, type: 3}
+  source: {fileID: 0}
 --- !u!114 &4074712059975290707
 MonoBehaviour:
   m_ObjectHideFlags: 0

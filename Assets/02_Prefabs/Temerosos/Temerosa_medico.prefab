@@ -628,15 +628,15 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: -8679921383154817045, guid: 04020141357c0314482048529de0ecbd, type: 3}
       propertyPath: m_LocalPosition.x
-      value: 0.6315019
+      value: -1.2200267
       objectReference: {fileID: 0}
     - target: {fileID: -8679921383154817045, guid: 04020141357c0314482048529de0ecbd, type: 3}
       propertyPath: m_LocalPosition.y
-      value: 0.000000004349566
+      value: 0.9701214
       objectReference: {fileID: 0}
     - target: {fileID: -8679921383154817045, guid: 04020141357c0314482048529de0ecbd, type: 3}
       propertyPath: m_LocalPosition.z
-      value: -0.12014498
+      value: -6.682515
       objectReference: {fileID: 0}
     - target: {fileID: -8679921383154817045, guid: 04020141357c0314482048529de0ecbd, type: 3}
       propertyPath: m_LocalRotation.w
@@ -669,6 +669,10 @@ PrefabInstance:
     - target: {fileID: 919132149155446097, guid: 04020141357c0314482048529de0ecbd, type: 3}
       propertyPath: m_Name
       value: Temerosa_medico
+      objectReference: {fileID: 0}
+    - target: {fileID: 919132149155446097, guid: 04020141357c0314482048529de0ecbd, type: 3}
+      propertyPath: m_IsActive
+      value: 0
       objectReference: {fileID: 0}
     - target: {fileID: 919132149155446097, guid: 04020141357c0314482048529de0ecbd, type: 3}
       propertyPath: m_TagString
@@ -781,6 +785,8 @@ MonoBehaviour:
   isRanged: 1
   projectilePrefab: {fileID: 6837982506185293005, guid: d896748c082456b45b433909fb85e60e, type: 3}
   projectileSpawnPoint: {fileID: 4647638598361475228}
+  clip: {fileID: 8300000, guid: b2549cfdc433de342a05ca67108e52de, type: 3}
+  source: {fileID: 0}
 --- !u!114 &5951762933105488995
 MonoBehaviour:
   m_ObjectHideFlags: 0
