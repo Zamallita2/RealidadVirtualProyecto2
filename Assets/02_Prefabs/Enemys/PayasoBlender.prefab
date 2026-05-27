@@ -628,15 +628,15 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: -8679921383154817045, guid: 98e15d34324cbd0e1905939b9c49a05c, type: 3}
       propertyPath: m_LocalPosition.x
-      value: 0
+      value: -1.9303737
       objectReference: {fileID: 0}
     - target: {fileID: -8679921383154817045, guid: 98e15d34324cbd0e1905939b9c49a05c, type: 3}
       propertyPath: m_LocalPosition.y
-      value: 0
+      value: 0.9701209
       objectReference: {fileID: 0}
     - target: {fileID: -8679921383154817045, guid: 98e15d34324cbd0e1905939b9c49a05c, type: 3}
       propertyPath: m_LocalPosition.z
-      value: 0
+      value: -4.547061
       objectReference: {fileID: 0}
     - target: {fileID: -8679921383154817045, guid: 98e15d34324cbd0e1905939b9c49a05c, type: 3}
       propertyPath: m_LocalRotation.w
@@ -807,6 +807,8 @@ MonoBehaviour:
   isRanged: 0
   projectilePrefab: {fileID: 0}
   projectileSpawnPoint: {fileID: 0}
+  clip: {fileID: 8300000, guid: 8ee411c7870a2924f8b81009bcc75d81, type: 3}
+  source: {fileID: 0}
 --- !u!114 &-4801647469093208850
 MonoBehaviour:
   m_ObjectHideFlags: 0
