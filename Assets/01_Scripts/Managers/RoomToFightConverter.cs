@@ -18,11 +18,17 @@ public class RoomToFightConverter : MonoBehaviour
                 continue;
 
             enemyLookup[enemy.enemyId] = enemy;
+            Debug.Log(
+                $"Registrado: [{enemy.enemyId}]"
+            );
         }
     }
 
-    public List<FightRoom> ConvertRooms(RoomConfigSaveData saveData)
+    public List<FightRoom> ConvertRooms(
+    RoomConfigSaveData saveData)
     {
+        EnsureLookup();
+
         List<FightRoom> result = new();
 
         foreach(var roomData in saveData.rooms)
@@ -31,6 +37,43 @@ public class RoomToFightConverter : MonoBehaviour
         }
 
         return result;
+    }
+    private void EnsureLookup()
+    {
+        if (enemyLookup == null)
+        {
+            enemyLookup = new();
+        }
+
+        // 1. Cargar desde la base de datos local
+        if (enemyDatabase != null)
+        {
+            foreach(var enemy in enemyDatabase)
+            {
+                if(enemy == null || string.IsNullOrEmpty(enemy.enemyId))
+                    continue;
+
+                if (!enemyLookup.ContainsKey(enemy.enemyId))
+                {
+                    enemyLookup[enemy.enemyId] = enemy;
+                }
+            }
+        }
+
+        // 2. Cargar desde GachaInventoryManager de forma dinámica
+        if (GachaInventoryManager.Instance != null && GachaInventoryManager.Instance.allEnemies != null)
+        {
+            foreach (var enemy in GachaInventoryManager.Instance.allEnemies)
+            {
+                if (enemy == null || string.IsNullOrEmpty(enemy.enemyId))
+                    continue;
+
+                if (!enemyLookup.ContainsKey(enemy.enemyId))
+                {
+                    enemyLookup[enemy.enemyId] = enemy;
+                }
+            }
+        }
     }
 
     private FightRoom ConvertRoom(RoomConfigData data)
@@ -51,24 +94,46 @@ public class RoomToFightConverter : MonoBehaviour
     }
 
     private void AddEnemy(
-        List<AdventurerSetup> wave,
-        string enemyId,
-        int difficulty,
-        int amount)
+    List<AdventurerSetup> wave,
+    string enemyId,
+    int difficulty,
+    int amount)
     {
+        Debug.Log($"Intentando agregar: [{enemyId}]");
+
         if(string.IsNullOrEmpty(enemyId))
+        {
+            Debug.Log("Vacío");
             return;
+        }
+
+        if(enemyLookup == null)
+        {
+            Debug.LogError("enemyLookup es NULL");
+            return;
+        }
+
+        Debug.Log(
+            $"enemyLookup tiene {enemyLookup.Count} enemigos"
+        );
 
         if(!enemyLookup.TryGetValue(
             enemyId,
             out EnemyGachaData enemy))
+        {
+            Debug.LogError(
+                $"No encontrado: [{enemyId}]"
+            );
             return;
+        }
 
-        bool isBoss =
-            enemyId == "juguetero_demonio";
+        Debug.Log(
+            $"Encontrado: {enemy.enemyId}"
+        );
 
+        // Añadir el enemigo a la oleada de combate
+        bool isBoss = enemyId == "juguetero_demonio" || enemy.isBoss;
         int count = isBoss ? 1 : amount;
-
         int level = difficulty * 5;
 
         for(int i = 0; i < count; i++)
