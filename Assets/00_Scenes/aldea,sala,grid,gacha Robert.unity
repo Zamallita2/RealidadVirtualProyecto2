@@ -7347,7 +7347,27 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: Assembly-CSharp::Aldea
   tipoAldea: 0
-  aventureros: []
+  aventureros:
+  - nombre: Arquero
+    rol: 0
+    prefab: {fileID: 3207577810400515543, guid: 3bbca94e52fdad1ecb3fcbc2c974ccb7, type: 3}
+    nivel: 1
+  - nombre: Luchador
+    rol: 1
+    prefab: {fileID: 6108273667369040895, guid: 0653454b434302889ae23dc0f05eeb7a, type: 3}
+    nivel: 1
+  - nombre: Mago
+    rol: 2
+    prefab: {fileID: 6767868986443984454, guid: a84a3d5c48277aeb9967fcd844220632, type: 3}
+    nivel: 1
+  - nombre: Medico
+    rol: 3
+    prefab: {fileID: 776287462742014486, guid: 90f443170b107486cba53a92e8daa470, type: 3}
+    nivel: 1
+  - nombre: Tanque
+    rol: 4
+    prefab: {fileID: 1305646359629266846, guid: 9a620f813a58d6e0b8c2e16013483d40, type: 3}
+    nivel: 1
   vidas: 3
   victorias: 0
   villageEvolution: {fileID: 382183236}
@@ -11505,7 +11525,27 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: Assembly-CSharp::Aldea
   tipoAldea: 2
-  aventureros: []
+  aventureros:
+  - nombre: Arquero
+    rol: 0
+    prefab: {fileID: 2280948847738670438, guid: eec54824ef282bc42b7d7d5b57d01964, type: 3}
+    nivel: 1
+  - nombre: Luchador
+    rol: 1
+    prefab: {fileID: 4738242347736874425, guid: 7f486654a19038349ba1e9bb30ca9408, type: 3}
+    nivel: 1
+  - nombre: Mago
+    rol: 2
+    prefab: {fileID: 1751437975789654157, guid: 0dff285742b066942a60b0dbaaf2582a, type: 3}
+    nivel: 1
+  - nombre: Medico
+    rol: 3
+    prefab: {fileID: 655715636741440944, guid: 46db807aaaa108744b795e8b6760f927, type: 3}
+    nivel: 1
+  - nombre: Tanque
+    rol: 4
+    prefab: {fileID: 9108114369414345305, guid: 7b843b400dcfaa44e88d12df63d0d0af, type: 3}
+    nivel: 1
   vidas: 3
   victorias: 0
   villageEvolution: {fileID: 563153653}
@@ -14620,7 +14660,27 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: Assembly-CSharp::Aldea
   tipoAldea: 3
-  aventureros: []
+  aventureros:
+  - nombre: Arquero
+    rol: 0
+    prefab: {fileID: 7305728792941940604, guid: 2f0d3ee1eeb130048a244a1bf15d0aea, type: 3}
+    nivel: 1
+  - nombre: Medico
+    rol: 3
+    prefab: {fileID: 5042093030919081147, guid: 113640c5b40c75044a1cf5506905dbbd, type: 3}
+    nivel: 1
+  - nombre: Luchador
+    rol: 1
+    prefab: {fileID: 7378167244057627113, guid: cf4f2da1f684ec64ba3f28ee84b5f90a, type: 3}
+    nivel: 1
+  - nombre: Mago
+    rol: 2
+    prefab: {fileID: 7228133117314482127, guid: 2ace6c62a2f284540a7506e58bcf1058, type: 3}
+    nivel: 1
+  - nombre: Tanque
+    rol: 4
+    prefab: {fileID: 5853257844873112955, guid: 1e1d22f54d39701489764eb279f29e4d, type: 3}
+    nivel: 1
   vidas: 3
   victorias: 0
   villageEvolution: {fileID: 696924357}
@@ -15591,7 +15651,7 @@ RectTransform:
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0, y: 1}
   m_AnchorMax: {x: 0, y: 1}
-  m_AnchoredPosition: {x: -0.000061035156, y: 0}
+  m_AnchoredPosition: {x: 0, y: 0}
   m_SizeDelta: {x: 230, y: 319.9495}
   m_Pivot: {x: 0, y: 1}
 --- !u!114 &734795607
@@ -25812,7 +25872,27 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: Assembly-CSharp::Aldea
   tipoAldea: 1
-  aventureros: []
+  aventureros:
+  - nombre: Medico
+    rol: 3
+    prefab: {fileID: 5419072811828949542, guid: 989d461cd8653cb4992663fe9a881d5a, type: 3}
+    nivel: 1
+  - nombre: Arquero
+    rol: 0
+    prefab: {fileID: 3008476044322566655, guid: 9c5f5ea44880d0c469d618d9b7e28d61, type: 3}
+    nivel: 1
+  - nombre: Luchador
+    rol: 1
+    prefab: {fileID: 8502269901107961320, guid: 098dacbefe5c02b47afe59392fe580dc, type: 3}
+    nivel: 1
+  - nombre: Mago
+    rol: 2
+    prefab: {fileID: 1051542365392765645, guid: 311dd40e952774e48b766949881f9094, type: 3}
+    nivel: 1
+  - nombre: Tanque
+    rol: 4
+    prefab: {fileID: 1561813422154253682, guid: 0e268c52a97e24a48a22a5b677385e7a, type: 3}
+    nivel: 1
   vidas: 3
   victorias: 0
   villageEvolution: {fileID: 1272642711}
@@ -33722,7 +33802,27 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: Assembly-CSharp::Aldea
   tipoAldea: 4
-  aventureros: []
+  aventureros:
+  - nombre: Arquero
+    rol: 0
+    prefab: {fileID: 2127468584440059979, guid: d599df1f8add01d4aa285af9ce54728c, type: 3}
+    nivel: 1
+  - nombre: Luchador
+    rol: 1
+    prefab: {fileID: 623034516904013529, guid: 0e9629c37c72f6a42b8a9b608e5c39b8, type: 3}
+    nivel: 1
+  - nombre: Mago
+    rol: 2
+    prefab: {fileID: 8423146360342395132, guid: 9a3a416319a8c2442b836f1b5c2ed3a2, type: 3}
+    nivel: 1
+  - nombre: Medico
+    rol: 3
+    prefab: {fileID: 3574167953368325760, guid: 439a1b266c2031948a359ea5bb944d0d, type: 3}
+    nivel: 1
+  - nombre: Tanque
+    rol: 4
+    prefab: {fileID: 5159693311136371468, guid: b8e5b97616b9b9c43b1141252ce95be6, type: 3}
+    nivel: 1
   vidas: 3
   victorias: 0
   villageEvolution: {fileID: 1729338172}
