@@ -1,23 +1,35 @@
 using System.Collections.Generic;
 using UnityEngine;
 
-[System.Serializable]
 public class FightRoom
 {
-    public List<GameObject> wave1 = new();
-    public List<GameObject> wave2 = new();
-    public List<GameObject> wave3 = new();
-    public float loot=50;
+    public List<AdventurerSetup> wave1 = new();
+    public List<AdventurerSetup> wave2 = new();
+    public List<AdventurerSetup> wave3 = new();
+
+    public float loot = 50;
     public bool isBeingAttacked;
 
     public FightRoom Clone()
     {
         return new FightRoom
         {
-            wave1 = new List<GameObject>(wave1),
-            wave2 = new List<GameObject>(wave2),
-            wave3 = new List<GameObject>(wave3),
+            wave1 = new List<AdventurerSetup>(wave1),
+            wave2 = new List<AdventurerSetup>(wave2),
+            wave3 = new List<AdventurerSetup>(wave3),
+            loot = loot,
             isBeingAttacked = isBeingAttacked
+        };
+    }
+
+    public List<AdventurerSetup> GetWave(int wave)
+    {
+        return wave switch
+        {
+            1 => wave1,
+            2 => wave2,
+            3 => wave3,
+            _ => null
         };
     }
 
@@ -33,20 +45,5 @@ public class FightRoom
         return wave1.Count == 0
             && wave2.Count == 0
             && wave3.Count == 0;
-    }
-
-    public List<GameObject> GetWave(int waveNumber)
-    {
-        switch(waveNumber)
-        {
-            case 1:
-                return wave1;
-            case 2:
-                return wave2;
-            case 3:
-                return wave3;
-            default:
-                return null;
-        }
     }
 }

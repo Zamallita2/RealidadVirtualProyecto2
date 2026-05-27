@@ -160,7 +160,7 @@ public class FightManager : MonoBehaviour
 
         while(true)
         {
-            List<GameObject> waveToSpawn =
+            List<AdventurerSetup> waveToSpawn =
                 waveManager.StartNextWave();
 
             if(waveToSpawn == null)
@@ -168,7 +168,6 @@ public class FightManager : MonoBehaviour
                 OnRoomCleared();
                 return;
             }
-
             if(waveToSpawn.Count > 0)
             {
                 SpawnWave(waveToSpawn);
@@ -223,41 +222,79 @@ public class FightManager : MonoBehaviour
         }
     }
 
-    void SpawnWave(List<GameObject> wave)
+    void SpawnWave(List<AdventurerSetup> wave)
     {
         aliveEnemies.Clear();
         spawnedEnemyObjects.Clear();
+
         for(int i = 0; i < wave.Count; i++)
         {
             if(i >= currentMap.enemyPoints.Count)
                 break;
 
-            GameObject prefab = wave[i];
+            AdventurerSetup setup = wave[i];
 
-            if(prefab == null)
+            if(setup == null || setup.prefab == null)
                 continue;
 
             SpawnPoint point = currentMap.enemyPoints[i];
 
             GameObject obj = Instantiate(
-                prefab,
+                setup.prefab,
                 point.transform.position,
                 point.transform.rotation
             );
+
             TryAssignFightTag(obj);
+
             spawnedEnemyObjects.Add(obj);
 
-            UnitStats stats = obj.GetComponent<UnitStats>();
+            UnitStats stats =
+                obj.GetComponent<UnitStats>();
 
-            stats.sourceEnemyPrefab = prefab;
-            stats.lineNumber = point.lineNumber;
-            stats.faction = EnumFigthList.Faction.Enemy;
+            if(stats == null)
+                continue;
 
-            UnitMovement movement = obj.GetComponent<UnitMovement>();
+            stats.sourceEnemyPrefab =
+                setup.prefab;
+
+            stats.lineNumber =
+                point.lineNumber;
+
+            stats.faction =
+                EnumFigthList.Faction.Enemy;
+
+            //--------------------------------
+            // aplicar nivel enemigo
+            //--------------------------------
+
+            AdventurerData temp = new AdventurerData
+            {
+                prefab = setup.prefab,
+                level = setup.level,
+
+                maxHealth = stats.maxHealth,
+                currentHealth = stats.maxHealth,
+                strength = stats.strength,
+                speed = stats.speed,
+                isAlive = true
+            };
+
+            StatCalculator.Recalculate(temp);
+
+            stats.ApplyFromData(temp);
+
+            //--------------------------------
+
+            UnitMovement movement =
+                obj.GetComponent<UnitMovement>();
 
             if(movement != null)
             {
-                obj.transform.rotation *= Quaternion.Euler(movement.modelRotationOffset);
+                obj.transform.rotation *=
+                    Quaternion.Euler(
+                        movement.modelRotationOffset
+                    );
             }
 
             aliveEnemies.Add(stats);

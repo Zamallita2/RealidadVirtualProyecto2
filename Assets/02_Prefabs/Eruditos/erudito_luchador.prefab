@@ -1153,10 +1153,10 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: Assembly-CSharp::UnitStats
   level: 1
-  maxHealth: 30
+  maxHealth: 300
   currentHealth: 0
-  strength: 8
-  speed: 6
+  strength: 25
+  speed: 15
   isAlive: 1
   healthFillImage: {fileID: 2030308560988998552}
   lineNumber: 0
@@ -1204,6 +1204,8 @@ MonoBehaviour:
   isRanged: 0
   projectilePrefab: {fileID: 0}
   projectileSpawnPoint: {fileID: 0}
+  clip: {fileID: 0}
+  source: {fileID: 0}
 --- !u!114 &226138910121456859
 MonoBehaviour:
   m_ObjectHideFlags: 0
