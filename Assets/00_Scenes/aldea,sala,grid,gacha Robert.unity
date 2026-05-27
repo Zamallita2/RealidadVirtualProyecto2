@@ -7910,6 +7910,7 @@ MonoBehaviour:
   roomLightSound: {fileID: 8300000, guid: de09936a403783e4e8ce980e8d0fbb09, type: 3}
   roomButtonSound: {fileID: 8300000, guid: 03da5dd5f286cab4e9af543f7ede6f5d, type: 3}
   uiButtonSound: {fileID: 8300000, guid: 6d8f5c1d7fc437b44baa0876328fe62f, type: 3}
+  hoverSound: {fileID: 8300000, guid: 2f639728870aeeb468672db6105ac788, type: 3}
 --- !u!82 &423013527
 AudioSource:
   m_ObjectHideFlags: 0
