@@ -15,6 +15,8 @@ public class WaveManager : MonoBehaviour
     public int maxCoins=50;
     public int minEssence=20;
     public int maxEssence=50;
+    [SerializeField]
+    private RoomToFightConverter converter;
     void Start()
     {
         shop=FindFirstObjectByType<GachaInventoryManager>();
@@ -42,6 +44,8 @@ public class WaveManager : MonoBehaviour
     public void PrepareForFight()
     {
         runtimeRooms.Clear();
+
+        LoadRoomsFromConfig();
 
         foreach(FightRoom room in rooms)
         {
@@ -96,7 +100,7 @@ public class WaveManager : MonoBehaviour
         FM.HandleLevels(false);
     }
 
-    public List<GameObject> StartNextWave()
+    public List<AdventurerSetup> StartNextWave()
     {
         if (currentWave!=0)
         {
@@ -115,21 +119,32 @@ public class WaveManager : MonoBehaviour
         return runtimeRooms[currentRoomIndex].GetWave(currentWave);
     }
 
-    public void RemoveEnemyFromCurrentWave(GameObject prefab)
+    public void RemoveEnemyFromCurrentWave(
+    GameObject prefab)
     {
         if(prefab == null)
             return;
 
-        if(currentRoomIndex < 0 || currentRoomIndex >= runtimeRooms.Count)
+        if(currentRoomIndex < 0 ||
+        currentRoomIndex >= runtimeRooms.Count)
             return;
 
-        if(currentWave < 1 || currentWave > 3)
+        if(currentWave < 1 ||
+        currentWave > 3)
             return;
 
-        List<GameObject> wave =
-            runtimeRooms[currentRoomIndex].GetWave(currentWave);
+        List<AdventurerSetup> wave =
+            runtimeRooms[currentRoomIndex]
+            .GetWave(currentWave);
 
-        wave?.Remove(prefab);
+        if(wave == null)
+            return;
+
+        AdventurerSetup target =
+            wave.Find(x => x.prefab == prefab);
+
+        if(target != null)
+            wave.Remove(target);
     }
     public float GetPartyHealthPercent(List<AdventurerData> party)
     {
@@ -221,6 +236,27 @@ public class WaveManager : MonoBehaviour
 
         return hp < 30f;
     }
+    void LoadRoomsFromConfig()
+    {
+        rooms.Clear();
+
+        if(RoomConfigManager.Instance == null ||
+        RoomConfigManager.Instance.SaveData == null)
+            return;
+
+        List<FightRoom> convertedRooms =
+            converter.ConvertRooms(
+                RoomConfigManager.Instance.SaveData
+            );
+
+        rooms.AddRange(convertedRooms);
+
+        // Garantizar que existan salas aunque estén vacías
+        if(rooms.Count == 0)
+        {
+            rooms.Add(new FightRoom());
+        }
+    }
     public int GetCurrentRoomIndex()
     {
         return currentRoomIndex;
@@ -233,6 +269,8 @@ public class WaveManager : MonoBehaviour
 
     public bool HasConfiguredRooms()
     {
+        LoadRoomsFromConfig();
+
         return rooms.Count > 0;
     }
 }
