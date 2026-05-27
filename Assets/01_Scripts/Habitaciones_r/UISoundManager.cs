@@ -14,32 +14,54 @@ public class UISoundManager : MonoBehaviour
 
     public AudioClip uiButtonSound;
 
-    private void Awake()
+    public AudioClip hoverSound;
+
+    void Awake()
     {
         Instance = this;
     }
 
+    // SONIDO 1
     public void PlayRoomLightSound()
     {
         if (roomLightSound != null)
         {
-            audioSource.PlayOneShot(roomLightSound);
+            audioSource.PlayOneShot(
+                roomLightSound
+            );
         }
     }
 
+    // SONIDO 2
     public void PlayRoomButtonSound()
     {
         if (roomButtonSound != null)
         {
-            audioSource.PlayOneShot(roomButtonSound);
+            audioSource.PlayOneShot(
+                roomButtonSound
+            );
         }
     }
 
+    // SONIDO 3
     public void PlayUIButtonSound()
     {
         if (uiButtonSound != null)
         {
-            audioSource.PlayOneShot(uiButtonSound);
+            audioSource.PlayOneShot(
+                uiButtonSound
+            );
+        }
+    }
+
+    // HOVER
+    public void PlayHoverSound()
+    {
+        if (hoverSound != null)
+        {
+            audioSource.PlayOneShot(
+                hoverSound
+            );
         }
     }
 }
