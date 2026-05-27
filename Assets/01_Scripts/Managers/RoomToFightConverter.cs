@@ -38,6 +38,27 @@ public class RoomToFightConverter : MonoBehaviour
 
         return result;
     }
+
+    /// <summary>
+    /// Convierte UNA sola sala de forma dinámica consultando RoomConfigManager en tiempo real.
+    /// Retorna null si no se encuentra la configuración.
+    /// </summary>
+    public FightRoom ConvertSingleRoom(int roomID)
+    {
+        EnsureLookup();
+
+        if (RoomConfigManager.Instance == null ||
+            RoomConfigManager.Instance.SaveData == null)
+            return null;
+
+        RoomConfigData data = RoomConfigManager.Instance.SaveData.rooms
+            .Find(r => r.roomID == roomID);
+
+        if (data == null)
+            return null;
+
+        return ConvertRoom(data);
+    }
     private void EnsureLookup()
     {
         if (enemyLookup == null)
