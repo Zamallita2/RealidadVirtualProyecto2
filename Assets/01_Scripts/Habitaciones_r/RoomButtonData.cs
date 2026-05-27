@@ -49,6 +49,10 @@ public class RoomButtonData : MonoBehaviour
         .SeleccionarHabitacion(
             roomID
         );
+
+        // SONIDO 2
+        UISoundManager.Instance
+        .PlayRoomButtonSound();
     }
 
     public void SetSelected(bool state)

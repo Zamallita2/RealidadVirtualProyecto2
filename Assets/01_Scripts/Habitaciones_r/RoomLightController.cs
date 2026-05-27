@@ -9,6 +9,7 @@ public class RoomLightController :
     [Header("Objeto luces")]
     public GameObject luces;
 
+    private bool estabaActiva = false;
 
     void Start()
     {
@@ -18,7 +19,6 @@ public class RoomLightController :
 
         luces.SetActive(false);
     }
-
 
     void ActualizarLuces(
         int roomID
@@ -37,5 +37,13 @@ public class RoomLightController :
             numeroHabitacion;
 
         luces.SetActive(activa);
+
+        if (activa && !estabaActiva)
+        {
+            UISoundManager.Instance
+            .PlayRoomLightSound();
+        }
+
+        estabaActiva = activa;
     }
 }
