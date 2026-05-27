@@ -4,17 +4,23 @@ using UnityEngine;
 [RequireComponent(typeof(Camera))]
 public class VillageCameraController : MonoBehaviour
 {
-    [Header("Aldea que verá la cámara")]
+    [Header("Target")]
     public Transform targetVillage;
 
-    [Header("Cámara más cerca")]
-    public Vector3 offset = new Vector3(0f, 2.2f, -2f);
+    [Header("Cámara")]
+    public Vector3 offset = new Vector3(0f, 2.8f, -2.6f);
 
-    [Header("Zoom")]
-    [Range(0.5f, 5f)]
-    public float orthographicSize = 1.1f;
+    [Header("Zoom base")]
+    public float orthographicSize = 1.3f;
 
-    [Header("Fondo oscuro")]
+    [Header("Zoom por evolución")]
+    public bool autoZoomByStage = true;
+    public VillageEvolution villageEvolution;
+    public float campamentoZoom = 1.25f;
+    public float ciudadZoom = 1.65f;
+    public float metropolisZoom = 2.15f;
+
+    [Header("Fondo")]
     public Color backgroundColor = new Color(0.03f, 0.02f, 0.04f, 1f);
 
     private Camera cam;
@@ -29,14 +35,15 @@ public class VillageCameraController : MonoBehaviour
         ConfigureCamera();
     }
 
-    private void OnValidate()
+    private void LateUpdate()
     {
         ConfigureCamera();
         UpdateCamera();
     }
 
-    private void LateUpdate()
+    public void SetTarget(Transform newTarget)
     {
+        targetVillage = newTarget;
         UpdateCamera();
     }
 
@@ -44,17 +51,41 @@ public class VillageCameraController : MonoBehaviour
     {
         cam = GetComponent<Camera>();
 
-        if (cam == null) return;
+        if (cam == null)
+            return;
 
         cam.orthographic = true;
-        cam.orthographicSize = orthographicSize;
+
+        if (autoZoomByStage && villageEvolution != null)
+        {
+            switch (villageEvolution.currentStage)
+            {
+                case VillageEvolutionStage.Campamento:
+                    cam.orthographicSize = campamentoZoom;
+                    break;
+
+                case VillageEvolutionStage.Ciudad:
+                    cam.orthographicSize = ciudadZoom;
+                    break;
+
+                case VillageEvolutionStage.Metropolis:
+                    cam.orthographicSize = metropolisZoom;
+                    break;
+            }
+        }
+        else
+        {
+            cam.orthographicSize = orthographicSize;
+        }
+
         cam.clearFlags = CameraClearFlags.SolidColor;
         cam.backgroundColor = backgroundColor;
     }
 
     private void UpdateCamera()
     {
-        if (targetVillage == null) return;
+        if (targetVillage == null)
+            return;
 
         transform.position = targetVillage.position + offset;
         transform.LookAt(targetVillage.position);

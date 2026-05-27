@@ -199,6 +199,10 @@ PrefabInstance:
       propertyPath: m_Name
       value: codiciososAldea
       objectReference: {fileID: 0}
+    - target: {fileID: 9120809617129605244, guid: 9b013515e9daadb479bfc197d9f3f482, type: 3}
+      propertyPath: m_Enabled
+      value: 0
+      objectReference: {fileID: 0}
     m_RemovedComponents: []
     m_RemovedGameObjects: []
     m_AddedGameObjects:
@@ -209,6 +213,12 @@ PrefabInstance:
     - targetCorrespondingSourceObject: {fileID: 919132149155446097, guid: 9b013515e9daadb479bfc197d9f3f482, type: 3}
       insertIndex: -1
       addedObject: {fileID: 1647908260}
+    - targetCorrespondingSourceObject: {fileID: 919132149155446097, guid: 9b013515e9daadb479bfc197d9f3f482, type: 3}
+      insertIndex: -1
+      addedObject: {fileID: 1647908262}
+    - targetCorrespondingSourceObject: {fileID: 919132149155446097, guid: 9b013515e9daadb479bfc197d9f3f482, type: 3}
+      insertIndex: -1
+      addedObject: {fileID: 1647908261}
   m_SourcePrefab: {fileID: 100100000, guid: 9b013515e9daadb479bfc197d9f3f482, type: 3}
 --- !u!4 &39792712 stripped
 Transform:
@@ -385,7 +395,7 @@ AudioListener:
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 482145223}
-  m_Enabled: 1
+  m_Enabled: 0
 --- !u!20 &482145227
 Camera:
   m_ObjectHideFlags: 0
@@ -449,9 +459,14 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 5e8a71c163c68ab42b698a13312737db, type: 3}
   m_Name: 
   m_EditorClassIdentifier: Assembly-CSharp::VillageCameraController
-  targetVillage: {fileID: 1391092622}
+  targetVillage: {fileID: 1583857425}
   offset: {x: 0, y: 8, z: -6}
   orthographicSize: 0.5
+  autoZoomByStage: 1
+  villageEvolution: {fileID: 0}
+  campamentoZoom: 1.3
+  ciudadZoom: 1.6
+  metropolisZoom: 2.1
   backgroundColor: {r: 0.04, g: 0.02, b: 0.06, a: 1}
 --- !u!1 &635097428
 GameObject:
@@ -539,7 +554,7 @@ AudioListener:
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 635097428}
-  m_Enabled: 1
+  m_Enabled: 0
 --- !u!20 &635097432
 Camera:
   m_ObjectHideFlags: 0
@@ -606,6 +621,11 @@ MonoBehaviour:
   targetVillage: {fileID: 2101582404}
   offset: {x: 0, y: 8, z: -6}
   orthographicSize: 0.5
+  autoZoomByStage: 1
+  villageEvolution: {fileID: 0}
+  campamentoZoom: 1.3
+  ciudadZoom: 1.6
+  metropolisZoom: 2.1
   backgroundColor: {r: 0.04, g: 0.02, b: 0.06, a: 1}
 --- !u!1 &666137335
 GameObject:
@@ -856,7 +876,7 @@ AudioListener:
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 690614082}
-  m_Enabled: 1
+  m_Enabled: 0
 --- !u!20 &690614086
 Camera:
   m_ObjectHideFlags: 0
@@ -923,6 +943,11 @@ MonoBehaviour:
   targetVillage: {fileID: 39792712}
   offset: {x: 0, y: 8, z: -6}
   orthographicSize: 0.5
+  autoZoomByStage: 1
+  villageEvolution: {fileID: 0}
+  campamentoZoom: 1.3
+  ciudadZoom: 1.6
+  metropolisZoom: 2.1
   backgroundColor: {r: 0.04, g: 0.02, b: 0.06, a: 1}
 --- !u!1 &751059267
 GameObject:
@@ -1050,6 +1075,10 @@ PrefabInstance:
       propertyPath: m_LocalEulerAnglesHint.z
       value: 0
       objectReference: {fileID: 0}
+    - target: {fileID: -2045107460166320903, guid: ef647ba3d0ae66843a134c92f0bdf7ef, type: 3}
+      propertyPath: m_Enabled
+      value: 0
+      objectReference: {fileID: 0}
     - target: {fileID: 919132149155446097, guid: ef647ba3d0ae66843a134c92f0bdf7ef, type: 3}
       propertyPath: m_Name
       value: vengativosAldea
@@ -1092,6 +1121,12 @@ PrefabInstance:
     - targetCorrespondingSourceObject: {fileID: 919132149155446097, guid: ef647ba3d0ae66843a134c92f0bdf7ef, type: 3}
       insertIndex: -1
       addedObject: {fileID: 1694527382}
+    - targetCorrespondingSourceObject: {fileID: 919132149155446097, guid: ef647ba3d0ae66843a134c92f0bdf7ef, type: 3}
+      insertIndex: -1
+      addedObject: {fileID: 1694527384}
+    - targetCorrespondingSourceObject: {fileID: 919132149155446097, guid: ef647ba3d0ae66843a134c92f0bdf7ef, type: 3}
+      insertIndex: -1
+      addedObject: {fileID: 1694527383}
   m_SourcePrefab: {fileID: 100100000, guid: ef647ba3d0ae66843a134c92f0bdf7ef, type: 3}
 --- !u!4 &966234744 stripped
 Transform:
@@ -1151,6 +1186,10 @@ PrefabInstance:
       propertyPath: m_LocalEulerAnglesHint.z
       value: 0
       objectReference: {fileID: 0}
+    - target: {fileID: -964395474699325326, guid: 9730b8c10f463fd4482abd64189b8237, type: 3}
+      propertyPath: m_Enabled
+      value: 0
+      objectReference: {fileID: 0}
     - target: {fileID: 919132149155446097, guid: 9730b8c10f463fd4482abd64189b8237, type: 3}
       propertyPath: m_Name
       value: cautelososAldea
@@ -1189,10 +1228,19 @@ PrefabInstance:
     - targetCorrespondingSourceObject: {fileID: -8679921383154817045, guid: 9730b8c10f463fd4482abd64189b8237, type: 3}
       insertIndex: -1
       addedObject: {fileID: 482145224}
+    - targetCorrespondingSourceObject: {fileID: 3692078328714713881, guid: 9730b8c10f463fd4482abd64189b8237, type: 3}
+      insertIndex: -1
+      addedObject: {fileID: 1583857425}
     m_AddedComponents:
     - targetCorrespondingSourceObject: {fileID: 919132149155446097, guid: 9730b8c10f463fd4482abd64189b8237, type: 3}
       insertIndex: -1
+      addedObject: {fileID: 1737780458}
+    - targetCorrespondingSourceObject: {fileID: 919132149155446097, guid: 9730b8c10f463fd4482abd64189b8237, type: 3}
+      insertIndex: -1
       addedObject: {fileID: 1737780456}
+    - targetCorrespondingSourceObject: {fileID: 919132149155446097, guid: 9730b8c10f463fd4482abd64189b8237, type: 3}
+      insertIndex: -1
+      addedObject: {fileID: 1737780457}
   m_SourcePrefab: {fileID: 100100000, guid: 9730b8c10f463fd4482abd64189b8237, type: 3}
 --- !u!4 &993886996 stripped
 Transform:
@@ -1341,6 +1389,11 @@ MonoBehaviour:
     m_VarianceClampScale: 0.9
     m_ContrastAdaptiveSharpening: 0
   m_Version: 2
+--- !u!4 &1199283525 stripped
+Transform:
+  m_CorrespondingSourceObject: {fileID: -2522111569451650149, guid: 9b013515e9daadb479bfc197d9f3f482, type: 3}
+  m_PrefabInstance: {fileID: 39792711}
+  m_PrefabAsset: {fileID: 0}
 --- !u!1 &1374969110
 GameObject:
   m_ObjectHideFlags: 0
@@ -1427,7 +1480,7 @@ AudioListener:
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 1374969110}
-  m_Enabled: 1
+  m_Enabled: 0
 --- !u!20 &1374969114
 Camera:
   m_ObjectHideFlags: 0
@@ -1494,6 +1547,11 @@ MonoBehaviour:
   targetVillage: {fileID: 1117230628}
   offset: {x: 0, y: 8, z: -6}
   orthographicSize: 0.5
+  autoZoomByStage: 1
+  villageEvolution: {fileID: 0}
+  campamentoZoom: 1.3
+  ciudadZoom: 1.6
+  metropolisZoom: 2.1
   backgroundColor: {r: 0.04, g: 0.02, b: 0.06, a: 1}
 --- !u!4 &1391092622 stripped
 Transform:
@@ -1744,112 +1802,6 @@ RectTransform:
   m_AnchoredPosition: {x: 0, y: 0}
   m_SizeDelta: {x: 0, y: 0}
   m_Pivot: {x: 0, y: 0}
---- !u!1001 &1526030154
-PrefabInstance:
-  m_ObjectHideFlags: 0
-  serializedVersion: 2
-  m_Modification:
-    serializedVersion: 3
-    m_TransformParent: {fileID: 1720804190}
-    m_Modifications:
-    - target: {fileID: 406701840644096252, guid: 39d73beca7529bf458183ef7f812e4a4, type: 3}
-      propertyPath: m_Texture
-      value: 
-      objectReference: {fileID: 8400000, guid: 6682cfd8d342ac44fbedb1dc92b926af, type: 2}
-    - target: {fileID: 7369958556782989745, guid: 39d73beca7529bf458183ef7f812e4a4, type: 3}
-      propertyPath: m_Name
-      value: CardVillage 1
-      objectReference: {fileID: 0}
-    - target: {fileID: 9145849616911404578, guid: 39d73beca7529bf458183ef7f812e4a4, type: 3}
-      propertyPath: m_Pivot.x
-      value: 0.5
-      objectReference: {fileID: 0}
-    - target: {fileID: 9145849616911404578, guid: 39d73beca7529bf458183ef7f812e4a4, type: 3}
-      propertyPath: m_Pivot.y
-      value: 0.5
-      objectReference: {fileID: 0}
-    - target: {fileID: 9145849616911404578, guid: 39d73beca7529bf458183ef7f812e4a4, type: 3}
-      propertyPath: m_AnchorMax.x
-      value: 0
-      objectReference: {fileID: 0}
-    - target: {fileID: 9145849616911404578, guid: 39d73beca7529bf458183ef7f812e4a4, type: 3}
-      propertyPath: m_AnchorMax.y
-      value: 0
-      objectReference: {fileID: 0}
-    - target: {fileID: 9145849616911404578, guid: 39d73beca7529bf458183ef7f812e4a4, type: 3}
-      propertyPath: m_AnchorMin.x
-      value: 0
-      objectReference: {fileID: 0}
-    - target: {fileID: 9145849616911404578, guid: 39d73beca7529bf458183ef7f812e4a4, type: 3}
-      propertyPath: m_AnchorMin.y
-      value: 0
-      objectReference: {fileID: 0}
-    - target: {fileID: 9145849616911404578, guid: 39d73beca7529bf458183ef7f812e4a4, type: 3}
-      propertyPath: m_SizeDelta.x
-      value: 214.363
-      objectReference: {fileID: 0}
-    - target: {fileID: 9145849616911404578, guid: 39d73beca7529bf458183ef7f812e4a4, type: 3}
-      propertyPath: m_SizeDelta.y
-      value: 86.759
-      objectReference: {fileID: 0}
-    - target: {fileID: 9145849616911404578, guid: 39d73beca7529bf458183ef7f812e4a4, type: 3}
-      propertyPath: m_LocalPosition.x
-      value: 0
-      objectReference: {fileID: 0}
-    - target: {fileID: 9145849616911404578, guid: 39d73beca7529bf458183ef7f812e4a4, type: 3}
-      propertyPath: m_LocalPosition.y
-      value: 0
-      objectReference: {fileID: 0}
-    - target: {fileID: 9145849616911404578, guid: 39d73beca7529bf458183ef7f812e4a4, type: 3}
-      propertyPath: m_LocalPosition.z
-      value: -21.632656
-      objectReference: {fileID: 0}
-    - target: {fileID: 9145849616911404578, guid: 39d73beca7529bf458183ef7f812e4a4, type: 3}
-      propertyPath: m_LocalRotation.w
-      value: 1
-      objectReference: {fileID: 0}
-    - target: {fileID: 9145849616911404578, guid: 39d73beca7529bf458183ef7f812e4a4, type: 3}
-      propertyPath: m_LocalRotation.x
-      value: -0
-      objectReference: {fileID: 0}
-    - target: {fileID: 9145849616911404578, guid: 39d73beca7529bf458183ef7f812e4a4, type: 3}
-      propertyPath: m_LocalRotation.y
-      value: -0
-      objectReference: {fileID: 0}
-    - target: {fileID: 9145849616911404578, guid: 39d73beca7529bf458183ef7f812e4a4, type: 3}
-      propertyPath: m_LocalRotation.z
-      value: -0
-      objectReference: {fileID: 0}
-    - target: {fileID: 9145849616911404578, guid: 39d73beca7529bf458183ef7f812e4a4, type: 3}
-      propertyPath: m_AnchoredPosition.x
-      value: 0
-      objectReference: {fileID: 0}
-    - target: {fileID: 9145849616911404578, guid: 39d73beca7529bf458183ef7f812e4a4, type: 3}
-      propertyPath: m_AnchoredPosition.y
-      value: 0
-      objectReference: {fileID: 0}
-    - target: {fileID: 9145849616911404578, guid: 39d73beca7529bf458183ef7f812e4a4, type: 3}
-      propertyPath: m_LocalEulerAnglesHint.x
-      value: 0
-      objectReference: {fileID: 0}
-    - target: {fileID: 9145849616911404578, guid: 39d73beca7529bf458183ef7f812e4a4, type: 3}
-      propertyPath: m_LocalEulerAnglesHint.y
-      value: 0
-      objectReference: {fileID: 0}
-    - target: {fileID: 9145849616911404578, guid: 39d73beca7529bf458183ef7f812e4a4, type: 3}
-      propertyPath: m_LocalEulerAnglesHint.z
-      value: 0
-      objectReference: {fileID: 0}
-    m_RemovedComponents: []
-    m_RemovedGameObjects: []
-    m_AddedGameObjects: []
-    m_AddedComponents: []
-  m_SourcePrefab: {fileID: 100100000, guid: 39d73beca7529bf458183ef7f812e4a4, type: 3}
---- !u!224 &1526030155 stripped
-RectTransform:
-  m_CorrespondingSourceObject: {fileID: 9145849616911404578, guid: 39d73beca7529bf458183ef7f812e4a4, type: 3}
-  m_PrefabInstance: {fileID: 1526030154}
-  m_PrefabAsset: {fileID: 0}
 --- !u!1 &1562381994
 GameObject:
   m_ObjectHideFlags: 0
@@ -1958,6 +1910,96 @@ CanvasRenderer:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 1562381994}
   m_CullTransparentMesh: 1
+--- !u!1 &1583857424
+GameObject:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  serializedVersion: 6
+  m_Component:
+  - component: {fileID: 1583857425}
+  - component: {fileID: 1583857427}
+  - component: {fileID: 1583857426}
+  m_Layer: 0
+  m_Name: tripo_node_0b00e517-7c62-4eef-ba84-5d994dfcbfe9(Clone)
+  m_TagString: Untagged
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
+--- !u!4 &1583857425
+Transform:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1583857424}
+  serializedVersion: 2
+  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
+  m_LocalPosition: {x: 0, y: 0, z: 0}
+  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_ConstrainProportionsScale: 0
+  m_Children: []
+  m_Father: {fileID: 1391092622}
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!23 &1583857426
+MeshRenderer:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1583857424}
+  m_Enabled: 1
+  m_CastShadows: 1
+  m_ReceiveShadows: 1
+  m_DynamicOccludee: 1
+  m_StaticShadowCaster: 0
+  m_MotionVectors: 1
+  m_LightProbeUsage: 1
+  m_ReflectionProbeUsage: 1
+  m_RayTracingMode: 2
+  m_RayTraceProcedural: 0
+  m_RayTracingAccelStructBuildFlagsOverride: 0
+  m_RayTracingAccelStructBuildFlags: 1
+  m_SmallMeshCulling: 1
+  m_ForceMeshLod: -1
+  m_MeshLodSelectionBias: 0
+  m_RenderingLayerMask: 1
+  m_RendererPriority: 0
+  m_Materials:
+  - {fileID: -3532995285084761047, guid: 54a57b8c07cd7e145bcb21dfe7770a34, type: 3}
+  m_StaticBatchInfo:
+    firstSubMesh: 0
+    subMeshCount: 0
+  m_StaticBatchRoot: {fileID: 0}
+  m_ProbeAnchor: {fileID: 0}
+  m_LightProbeVolumeOverride: {fileID: 0}
+  m_ScaleInLightmap: 1
+  m_ReceiveGI: 1
+  m_PreserveUVs: 0
+  m_IgnoreNormalsForChartDetection: 0
+  m_ImportantGI: 0
+  m_StitchLightmapSeams: 1
+  m_SelectedEditorRenderState: 3
+  m_MinimumChartSize: 4
+  m_AutoUVMaxDistance: 0.5
+  m_AutoUVMaxAngle: 89
+  m_LightmapParameters: {fileID: 0}
+  m_GlobalIlluminationMeshLod: 0
+  m_SortingLayerID: 0
+  m_SortingLayer: 0
+  m_SortingOrder: 0
+  m_MaskInteraction: 0
+  m_AdditionalVertexStreams: {fileID: 0}
+--- !u!33 &1583857427
+MeshFilter:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1583857424}
+  m_Mesh: {fileID: -8184524924396059572, guid: 54a57b8c07cd7e145bcb21dfe7770a34, type: 3}
 --- !u!1001 &1599914215
 PrefabInstance:
   m_ObjectHideFlags: 0
@@ -2006,6 +2048,10 @@ PrefabInstance:
       propertyPath: m_LocalEulerAnglesHint.z
       value: 0
       objectReference: {fileID: 0}
+    - target: {fileID: -7635826562936255635, guid: 70a46f810814b8548a07f4f4b14965e1, type: 3}
+      propertyPath: m_Enabled
+      value: 0
+      objectReference: {fileID: 0}
     - target: {fileID: 919132149155446097, guid: 70a46f810814b8548a07f4f4b14965e1, type: 3}
       propertyPath: m_Name
       value: eruditosAldea
@@ -2047,7 +2093,13 @@ PrefabInstance:
     m_AddedComponents:
     - targetCorrespondingSourceObject: {fileID: 919132149155446097, guid: 70a46f810814b8548a07f4f4b14965e1, type: 3}
       insertIndex: -1
+      addedObject: {fileID: 1599914219}
+    - targetCorrespondingSourceObject: {fileID: 919132149155446097, guid: 70a46f810814b8548a07f4f4b14965e1, type: 3}
+      insertIndex: -1
       addedObject: {fileID: 1599914217}
+    - targetCorrespondingSourceObject: {fileID: 919132149155446097, guid: 70a46f810814b8548a07f4f4b14965e1, type: 3}
+      insertIndex: -1
+      addedObject: {fileID: 1599914218}
   m_SourcePrefab: {fileID: 100100000, guid: 70a46f810814b8548a07f4f4b14965e1, type: 3}
 --- !u!4 &1599914216 stripped
 Transform:
@@ -2074,6 +2126,50 @@ MonoBehaviour:
   health: 320
   members: 6
   villageLights: []
+--- !u!114 &1599914218
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 982794734}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 6cbbb2c5ceea8424497ad7565e2ac12e, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: Assembly-CSharp::VillageEvolution
+  campamentoPrefab: {fileID: 5656447738092511500, guid: 39a96b40ed1271143ab6c70e39ed4958, type: 3}
+  ciudadPrefab: {fileID: 8164078558771037576, guid: 70a46f810814b8548a07f4f4b14965e1, type: 3}
+  metropolisPrefab: {fileID: 1640406449831409264, guid: 3bd0530d1ce50fe4ab9f3475875a69bf, type: 3}
+  modelContainer: {fileID: 1500311704}
+  defeatedRooms: 0
+  roomsPerFloor: 9
+  cityAfterFloors: 3
+  metropolisAfterFloors: 6
+  currentStage: 0
+  villageCamera: {fileID: 1923670286}
+  evolutionColor: {r: 0.2941177, g: 0, b: 0.509804, a: 1}
+  effectDuration: 2.2
+  scalePunch: 1.18
+  shakeAmount: 0.035
+  lightMaxIntensity: 7
+--- !u!114 &1599914219
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 982794734}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 602f8b47bdd7edc4babe79aff13df75d, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: Assembly-CSharp::Aldea
+  tipoAldea: 3
+  aventureros: []
+  vidas: 3
+  victorias: 0
+  villageEvolution: {fileID: 1599914218}
 --- !u!1 &1627206371
 GameObject:
   m_ObjectHideFlags: 0
@@ -2175,6 +2271,50 @@ MonoBehaviour:
   health: 360
   members: 6
   villageLights: []
+--- !u!114 &1647908261
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1647908259}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 6cbbb2c5ceea8424497ad7565e2ac12e, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: Assembly-CSharp::VillageEvolution
+  campamentoPrefab: {fileID: 7145893020877951313, guid: 5a74356015eab5143a6a43d6195a26e0, type: 3}
+  ciudadPrefab: {fileID: 5752554399501062493, guid: 9b013515e9daadb479bfc197d9f3f482, type: 3}
+  metropolisPrefab: {fileID: 7388736516231012398, guid: db8d9818f6366a642bec9fa78304f4c5, type: 3}
+  modelContainer: {fileID: 1199283525}
+  defeatedRooms: 0
+  roomsPerFloor: 9
+  cityAfterFloors: 3
+  metropolisAfterFloors: 6
+  currentStage: 0
+  villageCamera: {fileID: 690614087}
+  evolutionColor: {r: 1, g: 0.8431373, b: 0, a: 1}
+  effectDuration: 1.4
+  scalePunch: 1.15
+  shakeAmount: 0.035
+  lightMaxIntensity: 3
+--- !u!114 &1647908262
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1647908259}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 602f8b47bdd7edc4babe79aff13df75d, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: Assembly-CSharp::Aldea
+  tipoAldea: 0
+  aventureros: []
+  vidas: 3
+  victorias: 0
+  villageEvolution: {fileID: 1647908261}
 --- !u!1 &1694527381 stripped
 GameObject:
   m_CorrespondingSourceObject: {fileID: 919132149155446097, guid: ef647ba3d0ae66843a134c92f0bdf7ef, type: 3}
@@ -2200,6 +2340,50 @@ MonoBehaviour:
   health: 320
   members: 6
   villageLights: []
+--- !u!114 &1694527383
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1694527381}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 6cbbb2c5ceea8424497ad7565e2ac12e, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: Assembly-CSharp::VillageEvolution
+  campamentoPrefab: {fileID: 8276457610314545246, guid: f963664cddedc5945b2ed5edaa57192a, type: 3}
+  ciudadPrefab: {fileID: 8977010875204717573, guid: ef647ba3d0ae66843a134c92f0bdf7ef, type: 3}
+  metropolisPrefab: {fileID: -6650292196672051072, guid: 5eae739a35620804396d37d0fb7e0c7f, type: 3}
+  modelContainer: {fileID: 1117230628}
+  defeatedRooms: 0
+  roomsPerFloor: 9
+  cityAfterFloors: 3
+  metropolisAfterFloors: 6
+  currentStage: 0
+  villageCamera: {fileID: 1374969115}
+  evolutionColor: {r: 1, g: 0.15, b: 0.1, a: 1}
+  effectDuration: 2.2
+  scalePunch: 1.18
+  shakeAmount: 0.035
+  lightMaxIntensity: 7
+--- !u!114 &1694527384
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1694527381}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 602f8b47bdd7edc4babe79aff13df75d, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: Assembly-CSharp::Aldea
+  tipoAldea: 4
+  aventureros: []
+  vidas: 3
+  victorias: 0
+  villageEvolution: {fileID: 1694527383}
 --- !u!1 &1720804189
 GameObject:
   m_ObjectHideFlags: 0
@@ -2229,8 +2413,7 @@ RectTransform:
   m_LocalPosition: {x: 0, y: 0, z: 0}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_ConstrainProportionsScale: 0
-  m_Children:
-  - {fileID: 1526030155}
+  m_Children: []
   m_Father: {fileID: 1997004044}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0, y: 1}
@@ -2303,6 +2486,50 @@ MonoBehaviour:
   health: 360
   members: 6
   villageLights: []
+--- !u!114 &1737780457
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1737780455}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 6cbbb2c5ceea8424497ad7565e2ac12e, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: Assembly-CSharp::VillageEvolution
+  campamentoPrefab: {fileID: 6216198074610294715, guid: 54a57b8c07cd7e145bcb21dfe7770a34, type: 3}
+  ciudadPrefab: {fileID: 7614861803012034999, guid: 9730b8c10f463fd4482abd64189b8237, type: 3}
+  metropolisPrefab: {fileID: 405236902623991197, guid: 13ec78aaed4956d4fad6f021c30b2c06, type: 3}
+  modelContainer: {fileID: 1391092622}
+  defeatedRooms: 0
+  roomsPerFloor: 9
+  cityAfterFloors: 3
+  metropolisAfterFloors: 6
+  currentStage: 0
+  villageCamera: {fileID: 482145228}
+  evolutionColor: {r: 0, g: 0.3921569, b: 0, a: 1}
+  effectDuration: 1.4
+  scalePunch: 1.15
+  shakeAmount: 0.035
+  lightMaxIntensity: 3
+--- !u!114 &1737780458
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1737780455}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 602f8b47bdd7edc4babe79aff13df75d, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: Assembly-CSharp::Aldea
+  tipoAldea: 2
+  aventureros: []
+  vidas: 3
+  victorias: 0
+  villageEvolution: {fileID: 1737780457}
 --- !u!1 &1823643652
 GameObject:
   m_ObjectHideFlags: 0
@@ -2529,6 +2756,10 @@ PrefabInstance:
       propertyPath: m_LocalEulerAnglesHint.z
       value: 0
       objectReference: {fileID: 0}
+    - target: {fileID: -7635826562936255635, guid: e1c21543bebec9a4b987b75e5ab83780, type: 3}
+      propertyPath: m_Enabled
+      value: 0
+      objectReference: {fileID: 0}
     - target: {fileID: 919132149155446097, guid: e1c21543bebec9a4b987b75e5ab83780, type: 3}
       propertyPath: m_Name
       value: temerososAldea
@@ -2571,6 +2802,12 @@ PrefabInstance:
     - targetCorrespondingSourceObject: {fileID: 919132149155446097, guid: e1c21543bebec9a4b987b75e5ab83780, type: 3}
       insertIndex: -1
       addedObject: {fileID: 1851472838}
+    - targetCorrespondingSourceObject: {fileID: 919132149155446097, guid: e1c21543bebec9a4b987b75e5ab83780, type: 3}
+      insertIndex: -1
+      addedObject: {fileID: 1851472840}
+    - targetCorrespondingSourceObject: {fileID: 919132149155446097, guid: e1c21543bebec9a4b987b75e5ab83780, type: 3}
+      insertIndex: -1
+      addedObject: {fileID: 1851472839}
   m_SourcePrefab: {fileID: 100100000, guid: e1c21543bebec9a4b987b75e5ab83780, type: 3}
 --- !u!4 &1851472837 stripped
 Transform:
@@ -2597,6 +2834,50 @@ MonoBehaviour:
   health: 280
   members: 6
   villageLights: []
+--- !u!114 &1851472839
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 424246826}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 6cbbb2c5ceea8424497ad7565e2ac12e, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: Assembly-CSharp::VillageEvolution
+  campamentoPrefab: {fileID: -3141256663588522277, guid: 1529a47687177f3459dec702bedebe2d, type: 3}
+  ciudadPrefab: {fileID: 8164078558771037576, guid: e1c21543bebec9a4b987b75e5ab83780, type: 3}
+  metropolisPrefab: {fileID: -5831802624294100903, guid: 082c61bc6efc2f74c9372d629eb379dd, type: 3}
+  modelContainer: {fileID: 2101582404}
+  defeatedRooms: 0
+  roomsPerFloor: 9
+  cityAfterFloors: 3
+  metropolisAfterFloors: 6
+  currentStage: 0
+  villageCamera: {fileID: 635097433}
+  evolutionColor: {r: 0, g: 0, b: 1, a: 1}
+  effectDuration: 2.2
+  scalePunch: 1.18
+  shakeAmount: 0.035
+  lightMaxIntensity: 7
+--- !u!114 &1851472840
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 424246826}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 602f8b47bdd7edc4babe79aff13df75d, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: Assembly-CSharp::Aldea
+  tipoAldea: 1
+  aventureros: []
+  vidas: 3
+  victorias: 0
+  villageEvolution: {fileID: 1851472839}
 --- !u!1 &1865074203
 GameObject:
   m_ObjectHideFlags: 0
@@ -2679,7 +2960,7 @@ MonoBehaviour:
   m_TargetGraphic: {fileID: 1823643654}
   m_HandleRect: {fileID: 1823643653}
   m_Direction: 2
-  m_Value: 0
+  m_Value: 1
   m_Size: 1
   m_NumberOfSteps: 0
   m_OnValueChanged:
@@ -2809,7 +3090,7 @@ AudioListener:
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 1923670281}
-  m_Enabled: 1
+  m_Enabled: 0
 --- !u!20 &1923670285
 Camera:
   m_ObjectHideFlags: 0
@@ -2876,6 +3157,11 @@ MonoBehaviour:
   targetVillage: {fileID: 1500311704}
   offset: {x: 0, y: 8, z: -6}
   orthographicSize: 0.5
+  autoZoomByStage: 1
+  villageEvolution: {fileID: 0}
+  campamentoZoom: 1.3
+  ciudadZoom: 1.6
+  metropolisZoom: 2.1
   backgroundColor: {r: 0.04, g: 0.02, b: 0.06, a: 1}
 --- !u!1 &1997004043
 GameObject:
