@@ -9,14 +9,18 @@ public enum GachaRarity
     Mitico
 }
 
-[CreateAssetMenu(fileName = "EnemyGachaData", menuName = "Gacha/Enemy Gacha Data")]
-public class EnemyGachaData : ScriptableObject
+[CreateAssetMenu(
+fileName = "EnemyGachaData",
+menuName = "Gacha/Enemy Gacha Data")]
+public class EnemyGachaData :
+ScriptableObject
 {
     [Header("ID único")]
     public string enemyId;
 
     [Header("Datos")]
     public string enemyName;
+
     public GachaRarity rarity;
 
     [TextArea(2, 5)]
@@ -34,16 +38,22 @@ public class EnemyGachaData : ScriptableObject
     public Sprite shopBigUnlockedCardSprite;
     public Sprite shopBigLockedCardSprite;
 
+    [Header("Sprite bloqueo sala")]
+    public Sprite roomBlockedSprite;
+
     [Header("Prefab")]
     public GameObject enemyPrefab;
 
-    [Header("Escala habitación")]
+    [Header("Transform habitación")]
     public Vector3 roomScale =
-        new Vector3(
-            0.1f,
-            0.1f,
-            0.1f
-        );
+    new Vector3(
+    0.1f,
+    0.1f,
+    0.1f
+    );
+
+    public Vector3 roomRotation =
+    Vector3.zero;
 
     [Header("Precio tienda")]
     public int shopPrice = 100;
