@@ -15,60 +15,79 @@ public class Aldea : MonoBehaviour
     [Header("Datos")]
     public TipoAldea tipoAldea;
 
-
     [Header("Aventureros")]
-    public List<AventureroData>
-    aventureros =
-    new List<AventureroData>();
-
+    public List<AventureroData> aventureros = new List<AventureroData>();
 
     [Header("Estado")]
     public int vidas = 3;
 
+    [Tooltip("Cantidad de salas derrotadas. 9 salas = 1 piso.")]
     public int victorias = 0;
 
+    [Header("Evolución visual")]
+    public VillageEvolution villageEvolution;
 
-    //Actualizar aventureros
-    public void ActualizarEquipo(
-        List<AventureroData>
-        nuevosDatos,
-        bool ganaron
-    )
+    public int PisosDerrotados => victorias / 9;
+
+    private int lastVictorias = -1;
+
+    private void Awake()
     {
-        aventureros =
-        nuevosDatos;
+        if (villageEvolution == null)
+            villageEvolution = GetComponent<VillageEvolution>();
+    }
 
+    private void Start()
+    {
+        ActualizarEvolucionVisual(false);
+        lastVictorias = victorias;
+    }
 
-        if (
-            ganaron
-        )
+    private void Update()
+    {
+        if (victorias != lastVictorias)
         {
-            victorias++;
+            lastVictorias = victorias;
+            ActualizarEvolucionVisual(true);
         }
     }
 
+    public void RegistrarSalaGanada()
+    {
+        victorias++;
+        lastVictorias = victorias;
+        ActualizarEvolucionVisual(true);
+    }
 
-    //Todos murieron
+    public void ActualizarEquipo(List<AventureroData> nuevosDatos, bool ganaron)
+    {
+        aventureros = nuevosDatos;
+
+        if (ganaron)
+        {
+            victorias++;
+            lastVictorias = victorias;
+        }
+
+        ActualizarEvolucionVisual(ganaron);
+    }
+
     public void TodosMurieron()
     {
         aventureros.Clear();
-
         vidas--;
 
-        Debug.Log(
-            tipoAldea +
-            " perdió equipo"
-        );
+        Debug.Log(tipoAldea + " perdió equipo");
 
+        if (vidas <= 0)
+            Debug.Log(tipoAldea + " se quedó sin vidas");
 
-        if (
-            vidas <= 0
-        )
-        {
-            Debug.Log(
-                tipoAldea +
-                " se quedó sin vidas"
-            );
-        }
+        ActualizarEvolucionVisual(false);
+    }
+
+    public void ActualizarEvolucionVisual(bool playEffect)
+    {
+        if (villageEvolution != null)
+            villageEvolution.SetProgress(victorias, playEffect);
     }
 }

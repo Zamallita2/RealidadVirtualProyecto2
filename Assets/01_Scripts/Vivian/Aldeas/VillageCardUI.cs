@@ -31,18 +31,28 @@ public class VillageCardUI : MonoBehaviour
     public Sprite retirandoseSprite;
     public Sprite derrotadoSprite;
 
-    [Header("Animación")]
-    public float animationDuration = 0.9f;
+    [Header("Animación segura")]
+    public float fadeDuration = 0.45f;
 
     private VillagePanelEntry currentEntry;
     private CanvasGroup canvasGroup;
-    private Vector3 originalScale;
 
     public void Setup(VillagePanelEntry entry)
     {
         currentEntry = entry;
+
+        if (canvasGroup == null)
+        {
+            canvasGroup = GetComponent<CanvasGroup>();
+
+            if (canvasGroup == null)
+                canvasGroup = gameObject.AddComponent<CanvasGroup>();
+        }
+
         SetupVillage();
-        SetupAnimation();
+
+        StopAllCoroutines();
+        StartCoroutine(FadeIn());
     }
 
     private void Update()
@@ -59,10 +69,16 @@ public class VillageCardUI : MonoBehaviour
             rawImageVillage.texture = currentEntry.renderTexture;
 
         if (backgroundImage != null)
+        {
             backgroundImage.sprite = currentEntry.backgroundSprite;
+            backgroundImage.color = Color.white;
+        }
 
         if (frameImage != null)
+        {
             frameImage.sprite = currentEntry.frameSprite;
+            frameImage.color = Color.white;
+        }
 
         for (int i = 0; i < slotImages.Count; i++)
         {
@@ -74,6 +90,7 @@ public class VillageCardUI : MonoBehaviour
 
             slotImages[i].enabled = true;
             slotImages[i].sprite = currentEntry.portraits[i];
+            slotImages[i].color = Color.white;
         }
 
         if (attackText != null)
@@ -88,53 +105,19 @@ public class VillageCardUI : MonoBehaviour
         UpdateStates();
     }
 
-    private void SetupAnimation()
+    private IEnumerator FadeIn()
     {
-        originalScale = Vector3.one;
-
-        canvasGroup = GetComponent<CanvasGroup>();
-
-        if (canvasGroup == null)
-            canvasGroup = gameObject.AddComponent<CanvasGroup>();
-
-        StopAllCoroutines();
-        StartCoroutine(AnimateCard());
-    }
-
-    private IEnumerator AnimateCard()
-    {
-        Vector3 startScale = new Vector3(0.75f, 0.75f, 1f);
-        Vector3 overshootScale = new Vector3(1.04f, 1.04f, 1f);
-
-        transform.localScale = startScale;
         canvasGroup.alpha = 0f;
 
         float time = 0f;
 
-        while (time < animationDuration)
+        while (time < fadeDuration)
         {
             time += Time.deltaTime;
-
-            float t = Mathf.Clamp01(time / animationDuration);
-            float smoothT = Mathf.SmoothStep(0f, 1f, t);
-
-            canvasGroup.alpha = smoothT;
-
-            if (smoothT < 0.75f)
-            {
-                float scaleT = smoothT / 0.75f;
-                transform.localScale = Vector3.Lerp(startScale, overshootScale, scaleT);
-            }
-            else
-            {
-                float scaleT = (smoothT - 0.75f) / 0.25f;
-                transform.localScale = Vector3.Lerp(overshootScale, originalScale, scaleT);
-            }
-
+            canvasGroup.alpha = Mathf.SmoothStep(0f, 1f, time / fadeDuration);
             yield return null;
         }
 
-        transform.localScale = originalScale;
         canvasGroup.alpha = 1f;
     }
 
@@ -180,20 +163,13 @@ public class VillageCardUI : MonoBehaviour
     {
         switch (state)
         {
-            case VillageState.EnEspera:
-                return enEsperaSprite;
-            case VillageState.EnCamino:
-                return enCaminoSprite;
-            case VillageState.EnCombate:
-                return enCombateSprite;
-            case VillageState.Avanzando:
-                return avanzandoSprite;
-            case VillageState.Retirandose:
-                return retirandoseSprite;
-            case VillageState.Derrotado:
-                return derrotadoSprite;
-            default:
-                return enEsperaSprite;
+            case VillageState.EnEspera: return enEsperaSprite;
+            case VillageState.EnCamino: return enCaminoSprite;
+            case VillageState.EnCombate: return enCombateSprite;
+            case VillageState.Avanzando: return avanzandoSprite;
+            case VillageState.Retirandose: return retirandoseSprite;
+            case VillageState.Derrotado: return derrotadoSprite;
+            default: return enEsperaSprite;
         }
     }
 }
