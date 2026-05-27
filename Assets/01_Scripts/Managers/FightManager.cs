@@ -282,6 +282,10 @@ public class FightManager : MonoBehaviour
 
             StatCalculator.Recalculate(temp);
 
+            // Recalculate solo actualiza maxHealth; igualamos currentHealth
+            // para que el enemigo arranque con la vida completa a su nivel.
+            temp.currentHealth = temp.maxHealth;
+
             stats.ApplyFromData(temp);
 
             //--------------------------------
@@ -322,6 +326,9 @@ public class FightManager : MonoBehaviour
         }
         else
         {
+            // Eliminar la unidad aliada muerta del orden de turno
+            // y reconstruir la lista sin ella.
+            turnManager.RemoveUnit(unit);
             turnManager.RefreshTurnOrder();
         }
     }

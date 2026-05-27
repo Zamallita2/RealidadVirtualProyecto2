@@ -86,10 +86,21 @@ public class TurnManager : MonoBehaviour
     {
         if(!isCombatActive)
             return;
-        if(isTurn){
+
+        // Si isTurn está activo pero currentUnit ya murió durante su propio turno
+        // (ej: daño por reflejo/veneno), desbloquear el estado para continuar.
+        if(isTurn && !UnitStats.IsCombatReady(currentUnit))
+        {
+            Debug.Log($"[TurnManager] {(currentUnit != null ? currentUnit.name : "null")} murió durante su turno — forzando avance.");
+            isTurn = false;
+        }
+
+        if(isTurn)
+        {
             Debug.Log("Lo intentó");
             return;
         }
+
         currentUnit = GetNextUnit();
 
         if(currentUnit == null)
@@ -98,13 +109,15 @@ public class TurnManager : MonoBehaviour
             Debug.Log("Primer nulo");
             currentUnit = GetNextUnit();
 
-            if(currentUnit == null){
+            if(currentUnit == null)
+            {
                 Debug.Log("Segundo nulo");
-                return;}
+                return;
+            }
         }
 
         Debug.Log("Turno de: " + currentUnit.name);
-        isTurn=true;
+        isTurn = true;
 
         currentUnit.TakeTurn();
     }
