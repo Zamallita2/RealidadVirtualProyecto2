@@ -68,6 +68,10 @@ PrefabInstance:
       propertyPath: m_Name
       value: PayasoBlender
       objectReference: {fileID: 0}
+    - target: {fileID: 919132149155446097, guid: 98e15d34324cbd0e1905939b9c49a05c, type: 3}
+      propertyPath: m_TagString
+      value: FightUnit
+      objectReference: {fileID: 0}
     - target: {fileID: 8879528566716807029, guid: 98e15d34324cbd0e1905939b9c49a05c, type: 3}
       propertyPath: m_LocalPosition.y
       value: 0.23

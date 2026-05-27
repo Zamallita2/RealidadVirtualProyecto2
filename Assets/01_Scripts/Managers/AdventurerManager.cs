@@ -42,6 +42,11 @@ public class AdventurerManager : MonoBehaviour
 
     public void StartFight()
     {
+        StartFight(null);
+    }
+
+    public void StartFight(Aldea aldea)
+    {
         if(isFightRunning)
         {
             Debug.LogWarning("Ya hay una pelea en curso.");
@@ -55,7 +60,7 @@ public class AdventurerManager : MonoBehaviour
         }
 
         isFightRunning = true;
-        fightManager.StartFight(party);
+        fightManager.StartFight(party, aldea);
     }
 
     public IReadOnlyList<AdventurerData> GetParty()
@@ -69,6 +74,9 @@ public class AdventurerManager : MonoBehaviour
 
         foreach(AdventurerData member in updatedParty)
         {
+            if(member == null || !member.isAlive)
+                continue;
+
             snapshot.Add(member.Clone());
         }
 
@@ -93,7 +101,7 @@ public class AdventurerManager : MonoBehaviour
     {
         UnitStats prefabStats = setup.prefab.GetComponent<UnitStats>();
 
-        int maxHealth = prefabStats != null ? prefabStats.maxHealth : 10;
+        float maxHealth = prefabStats != null ? prefabStats.maxHealth : 10;
         int strength = prefabStats != null ? prefabStats.strength : 2;
         int speed = prefabStats != null ? prefabStats.speed : 5;
 
@@ -113,7 +121,7 @@ public class AdventurerManager : MonoBehaviour
 
     static void ApplyLevelScaling(
         int level,
-        ref int maxHealth,
+        ref float maxHealth,
         ref int strength,
         ref int speed)
     {

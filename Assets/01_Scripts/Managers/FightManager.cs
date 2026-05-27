@@ -11,18 +11,30 @@ public class FightManager : MonoBehaviour
     [SerializeField] private float waveTransitionDelay = 5f;
     [SerializeField] private float roomTransitionDelay = 10f;
 
+    [Header("Cleanup")]
+    [SerializeField] private string fightUnitTag = "FightUnit";
+
     [Header("Managers")]
     private WaveManager waveManager;
     private TurnManager turnManager;
     private AdventurerManager adventurerManager;
+
+    // Aldea actual que inició la pelea (para actualizar vidas/victorias y equipo).
+    private Aldea currentAldea;
+    private readonly List<AventureroData> currentAldeaTeamSnapshot = new();
 
     private List<AdventurerData> currentParty = new();
     private List<UnitStats> allySlots = new();
     private List<UnitStats> aliveEnemies = new();
     private bool isFightActive;
     private bool isTransitioning;
+    private readonly List<GameObject> spawnedFightObjects = new();
 
     public bool IsFightActive => isFightActive;
+
+    // Para que, en el futuro, se pueda condicionar el comportamiento por tipo de aldea.
+    public TipoAldea CurrentAldeaType =>
+        currentAldea != null ? currentAldea.tipoAldea : default;
 
     public List<UnitStats> GetAllies(EnumFigthList.Faction faction)
     {
@@ -51,10 +63,27 @@ public class FightManager : MonoBehaviour
 
     public void StartFight(List<AdventurerData> party)
     {
+        StartFight(party, null);
+    }
+
+    public void StartFight(List<AdventurerData> party, Aldea aldea)
+    {
         if(waveManager == null || !waveManager.HasConfiguredRooms())
         {
             Debug.LogError("FightManager: no hay salas configuradas en WaveManager.");
             return;
+        }
+
+        currentAldea = aldea;
+        currentAldeaTeamSnapshot.Clear();
+        if(currentAldea != null &&
+            currentAldea.aventureros != null)
+        {
+            foreach(AventureroData member in
+                currentAldea.aventureros)
+            {
+                currentAldeaTeamSnapshot.Add(CloneMember(member));
+            }
         }
 
         StopAllCoroutines();
@@ -86,6 +115,7 @@ public class FightManager : MonoBehaviour
         isTransitioning = false;
         StopAllCoroutines();
         turnManager?.StopCombat();
+        CleanupFightObjects();
     }
 
     public bool OnTurnEnded()
@@ -144,6 +174,7 @@ public class FightManager : MonoBehaviour
     void SpawnAllies()
     {
         allySlots.Clear();
+        spawnedFightObjects.Clear();
 
         for(int i = 0; i < currentParty.Count; i++)
         {
@@ -165,6 +196,8 @@ public class FightManager : MonoBehaviour
                 point.transform.position,
                 point.transform.rotation
             );
+            TryAssignFightTag(obj);
+            spawnedFightObjects.Add(obj);
 
             UnitStats stats = obj.GetComponent<UnitStats>();
 
@@ -205,6 +238,8 @@ public class FightManager : MonoBehaviour
                 point.transform.position,
                 point.transform.rotation
             );
+            TryAssignFightTag(obj);
+            spawnedFightObjects.Add(obj);
 
             UnitStats stats = obj.GetComponent<UnitStats>();
 
@@ -273,14 +308,20 @@ public class FightManager : MonoBehaviour
 
         SyncPartyFromFight();
         waveManager.FinishCurrentRoom();
-
-        if(!waveManager.EnterNextRoom())
+        if(waveManager.ShouldPartyRetreat(currentAldea, currentParty))
         {
-            OnDungeonComplete();
-            return;
+            RetreatFromDungeon();
         }
+        else
+        {
+            if(!waveManager.EnterNextRoom())
+            {
+                OnDungeonComplete();
+                return;
+            }
 
-        StartCoroutine(RoomTransitionCoroutine());
+            StartCoroutine(RoomTransitionCoroutine());   
+        }
     }
 
     IEnumerator RoomTransitionCoroutine()
@@ -306,24 +347,102 @@ public class FightManager : MonoBehaviour
     void OnDungeonComplete()
     {
         SyncPartyFromFight();
-        SyncPartyFromFight();
 
+        ApplyAldeaResult(win: true);
         adventurerManager?.OnFightWon(currentParty);
 
         DeactivateFight();
 
         Debug.Log("Venciste completamente a la mazmorra");
     }
+    void RetreatFromDungeon()
+    {
+        SyncPartyFromFight();
 
+        ApplyAldeaResult(win: true);
+        adventurerManager?.OnFightWon(currentParty);
+
+        DeactivateFight();
+
+        Debug.Log("Se retiraron");
+    }
     void LoseFight()
     {
         SyncPartyFromFight();
 
+        ApplyAldeaResult(win: false);
         DeactivateFight();
 
         adventurerManager?.OnFightLost();
 
         Debug.Log("PERDISTE");
+    }
+
+    void ApplyAldeaResult(bool win)
+    {
+        if(currentAldea == null)
+            return;
+
+        if(win)
+        {
+            List<AventureroData> survivors =
+                BuildSurvivorTeam();
+
+            // Ganar implica actualizar victorias y reemplazar el equipo.
+            currentAldea.ActualizarEquipo(
+                survivors,
+                ganaron: true
+            );
+
+            return;
+        }
+
+        // En la pérdida, asumimos que todos han muerto.
+        currentAldea.TodosMurieron();
+    }
+
+    List<AventureroData> BuildSurvivorTeam()
+    {
+        List<AventureroData> result = new();
+
+        int count = Mathf.Min(
+            currentAldeaTeamSnapshot.Count,
+            currentParty.Count
+        );
+
+        for(int i = 0; i < count; i++)
+        {
+            AdventurerData fightMember =
+                currentParty[i];
+
+            if(!fightMember.isAlive)
+                continue;
+
+            AventureroData snapshot =
+                currentAldeaTeamSnapshot[i];
+
+            AventureroData cloned = CloneMember(snapshot);
+            cloned.prefab = fightMember.prefab;
+            cloned.nivel = fightMember.level;
+
+            result.Add(cloned);
+        }
+
+        return result;
+    }
+
+    static AventureroData CloneMember(AventureroData member)
+    {
+        if(member == null)
+            return new AventureroData();
+
+        return new AventureroData
+        {
+            nombre = member.nombre,
+            rol = member.rol,
+            prefab = member.prefab,
+            nivel = member.nivel
+        };
     }
 
     void SyncPartyFromFight()
@@ -351,5 +470,38 @@ public class FightManager : MonoBehaviour
         }
 
         return living;
+    }
+
+    void TryAssignFightTag(GameObject obj)
+    {
+        if(obj == null)
+            return;
+
+        if(string.IsNullOrWhiteSpace(fightUnitTag))
+            return;
+
+        try
+        {
+            obj.tag = fightUnitTag;
+        }
+        catch
+        {
+            // Tag doesn't exist in the project yet; ignore.
+        }
+    }
+
+    void CleanupFightObjects()
+    {
+        // Destroy only what this FightManager spawned to avoid deleting other scene objects.
+        for(int i = spawnedFightObjects.Count - 1; i >= 0; i--)
+        {
+            GameObject obj = spawnedFightObjects[i];
+            if(obj != null)
+                Destroy(obj);
+        }
+
+        spawnedFightObjects.Clear();
+        allySlots.Clear();
+        aliveEnemies.Clear();
     }
 }

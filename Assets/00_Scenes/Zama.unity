@@ -119,6 +119,55 @@ NavMeshSettings:
     debug:
       m_Flags: 0
   m_NavMeshData: {fileID: 0}
+--- !u!1 &38798066
+GameObject:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  serializedVersion: 6
+  m_Component:
+  - component: {fileID: 38798067}
+  - component: {fileID: 38798068}
+  m_Layer: 0
+  m_Name: VillageManager
+  m_TagString: Untagged
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
+--- !u!4 &38798067
+Transform:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 38798066}
+  serializedVersion: 2
+  m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
+  m_LocalPosition: {x: 0, y: 0, z: 0}
+  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_ConstrainProportionsScale: 0
+  m_Children: []
+  m_Father: {fileID: 1571753873}
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!114 &38798068
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 38798066}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 7f42ddb423e49644282e52f41d082c94, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: Assembly-CSharp::VillageManager
+  aldeas:
+  - {fileID: 1024550952}
+  - {fileID: 1070901950}
+  - {fileID: 446887415}
+  - {fileID: 754516602}
 --- !u!1 &60770236
 GameObject:
   m_ObjectHideFlags: 0
@@ -1339,6 +1388,74 @@ Transform:
   - {fileID: 1593734671}
   m_Father: {fileID: 0}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!1 &446887414
+GameObject:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  serializedVersion: 6
+  m_Component:
+  - component: {fileID: 446887416}
+  - component: {fileID: 446887415}
+  m_Layer: 0
+  m_Name: Aldea_Cautelosos
+  m_TagString: Untagged
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
+--- !u!114 &446887415
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 446887414}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 602f8b47bdd7edc4babe79aff13df75d, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: Assembly-CSharp::Aldea
+  tipoAldea: 2
+  aventureros:
+  - nombre: ArqueroCauteloso
+    rol: 0
+    prefab: {fileID: 2280948847738670438, guid: eec54824ef282bc42b7d7d5b57d01964, type: 3}
+    nivel: 0
+  - nombre: LuchadorCauteloso
+    rol: 1
+    prefab: {fileID: 4738242347736874425, guid: 7f486654a19038349ba1e9bb30ca9408, type: 3}
+    nivel: 0
+  - nombre: MagoCauteloso
+    rol: 2
+    prefab: {fileID: 1751437975789654157, guid: 0dff285742b066942a60b0dbaaf2582a, type: 3}
+    nivel: 0
+  - nombre: MedicoCauteloso
+    rol: 3
+    prefab: {fileID: 655715636741440944, guid: 46db807aaaa108744b795e8b6760f927, type: 3}
+    nivel: 0
+  - nombre: TanqueCauteloso
+    rol: 4
+    prefab: {fileID: 9108114369414345305, guid: 7b843b400dcfaa44e88d12df63d0d0af, type: 3}
+    nivel: 0
+  vidas: 3
+  victorias: 0
+--- !u!4 &446887416
+Transform:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 446887414}
+  serializedVersion: 2
+  m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
+  m_LocalPosition: {x: 0, y: 0, z: 0}
+  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_ConstrainProportionsScale: 0
+  m_Children: []
+  m_Father: {fileID: 1571753873}
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!1 &569973056
 GameObject:
   m_ObjectHideFlags: 0
@@ -1465,139 +1582,6 @@ Transform:
   m_Children: []
   m_Father: {fileID: 124908816}
   m_LocalEulerAnglesHint: {x: 0, y: 90, z: 0}
---- !u!1 &670458580
-GameObject:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  serializedVersion: 6
-  m_Component:
-  - component: {fileID: 670458581}
-  - component: {fileID: 670458584}
-  - component: {fileID: 670458583}
-  - component: {fileID: 670458582}
-  m_Layer: 5
-  m_Name: Button
-  m_TagString: Untagged
-  m_Icon: {fileID: 0}
-  m_NavMeshLayer: 0
-  m_StaticEditorFlags: 0
-  m_IsActive: 1
---- !u!224 &670458581
-RectTransform:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 670458580}
-  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: 0, y: 0, z: 0}
-  m_LocalScale: {x: 1, y: 1, z: 1}
-  m_ConstrainProportionsScale: 0
-  m_Children:
-  - {fileID: 1089269737}
-  m_Father: {fileID: 1402884410}
-  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
-  m_AnchorMin: {x: 0.5, y: 0.5}
-  m_AnchorMax: {x: 0.5, y: 0.5}
-  m_AnchoredPosition: {x: -317, y: -200}
-  m_SizeDelta: {x: 160, y: 30}
-  m_Pivot: {x: 0.5, y: 0.5}
---- !u!114 &670458582
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 670458580}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 4e29b1a8efbd4b44bb3f3716e73f07ff, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: UnityEngine.UI::UnityEngine.UI.Button
-  m_Navigation:
-    m_Mode: 3
-    m_WrapAround: 0
-    m_SelectOnUp: {fileID: 0}
-    m_SelectOnDown: {fileID: 0}
-    m_SelectOnLeft: {fileID: 0}
-    m_SelectOnRight: {fileID: 0}
-  m_Transition: 1
-  m_Colors:
-    m_NormalColor: {r: 1, g: 1, b: 1, a: 1}
-    m_HighlightedColor: {r: 0.9607843, g: 0.9607843, b: 0.9607843, a: 1}
-    m_PressedColor: {r: 0.78431374, g: 0.78431374, b: 0.78431374, a: 1}
-    m_SelectedColor: {r: 0.9607843, g: 0.9607843, b: 0.9607843, a: 1}
-    m_DisabledColor: {r: 0.78431374, g: 0.78431374, b: 0.78431374, a: 0.5019608}
-    m_ColorMultiplier: 1
-    m_FadeDuration: 0.1
-  m_SpriteState:
-    m_HighlightedSprite: {fileID: 0}
-    m_PressedSprite: {fileID: 0}
-    m_SelectedSprite: {fileID: 0}
-    m_DisabledSprite: {fileID: 0}
-  m_AnimationTriggers:
-    m_NormalTrigger: Normal
-    m_HighlightedTrigger: Highlighted
-    m_PressedTrigger: Pressed
-    m_SelectedTrigger: Selected
-    m_DisabledTrigger: Disabled
-  m_Interactable: 1
-  m_TargetGraphic: {fileID: 670458583}
-  m_OnClick:
-    m_PersistentCalls:
-      m_Calls:
-      - m_Target: {fileID: 1247986547}
-        m_TargetAssemblyTypeName: Iniciar, Assembly-CSharp
-        m_MethodName: iniciar
-        m_Mode: 1
-        m_Arguments:
-          m_ObjectArgument: {fileID: 0}
-          m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
-          m_IntArgument: 0
-          m_FloatArgument: 0
-          m_StringArgument: 
-          m_BoolArgument: 0
-        m_CallState: 2
---- !u!114 &670458583
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 670458580}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: fe87c0e1cc204ed48ad3b37840f39efc, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: UnityEngine.UI::UnityEngine.UI.Image
-  m_Material: {fileID: 0}
-  m_Color: {r: 1, g: 1, b: 1, a: 1}
-  m_RaycastTarget: 1
-  m_RaycastPadding: {x: 0, y: 0, z: 0, w: 0}
-  m_Maskable: 1
-  m_OnCullStateChanged:
-    m_PersistentCalls:
-      m_Calls: []
-  m_Sprite: {fileID: 10905, guid: 0000000000000000f000000000000000, type: 0}
-  m_Type: 1
-  m_PreserveAspect: 0
-  m_FillCenter: 1
-  m_FillMethod: 4
-  m_FillAmount: 1
-  m_FillClockwise: 1
-  m_FillOrigin: 0
-  m_UseSpriteMesh: 0
-  m_PixelsPerUnitMultiplier: 1
---- !u!222 &670458584
-CanvasRenderer:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 670458580}
-  m_CullTransparentMesh: 1
 --- !u!1 &711439379
 GameObject:
   m_ObjectHideFlags: 0
@@ -1850,6 +1834,74 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: Assembly-CSharp::SpawnPoint
   lineNumber: 2
+--- !u!1 &754516601
+GameObject:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  serializedVersion: 6
+  m_Component:
+  - component: {fileID: 754516603}
+  - component: {fileID: 754516602}
+  m_Layer: 0
+  m_Name: Aldea_Eruditos
+  m_TagString: Untagged
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
+--- !u!114 &754516602
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 754516601}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 602f8b47bdd7edc4babe79aff13df75d, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: Assembly-CSharp::Aldea
+  tipoAldea: 3
+  aventureros:
+  - nombre: ArqueroErudito
+    rol: 0
+    prefab: {fileID: 7305728792941940604, guid: 2f0d3ee1eeb130048a244a1bf15d0aea, type: 3}
+    nivel: 0
+  - nombre: MedicoErudito
+    rol: 3
+    prefab: {fileID: 5042093030919081147, guid: 113640c5b40c75044a1cf5506905dbbd, type: 3}
+    nivel: 0
+  - nombre: LuchadorErudito
+    rol: 1
+    prefab: {fileID: 7378167244057627113, guid: cf4f2da1f684ec64ba3f28ee84b5f90a, type: 3}
+    nivel: 0
+  - nombre: MagoErudito
+    rol: 2
+    prefab: {fileID: 7228133117314482127, guid: 2ace6c62a2f284540a7506e58bcf1058, type: 3}
+    nivel: 0
+  - nombre: TanqueErudito
+    rol: 4
+    prefab: {fileID: 5853257844873112955, guid: 1e1d22f54d39701489764eb279f29e4d, type: 3}
+    nivel: 0
+  vidas: 3
+  victorias: 0
+--- !u!4 &754516603
+Transform:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 754516601}
+  serializedVersion: 2
+  m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
+  m_LocalPosition: {x: 0, y: 0, z: 0}
+  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_ConstrainProportionsScale: 0
+  m_Children: []
+  m_Father: {fileID: 1571753873}
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!1 &879837208
 GameObject:
   m_ObjectHideFlags: 0
@@ -2138,7 +2190,7 @@ RectTransform:
   m_AnchorMin: {x: 0, y: 1}
   m_AnchorMax: {x: 1, y: 1}
   m_AnchoredPosition: {x: -50, y: -50}
-  m_SizeDelta: {x: 100, y: 600}
+  m_SizeDelta: {x: 100, y: 500}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!114 &995829300
 MonoBehaviour:
@@ -2190,6 +2242,74 @@ CanvasGroup:
   m_Interactable: 1
   m_BlocksRaycasts: 1
   m_IgnoreParentGroups: 0
+--- !u!1 &1024550951
+GameObject:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  serializedVersion: 6
+  m_Component:
+  - component: {fileID: 1024550953}
+  - component: {fileID: 1024550952}
+  m_Layer: 0
+  m_Name: Aldea_Codiciosos
+  m_TagString: Untagged
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
+--- !u!114 &1024550952
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1024550951}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 602f8b47bdd7edc4babe79aff13df75d, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: Assembly-CSharp::Aldea
+  tipoAldea: 0
+  aventureros:
+  - nombre: ArqueroCodicioso
+    rol: 0
+    prefab: {fileID: 3207577810400515543, guid: 3bbca94e52fdad1ecb3fcbc2c974ccb7, type: 3}
+    nivel: 0
+  - nombre: LuchadorCodicioso
+    rol: 1
+    prefab: {fileID: 6108273667369040895, guid: 0653454b434302889ae23dc0f05eeb7a, type: 3}
+    nivel: 0
+  - nombre: MagoCodicioso
+    rol: 2
+    prefab: {fileID: 6767868986443984454, guid: a84a3d5c48277aeb9967fcd844220632, type: 3}
+    nivel: 0
+  - nombre: MedicoCodicioso
+    rol: 3
+    prefab: {fileID: 776287462742014486, guid: 90f443170b107486cba53a92e8daa470, type: 3}
+    nivel: 0
+  - nombre: TanqueCodicioso
+    rol: 4
+    prefab: {fileID: 1305646359629266846, guid: 9a620f813a58d6e0b8c2e16013483d40, type: 3}
+    nivel: 0
+  vidas: 3
+  victorias: 0
+--- !u!4 &1024550953
+Transform:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1024550951}
+  serializedVersion: 2
+  m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
+  m_LocalPosition: {x: 0, y: 0, z: 0}
+  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_ConstrainProportionsScale: 0
+  m_Children: []
+  m_Father: {fileID: 1571753873}
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!1 &1040394190
 GameObject:
   m_ObjectHideFlags: 0
@@ -2223,7 +2343,7 @@ Transform:
   - {fileID: 234958255}
   m_Father: {fileID: 0}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
---- !u!1 &1089269736
+--- !u!1 &1070901949
 GameObject:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
@@ -2231,137 +2351,66 @@ GameObject:
   m_PrefabAsset: {fileID: 0}
   serializedVersion: 6
   m_Component:
-  - component: {fileID: 1089269737}
-  - component: {fileID: 1089269739}
-  - component: {fileID: 1089269738}
-  m_Layer: 5
-  m_Name: Empezar
+  - component: {fileID: 1070901951}
+  - component: {fileID: 1070901950}
+  m_Layer: 0
+  m_Name: Aldea_Temerosos
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
   m_IsActive: 1
---- !u!224 &1089269737
-RectTransform:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 1089269736}
-  m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
-  m_LocalPosition: {x: 0, y: 0, z: 0}
-  m_LocalScale: {x: 1, y: 1, z: 1}
-  m_ConstrainProportionsScale: 0
-  m_Children: []
-  m_Father: {fileID: 670458581}
-  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
-  m_AnchorMin: {x: 0, y: 0}
-  m_AnchorMax: {x: 1, y: 1}
-  m_AnchoredPosition: {x: 0, y: 0}
-  m_SizeDelta: {x: 0, y: 0}
-  m_Pivot: {x: 0.5, y: 0.5}
---- !u!114 &1089269738
+--- !u!114 &1070901950
 MonoBehaviour:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 1089269736}
+  m_GameObject: {fileID: 1070901949}
   m_Enabled: 1
   m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: f4688fdb7df04437aeb418b961361dc5, type: 3}
+  m_Script: {fileID: 11500000, guid: 602f8b47bdd7edc4babe79aff13df75d, type: 3}
   m_Name: 
-  m_EditorClassIdentifier: Unity.TextMeshPro::TMPro.TextMeshProUGUI
-  m_Material: {fileID: 0}
-  m_Color: {r: 1, g: 1, b: 1, a: 1}
-  m_RaycastTarget: 1
-  m_RaycastPadding: {x: 0, y: 0, z: 0, w: 0}
-  m_Maskable: 1
-  m_OnCullStateChanged:
-    m_PersistentCalls:
-      m_Calls: []
-  m_text: 'Empezar
-
-'
-  m_isRightToLeft: 0
-  m_fontAsset: {fileID: 11400000, guid: 8f586378b4e144a9851e7b34d9b748ee, type: 2}
-  m_sharedMaterial: {fileID: 2180264, guid: 8f586378b4e144a9851e7b34d9b748ee, type: 2}
-  m_fontSharedMaterials: []
-  m_fontMaterial: {fileID: 0}
-  m_fontMaterials: []
-  m_fontColor32:
-    serializedVersion: 2
-    rgba: 4281479730
-  m_fontColor: {r: 0.19607843, g: 0.19607843, b: 0.19607843, a: 1}
-  m_enableVertexGradient: 0
-  m_colorMode: 3
-  m_fontColorGradient:
-    topLeft: {r: 1, g: 1, b: 1, a: 1}
-    topRight: {r: 1, g: 1, b: 1, a: 1}
-    bottomLeft: {r: 1, g: 1, b: 1, a: 1}
-    bottomRight: {r: 1, g: 1, b: 1, a: 1}
-  m_fontColorGradientPreset: {fileID: 0}
-  m_spriteAsset: {fileID: 0}
-  m_tintAllSprites: 0
-  m_StyleSheet: {fileID: 0}
-  m_TextStyleHashCode: -1183493901
-  m_overrideHtmlColors: 0
-  m_faceColor:
-    serializedVersion: 2
-    rgba: 4294967295
-  m_fontSize: 24
-  m_fontSizeBase: 24
-  m_fontWeight: 400
-  m_enableAutoSizing: 0
-  m_fontSizeMin: 0
-  m_fontSizeMax: 0
-  m_fontStyle: 0
-  m_HorizontalAlignment: 2
-  m_VerticalAlignment: 512
-  m_textAlignment: 65535
-  m_characterSpacing: 0
-  m_characterHorizontalScale: 1
-  m_wordSpacing: 0
-  m_lineSpacing: 0
-  m_lineSpacingMax: 0
-  m_paragraphSpacing: 0
-  m_charWidthMaxAdj: 0
-  m_TextWrappingMode: 0
-  m_wordWrappingRatios: 0.4
-  m_overflowMode: 0
-  m_linkedTextComponent: {fileID: 0}
-  parentLinkedComponent: {fileID: 0}
-  m_enableKerning: 0
-  m_ActiveFontFeatures: 
-  m_enableExtraPadding: 0
-  checkPaddingRequired: 0
-  m_isRichText: 1
-  m_EmojiFallbackSupport: 1
-  m_parseCtrlCharacters: 1
-  m_isOrthographic: 1
-  m_isCullingEnabled: 0
-  m_horizontalMapping: 0
-  m_verticalMapping: 0
-  m_uvLineOffset: 0
-  m_geometrySortingOrder: 0
-  m_IsTextObjectScaleStatic: 0
-  m_VertexBufferAutoSizeReduction: 0
-  m_useMaxVisibleDescender: 1
-  m_pageToDisplay: 1
-  m_margin: {x: 0, y: 0, z: 0, w: 0}
-  m_isUsingLegacyAnimationComponent: 0
-  m_isVolumetricText: 0
-  m_hasFontAssetChanged: 0
-  m_baseMaterial: {fileID: 0}
-  m_maskOffset: {x: 0, y: 0, z: 0, w: 0}
---- !u!222 &1089269739
-CanvasRenderer:
+  m_EditorClassIdentifier: Assembly-CSharp::Aldea
+  tipoAldea: 1
+  aventureros:
+  - nombre: ArqueroTemeroso
+    rol: 0
+    prefab: {fileID: 3008476044322566655, guid: 9c5f5ea44880d0c469d618d9b7e28d61, type: 3}
+    nivel: 0
+  - nombre: MedicoTemeroso
+    rol: 3
+    prefab: {fileID: 5419072811828949542, guid: 989d461cd8653cb4992663fe9a881d5a, type: 3}
+    nivel: 0
+  - nombre: Luchador
+    rol: 1
+    prefab: {fileID: 8502269901107961320, guid: 098dacbefe5c02b47afe59392fe580dc, type: 3}
+    nivel: 0
+  - nombre: MagoTemeroso
+    rol: 2
+    prefab: {fileID: 1051542365392765645, guid: 311dd40e952774e48b766949881f9094, type: 3}
+    nivel: 0
+  - nombre: Tanque
+    rol: 4
+    prefab: {fileID: 1561813422154253682, guid: 0e268c52a97e24a48a22a5b677385e7a, type: 3}
+    nivel: 0
+  vidas: 3
+  victorias: 0
+--- !u!4 &1070901951
+Transform:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 1089269736}
-  m_CullTransparentMesh: 1
+  m_GameObject: {fileID: 1070901949}
+  serializedVersion: 2
+  m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
+  m_LocalPosition: {x: 0, y: 0, z: 0}
+  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_ConstrainProportionsScale: 0
+  m_Children: []
+  m_Father: {fileID: 1571753873}
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!1 &1137061632
 GameObject:
   m_ObjectHideFlags: 0
@@ -2521,10 +2570,10 @@ RectTransform:
   - {fileID: 995829299}
   m_Father: {fileID: 1402884410}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
-  m_AnchorMin: {x: 0, y: 1}
-  m_AnchorMax: {x: 1, y: 1}
-  m_AnchoredPosition: {x: 50, y: -70}
-  m_SizeDelta: {x: 100, y: 100}
+  m_AnchorMin: {x: 0.5, y: 1}
+  m_AnchorMax: {x: 0.5, y: 1}
+  m_AnchoredPosition: {x: 84, y: -66}
+  m_SizeDelta: {x: 400, y: 100}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!114 &1159160215
 MonoBehaviour:
@@ -2710,13 +2759,11 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 1a0200bdb530c03e09498210d5c0ae39, type: 3}
   m_Name: 
   m_EditorClassIdentifier: Assembly-CSharp::Iniciar
-  Alies:
-  - prefab: {fileID: 3207577810400515543, guid: 3bbca94e52fdad1ecb3fcbc2c974ccb7, type: 3}
-    level: 1
-  - prefab: {fileID: 776287462742014486, guid: 90f443170b107486cba53a92e8daa470, type: 3}
-    level: 1
-  - prefab: {fileID: 6767868986443984454, guid: a84a3d5c48277aeb9967fcd844220632, type: 3}
-    level: 1
+  villageManager: {fileID: 0}
+  adventurerManager: {fileID: 0}
+  minIntervalSeconds: 15
+  maxIntervalSeconds: 20
+  retryDelaySeconds: 1
 --- !u!1 &1276014281
 GameObject:
   m_ObjectHideFlags: 0
@@ -2753,6 +2800,7 @@ MonoBehaviour:
   currentMap: {fileID: 417526264}
   waveTransitionDelay: 5
   roomTransitionDelay: 10
+  fightUnitTag: FightUnit
 --- !u!4 &1276014283
 Transform:
   m_ObjectHideFlags: 0
@@ -2782,18 +2830,20 @@ MonoBehaviour:
   m_EditorClassIdentifier: Assembly-CSharp::WaveManager
   rooms:
   - wave1:
+    - {fileID: 6077719647948029169, guid: 8f50033e63582c56394c6ce5b24223e4, type: 3}
+    wave2:
+    - {fileID: 5144600447889281789, guid: 354fe04c75c445b0f8d85394c2b82de0, type: 3}
+    wave3:
+    - {fileID: 6077719647948029169, guid: 8f50033e63582c56394c6ce5b24223e4, type: 3}
+    loot: 50
+    isBeingAttacked: 0
+  - wave1:
     - {fileID: 1563446396628506776, guid: 991ce61d8aa1dd3618e0439297f201f4, type: 3}
     wave2:
     - {fileID: 5144600447889281789, guid: 354fe04c75c445b0f8d85394c2b82de0, type: 3}
     wave3:
-    - {fileID: 7904305542069724169, guid: f5bb89e7e9b87cd68be5f0925a6dfe6a, type: 3}
-    isBeingAttacked: 0
-  - wave1:
-    - {fileID: 2708113035643015981, guid: 3a6eb02d8c5ac2b5a87381eb68a21843, type: 3}
-    wave2:
-    - {fileID: 7904305542069724169, guid: f5bb89e7e9b87cd68be5f0925a6dfe6a, type: 3}
-    wave3:
-    - {fileID: 5144600447889281789, guid: 354fe04c75c445b0f8d85394c2b82de0, type: 3}
+    - {fileID: 6077719647948029169, guid: 8f50033e63582c56394c6ce5b24223e4, type: 3}
+    loot: 50
     isBeingAttacked: 0
 --- !u!114 &1276014285
 MonoBehaviour:
@@ -3190,7 +3240,6 @@ RectTransform:
   m_LocalScale: {x: 0, y: 0, z: 0}
   m_ConstrainProportionsScale: 0
   m_Children:
-  - {fileID: 670458581}
   - {fileID: 1159160214}
   m_Father: {fileID: 0}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
@@ -3199,6 +3248,137 @@ RectTransform:
   m_AnchoredPosition: {x: 0, y: 0}
   m_SizeDelta: {x: 0, y: 0}
   m_Pivot: {x: 0, y: 0}
+--- !u!1 &1419709622
+GameObject:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  serializedVersion: 6
+  m_Component:
+  - component: {fileID: 1419709623}
+  - component: {fileID: 1419709624}
+  m_Layer: 0
+  m_Name: test
+  m_TagString: Untagged
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
+--- !u!4 &1419709623
+Transform:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1419709622}
+  serializedVersion: 2
+  m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
+  m_LocalPosition: {x: 0, y: 0, z: 0}
+  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_ConstrainProportionsScale: 0
+  m_Children: []
+  m_Father: {fileID: 1571753873}
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!114 &1419709624
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1419709622}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 14f5ea9ac89880b4cbc5d9f7be61cf2f, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: Assembly-CSharp::TestVillage
+  villageManager: {fileID: 38798068}
+--- !u!1 &1503612726
+GameObject:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  serializedVersion: 6
+  m_Component:
+  - component: {fileID: 1503612727}
+  - component: {fileID: 1503612728}
+  m_Layer: 0
+  m_Name: Aldea_Vengativos
+  m_TagString: Untagged
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
+--- !u!4 &1503612727
+Transform:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1503612726}
+  serializedVersion: 2
+  m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
+  m_LocalPosition: {x: 0, y: 0, z: 0}
+  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_ConstrainProportionsScale: 0
+  m_Children: []
+  m_Father: {fileID: 1571753873}
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!114 &1503612728
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1503612726}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 602f8b47bdd7edc4babe79aff13df75d, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: Assembly-CSharp::Aldea
+  tipoAldea: 0
+  aventureros: []
+  vidas: 3
+  victorias: 0
+--- !u!1 &1571753872
+GameObject:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  serializedVersion: 6
+  m_Component:
+  - component: {fileID: 1571753873}
+  m_Layer: 0
+  m_Name: Aldeas
+  m_TagString: Untagged
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
+--- !u!4 &1571753873
+Transform:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1571753872}
+  serializedVersion: 2
+  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
+  m_LocalPosition: {x: 36.9, y: 0, z: 0}
+  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_ConstrainProportionsScale: 0
+  m_Children:
+  - {fileID: 1419709623}
+  - {fileID: 1503612727}
+  - {fileID: 446887416}
+  - {fileID: 754516603}
+  - {fileID: 1070901951}
+  - {fileID: 1024550953}
+  - {fileID: 38798067}
+  m_Father: {fileID: 0}
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!1 &1576469495
 GameObject:
   m_ObjectHideFlags: 0
@@ -3288,10 +3468,10 @@ Camera:
   m_LensShift: {x: 0, y: 0}
   m_NormalizedViewPortRect:
     serializedVersion: 2
-    x: 0
-    y: 0.7
-    width: 1
-    height: 0.3
+    x: 0.275
+    y: 0.77
+    width: 0.55
+    height: 0.23
   near clip plane: 0.3
   far clip plane: 10
   field of view: 60
@@ -4037,3 +4217,4 @@ SceneRoots:
   - {fileID: 1969977294}
   - {fileID: 1247986546}
   - {fileID: 165264988}
+  - {fileID: 1571753873}
