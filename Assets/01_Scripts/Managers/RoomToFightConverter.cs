@@ -40,17 +40,39 @@ public class RoomToFightConverter : MonoBehaviour
     }
     private void EnsureLookup()
     {
-        if(enemyLookup != null)
-            return;
-
-        enemyLookup = new();
-
-        foreach(var enemy in enemyDatabase)
+        if (enemyLookup == null)
         {
-            if(enemy == null)
-                continue;
+            enemyLookup = new();
+        }
 
-            enemyLookup[enemy.enemyId] = enemy;
+        // 1. Cargar desde la base de datos local
+        if (enemyDatabase != null)
+        {
+            foreach(var enemy in enemyDatabase)
+            {
+                if(enemy == null || string.IsNullOrEmpty(enemy.enemyId))
+                    continue;
+
+                if (!enemyLookup.ContainsKey(enemy.enemyId))
+                {
+                    enemyLookup[enemy.enemyId] = enemy;
+                }
+            }
+        }
+
+        // 2. Cargar desde GachaInventoryManager de forma dinámica
+        if (GachaInventoryManager.Instance != null && GachaInventoryManager.Instance.allEnemies != null)
+        {
+            foreach (var enemy in GachaInventoryManager.Instance.allEnemies)
+            {
+                if (enemy == null || string.IsNullOrEmpty(enemy.enemyId))
+                    continue;
+
+                if (!enemyLookup.ContainsKey(enemy.enemyId))
+                {
+                    enemyLookup[enemy.enemyId] = enemy;
+                }
+            }
         }
     }
 
@@ -108,5 +130,19 @@ public class RoomToFightConverter : MonoBehaviour
         Debug.Log(
             $"Encontrado: {enemy.enemyId}"
         );
+
+        // Añadir el enemigo a la oleada de combate
+        bool isBoss = enemyId == "juguetero_demonio" || enemy.isBoss;
+        int count = isBoss ? 1 : amount;
+        int level = difficulty * 5;
+
+        for(int i = 0; i < count; i++)
+        {
+            wave.Add(new AdventurerSetup
+            {
+                prefab = enemy.enemyPrefab,
+                level = level
+            });
+        }
     }
 }
