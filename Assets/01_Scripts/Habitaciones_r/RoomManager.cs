@@ -6,10 +6,8 @@ public class RoomManager : MonoBehaviour
     public static RoomManager Instance;
 
     public int pisoActual = 1;
-
     public int habitacionSeleccionada = 1;
 
-    //Evento para avisar cambios a todos
     public Action<int> OnRoomSelected;
     public Action<int> OnFloorSelected;
 
@@ -18,12 +16,16 @@ public class RoomManager : MonoBehaviour
         Instance = this;
     }
 
+    void Start()
+    {
+        OnFloorSelected?.Invoke(pisoActual);
+        OnRoomSelected?.Invoke(habitacionSeleccionada);
+    }
+
     public void SeleccionarPiso(int piso)
     {
         pisoActual = piso;
-
         OnFloorSelected?.Invoke(piso);
-
         Debug.Log("PISO: " + piso);
     }
 
@@ -31,18 +33,11 @@ public class RoomManager : MonoBehaviour
     {
         habitacionSeleccionada = roomID;
 
-        //calcular piso automático
         pisoActual = Mathf.CeilToInt(roomID / 9f);
 
         OnFloorSelected?.Invoke(pisoActual);
-
         OnRoomSelected?.Invoke(roomID);
 
-        Debug.Log(
-            "Habitación: " +
-            roomID +
-            " Piso: " +
-            pisoActual
-        );
+        Debug.Log("Habitación: " + roomID + " Piso: " + pisoActual);
     }
 }

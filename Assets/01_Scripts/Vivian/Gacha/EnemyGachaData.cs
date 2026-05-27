@@ -37,6 +37,17 @@ public class EnemyGachaData : ScriptableObject
     [Header("Prefab")]
     public GameObject enemyPrefab;
 
+    [Header("Escala habitación")]
+    public Vector3 roomScale =
+        new Vector3(
+            0.1f,
+            0.1f,
+            0.1f
+        );
+
     [Header("Precio tienda")]
     public int shopPrice = 100;
+
+    [Header("Reglas especiales")]
+    public bool isBoss = false;
 }
