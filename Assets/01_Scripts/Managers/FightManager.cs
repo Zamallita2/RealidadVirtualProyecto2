@@ -23,7 +23,7 @@ public class FightManager : MonoBehaviour
     private Aldea currentAldea;
     private readonly List<AventureroData> currentAldeaTeamSnapshot = new();
 
-    private List<AdventurerData> currentParty = new();
+    public List<AdventurerData> currentParty = new();
     private List<UnitStats> allySlots = new();
     private List<UnitStats> aliveEnemies = new();
     private bool isFightActive;
@@ -503,5 +503,39 @@ public class FightManager : MonoBehaviour
         spawnedFightObjects.Clear();
         allySlots.Clear();
         aliveEnemies.Clear();
+    }
+    public void HandleLevels(bool isWave)
+    {
+        float chance = waveManager.GetNextRoomDrop(); // 0-100
+
+        foreach (var adv in currentParty)
+        {
+            for (int i = 0; i < 3; i++)
+            {
+                if (Random.Range(0f, 100f) <= chance)
+                {
+                    adv.level++;
+
+                    if (!isWave)
+                        adv.level++;
+
+                    ApplyMidFightLevelUp(adv, isWave);
+                }
+            }
+        }
+    }
+    void ApplyMidFightLevelUp(AdventurerData adv, bool isWave)
+    {
+        float oldMax = adv.maxHealth;
+        float hpPercent = adv.currentHealth / oldMax;
+
+        AdventurerManager.ApplyLevelScaling(
+            adv.level,
+            ref adv.maxHealth,
+            ref adv.strength,
+            ref adv.speed
+        );
+
+        adv.currentHealth = adv.maxHealth * hpPercent;
     }
 }

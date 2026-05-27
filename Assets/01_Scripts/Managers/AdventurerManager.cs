@@ -119,7 +119,7 @@ public class AdventurerManager : MonoBehaviour
         };
     }
 
-    static void ApplyLevelScaling(
+    public static void ApplyLevelScaling(
         int level,
         ref float maxHealth,
         ref int strength,

@@ -10,6 +10,7 @@ public class WaveManager : MonoBehaviour
     private int currentRoomIndex = -1;
     private int currentWave;
     public GachaInventoryManager shop;
+    public FightManager FM;
     public int minCoins=20;
     public int maxCoins=50;
     public int minEssence=20;
@@ -17,6 +18,7 @@ public class WaveManager : MonoBehaviour
     void Start()
     {
         shop=FindFirstObjectByType<GachaInventoryManager>();
+        FM=gameObject.GetComponent<FightManager>();
     }
 
     public void AddRoom(FightRoom room)
@@ -91,6 +93,7 @@ public class WaveManager : MonoBehaviour
         room.isBeingAttacked = false;
         shop.AddEssence(Random.Range(minEssence*2,maxEssence*2));
         shop.AddShopCoinsFromBattle(Random.Range(minCoins*2,maxCoins*2));
+        FM.HandleLevels(false);
     }
 
     public List<GameObject> StartNextWave()
@@ -100,6 +103,7 @@ public class WaveManager : MonoBehaviour
         {
             shop.AddEssence(Random.Range(minEssence,maxEssence));
             shop.AddShopCoinsFromBattle(Random.Range(minCoins,maxCoins));
+            FM.HandleLevels(true);
         }
 
         if(currentRoomIndex < 0 || currentRoomIndex >= runtimeRooms.Count)
@@ -166,7 +170,7 @@ public class WaveManager : MonoBehaviour
             _ => false
         };
     }
-    float GetNextRoomDrop()
+    public float GetNextRoomDrop()
     {
         return(rooms[currentRoomIndex].loot);
     }
