@@ -402,6 +402,7 @@ public class FightManager : MonoBehaviour
         }
         else
         {
+            SyncFightFromParty();
             StartCoroutine(RoomTransitionCoroutine());   
         }
     }
@@ -413,17 +414,13 @@ public class FightManager : MonoBehaviour
 
         SyncPartyFromFight();
 
-        if (!waveManager.HasRemainingRoomsWithEnemies())
+        if (waveManager.HasRemainingRoomsWithEnemies())
         {
-            isTransitioning = false;
-            OnDungeonComplete();
-            yield break;
+            Debug.Log("GANASTE");
+            FadeImage.Instance.Mostrar();
+            yield return new WaitForSeconds(roomTransitionDelay);
+            FadeImage.Instance.Ocultar();
         }
-
-        Debug.Log("GANASTE");
-        FadeImage.Instance.Mostrar();
-        yield return new WaitForSeconds(roomTransitionDelay);
-        FadeImage.Instance.Ocultar();
 
         isTransitioning = false;
 
@@ -546,6 +543,14 @@ public class FightManager : MonoBehaviour
                 continue;
 
             stats.CopyToData(currentParty[stats.partyIndex]);
+        }
+    }
+
+    void SyncFightFromParty()
+    {
+        for (int i = 0; i < currentParty.Count; i++)
+        {
+            ApplyStatsToUnit(i, currentParty[i]);
         }
     }
 

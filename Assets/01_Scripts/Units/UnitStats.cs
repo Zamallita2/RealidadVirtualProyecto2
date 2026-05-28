@@ -90,6 +90,7 @@ public class UnitStats : MonoBehaviour
 
         if(!status.CanAct())
         {
+            hasActedThisRound=true;
             turnManager.EndTurn();
             return;
         }
