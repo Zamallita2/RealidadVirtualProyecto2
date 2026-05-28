@@ -10,6 +10,8 @@ public class FightManager : MonoBehaviour
     [Header("Transition")]
     [SerializeField] private float waveTransitionDelay = 5f;
     [SerializeField] private float roomTransitionDelay = 10f;
+    [SerializeField] private float emptyRoomDelay = 0.2f;
+    [SerializeField] private GameObject emptyRoomWarning;
 
     [Header("Cleanup")]
     [SerializeField] private string fightUnitTag = "FightUnit";
@@ -103,16 +105,7 @@ public class FightManager : MonoBehaviour
             StatCalculator.RecalculateWithHealthPreserved(adv);
         }
 
-        if(!BeginCurrentRoom())
-        {
-            OnDungeonComplete();
-            return;
-        }
-
-        turnManager.StartTurns(
-            GetLivingUnits(allySlots),
-            GetLivingUnits(aliveEnemies)
-        );
+        StartCoroutine(AdvanceRoomsCoroutine(true));
     }
 
     public void DeactivateFight()
@@ -144,13 +137,54 @@ public class FightManager : MonoBehaviour
         return true;
     }
 
-    bool BeginCurrentRoom()
+    IEnumerator AdvanceRoomsCoroutine(bool isStart)
     {
-        if(!waveManager.EnterNextRoom())
-            return false;
+        bool wasEmpty = false;
+
+        while (true)
+        {
+            if (!waveManager.EnterNextRoom())
+            {
+                if (wasEmpty)
+                {
+                    FadeImage.Instance.Ocultar();
+                    if (emptyRoomWarning != null) emptyRoomWarning.SetActive(false);
+                    yield return new WaitForSeconds(0.2f);
+                }
+                OnDungeonComplete();
+                yield break;
+            }
+
+            if (waveManager.IsCurrentRoomEmpty())
+            {
+                wasEmpty = true;
+                FadeImage.Instance.Mostrar();
+                if (emptyRoomWarning != null) emptyRoomWarning.SetActive(true);
+                
+                yield return new WaitForSeconds(emptyRoomDelay);
+            }
+            else
+            {
+                break;
+            }
+        }
+
+        if (wasEmpty)
+        {
+            FadeImage.Instance.Ocultar();
+            if (emptyRoomWarning != null) emptyRoomWarning.SetActive(false);
+            yield return new WaitForSeconds(0.2f);
+        }
 
         TryStartNextWave();
-        return true;
+
+        if (isStart)
+        {
+            turnManager.StartTurns(
+                GetLivingUnits(allySlots),
+                GetLivingUnits(aliveEnemies)
+            );
+        }
     }
 
     void TryStartNextWave()
@@ -224,6 +258,10 @@ public class FightManager : MonoBehaviour
 
     void SpawnWave(List<AdventurerSetup> wave)
     {
+        // SAFETY: Asegurarse de quitar el fog y el mensaje al iniciar una pelea real
+        FadeImage.Instance.OcultarInstante();
+        if (emptyRoomWarning != null) emptyRoomWarning.SetActive(false);
+
         aliveEnemies.Clear();
         spawnedEnemyObjects.Clear();
 
@@ -282,6 +320,10 @@ public class FightManager : MonoBehaviour
 
             StatCalculator.Recalculate(temp);
 
+            // Recalculate solo actualiza maxHealth; igualamos currentHealth
+            // para que el enemigo arranque con la vida completa a su nivel.
+            temp.currentHealth = temp.maxHealth;
+
             stats.ApplyFromData(temp);
 
             //--------------------------------
@@ -322,6 +364,9 @@ public class FightManager : MonoBehaviour
         }
         else
         {
+            // Eliminar la unidad aliada muerta del orden de turno
+            // y reconstruir la lista sin ella.
+            turnManager.RemoveUnit(unit);
             turnManager.RefreshTurnOrder();
         }
     }
@@ -357,12 +402,6 @@ public class FightManager : MonoBehaviour
         }
         else
         {
-            if(!waveManager.EnterNextRoom())
-            {
-                OnDungeonComplete();
-                return;
-            }
-
             StartCoroutine(RoomTransitionCoroutine());   
         }
     }
@@ -374,6 +413,13 @@ public class FightManager : MonoBehaviour
 
         SyncPartyFromFight();
 
+        if (!waveManager.HasRemainingRoomsWithEnemies())
+        {
+            isTransitioning = false;
+            OnDungeonComplete();
+            yield break;
+        }
+
         Debug.Log("GANASTE");
         FadeImage.Instance.Mostrar();
         yield return new WaitForSeconds(roomTransitionDelay);
@@ -384,7 +430,7 @@ public class FightManager : MonoBehaviour
         if(!isFightActive)
             yield break;
 
-        TryStartNextWave();
+        yield return StartCoroutine(AdvanceRoomsCoroutine(false));
     }
 
     void OnDungeonComplete()
@@ -397,6 +443,7 @@ public class FightManager : MonoBehaviour
         DeactivateFight();
 
         Debug.Log("Venciste completamente a la mazmorra");
+        LosePanelUI.Instance?.InvokeLoseByWave();
     }
     void RetreatFromDungeon()
     {

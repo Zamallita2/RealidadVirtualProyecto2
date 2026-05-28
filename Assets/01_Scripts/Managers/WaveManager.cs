@@ -92,22 +92,39 @@ public class WaveManager : MonoBehaviour
         currentRoomIndex++;
         currentWave = 0;
 
-        // Saltar salas vacías (cargándolas on-demand para comprobarlo)
-        while (currentRoomIndex < roomIdSequence.Count)
+        if (currentRoomIndex < roomIdSequence.Count)
         {
-            FightRoom candidate = LoadRoomByIndex(currentRoomIndex);
+            currentRoomData = LoadRoomByIndex(currentRoomIndex);
 
-            if (candidate != null && !candidate.IsEmpty())
+            if (currentRoomData != null)
             {
-                currentRoomData = candidate;
                 currentRoomData.isBeingAttacked = true;
-                return true;
             }
 
-            currentRoomIndex++;
+            return true;
         }
 
         currentRoomData = null;
+        return false;
+    }
+
+    public bool IsCurrentRoomEmpty()
+    {
+        return currentRoomData == null || currentRoomData.IsEmpty();
+    }
+
+    public bool HasRemainingRoomsWithEnemies()
+    {
+        int tempIndex = currentRoomIndex + 1;
+        while (tempIndex < roomIdSequence.Count)
+        {
+            FightRoom candidate = LoadRoomByIndex(tempIndex);
+            if (candidate != null && !candidate.IsEmpty())
+            {
+                return true;
+            }
+            tempIndex++;
+        }
         return false;
     }
 

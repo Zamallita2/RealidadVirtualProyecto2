@@ -72,6 +72,7 @@ public class UnitMovement : MonoBehaviour
 
             yield return null;
         }
+        transform.position = targetPos;
 
         animator.SetBool("IsWalking", false);
 

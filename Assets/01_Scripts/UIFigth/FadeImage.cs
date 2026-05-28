@@ -32,6 +32,14 @@ public class FadeImage : MonoBehaviour
         currentFade = StartCoroutine(Fade(0));
     }
 
+    public void OcultarInstante()
+    {
+        if(currentFade != null)
+            StopCoroutine(currentFade);
+            
+        canvasGroup.alpha = 0;
+    }
+
     IEnumerator Fade(float objetivo)
     {
         float inicio = canvasGroup.alpha;

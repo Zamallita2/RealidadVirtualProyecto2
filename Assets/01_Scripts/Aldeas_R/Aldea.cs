@@ -80,6 +80,7 @@ public class Aldea : MonoBehaviour
             aventureros.Clear();
 
             Debug.Log(tipoAldea + " perdió equipo");
+            LosePanelUI.Instance?.CheckIfLose();
 
             if (vidas <= 0)
                 Debug.Log(tipoAldea + " se quedó sin vidas");
