@@ -2,6 +2,7 @@
 using System.Collections.Generic;
 using UnityEngine;
 using TMPro;
+using UnityEngine.UI;
 
 public class GachaSystem : MonoBehaviour
 {
@@ -34,6 +35,9 @@ public class GachaSystem : MonoBehaviour
     public TMP_Text shopCoinsText;
     public GachaButtonVisual summonOneButton;
     public GachaButtonVisual summonTenButton;
+
+    [Header("Skip Animación")]
+    public Toggle skipAnimationToggle;
 
     [Header("Animación fullscreen")]
     public GachaFullscreenAnimation fullscreenAnimation;
@@ -69,7 +73,8 @@ public class GachaSystem : MonoBehaviour
 
     public void SummonOne()
     {
-        if (isSummoning) return;
+        if (isSummoning)
+            return;
 
         Play(clickSound);
 
@@ -86,7 +91,8 @@ public class GachaSystem : MonoBehaviour
 
     public void SummonTen()
     {
-        if (isSummoning) return;
+        if (isSummoning)
+            return;
 
         Play(clickSound);
 
@@ -128,7 +134,12 @@ public class GachaSystem : MonoBehaviour
                 hasEpicOrBetter = true;
             }
 
-            if (fullscreenAnimation != null)
+            bool skipAnimation =
+                skipAnimationToggle != null &&
+                skipAnimationToggle.isOn;
+
+            // SOLO reproduce animación si NO está activado el skip
+            if (!skipAnimation && fullscreenAnimation != null)
             {
                 yield return StartCoroutine(
                     fullscreenAnimation.PlayAnimation(
@@ -144,8 +155,10 @@ public class GachaSystem : MonoBehaviour
             if (rewardPopup != null)
             {
                 rewardPopup.Show(reward, isNew);
+
                 yield return rewardPopup.WaitUntilClosed();
-                yield return new WaitForSeconds(0.2f);
+
+                yield return new WaitForSeconds(0.15f);
             }
         }
 
@@ -169,6 +182,7 @@ public class GachaSystem : MonoBehaviour
             {
                 inventory.SaveData.pityCounter = 0;
                 inventory.Save();
+
                 return GetRandomFromPool(legendaryPool);
             }
         }
@@ -215,7 +229,12 @@ public class GachaSystem : MonoBehaviour
             return GachaRarity.Epico;
         }
 
-        float total = commonChance + rareChance + epicChance + legendaryChance;
+        float total =
+            commonChance +
+            rareChance +
+            epicChance +
+            legendaryChance;
+
         float roll = Random.Range(0f, total);
 
         if (roll <= legendaryChance)
@@ -248,17 +267,20 @@ public class GachaSystem : MonoBehaviour
     public void UpdateUI()
     {
         if (essenceText != null && inventory != null)
-            essenceText.text = inventory.GetEssence().ToString();
+            essenceText.text =
+                inventory.GetEssence().ToString();
 
         if (shopCoinsText != null && inventory != null)
-            shopCoinsText.text = inventory.GetShopCoins().ToString();
+            shopCoinsText.text =
+                inventory.GetShopCoins().ToString();
 
         UpdateButtonStates();
     }
 
     private void UpdateButtonStates()
     {
-        if (inventory == null) return;
+        if (inventory == null)
+            return;
 
         bool canOne =
             !isSummoning &&
