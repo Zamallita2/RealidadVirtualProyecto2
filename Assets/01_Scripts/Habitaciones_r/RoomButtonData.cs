@@ -1,8 +1,11 @@
 using UnityEngine;
 using UnityEngine.UI;
 using TMPro;
+using UnityEngine.EventSystems;
 
-public class RoomButtonData : MonoBehaviour
+public class RoomButtonData :
+    MonoBehaviour,
+    IPointerEnterHandler
 {
     public int roomID;
 
@@ -49,10 +52,23 @@ public class RoomButtonData : MonoBehaviour
         .SeleccionarHabitacion(
             roomID
         );
+
+        // CLICK
+        UISoundManager.Instance
+        .PlayRoomButtonSound();
     }
 
     public void SetSelected(bool state)
     {
         visual.SetSelected(state);
+    }
+
+    // HOVER
+    public void OnPointerEnter(
+        PointerEventData eventData
+    )
+    {
+        UISoundManager.Instance
+        .PlayHoverSound();
     }
 }
