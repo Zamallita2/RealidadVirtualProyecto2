@@ -227,7 +227,7 @@ public class WaveManager : MonoBehaviour
             TipoAldea.Codiciosos => CheckCodiciosos(hp, nextRoomIsHighDrop),
             TipoAldea.Cautelosos => CheckCautelosos(hp, nextRoomMultiple5),
             TipoAldea.Vengativos => CheckVengativos(hp, party),
-            TipoAldea.Eruditos   => CheckEruditos(hp, nextRoomMultiple5),
+            TipoAldea.Eruditos   => CheckEruditos(hp, nextRoomMultiple5, party),
             _ => false
         };
     }
@@ -378,19 +378,32 @@ public class WaveManager : MonoBehaviour
     {
         foreach (var p in party)
         {
-            if (p.currentHealth / p.maxHealth * 100f < 15f)
+            if (p.isAlive && (p.currentHealth / p.maxHealth * 100f) < 15f)
                 p.currentHealth = p.maxHealth * 0.5f;
         }
-        return hp < 30f;
+
+        // Recalculate hp after potential healing
+        float newHp = GetPartyHealthPercent(party);
+        return newHp < 30f;
     }
 
-    bool CheckEruditos(float hp, bool nextRoomMultiple5)
+    bool CheckEruditos(float hp, bool nextRoomMultiple5, List<AdventurerData> party)
     {
         if (nextRoomMultiple5)
         {
-            // buff de curación global
-            // (esto idealmente en FightManager)
+            // Heal all living members by 50% before a boss room
+            foreach (var p in party)
+            {
+                if (p.isAlive)
+                {
+                    p.currentHealth += p.maxHealth * 0.5f;
+                    if (p.currentHealth > p.maxHealth)
+                        p.currentHealth = p.maxHealth;
+                }
+            }
         }
-        return hp < 30f;
+        
+        float newHp = GetPartyHealthPercent(party);
+        return newHp < 30f;
     }
 }
