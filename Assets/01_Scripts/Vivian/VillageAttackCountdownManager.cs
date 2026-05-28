@@ -107,7 +107,7 @@ public class VillageAttackCountdownManager : MonoBehaviour
         if (seconds < 0)
             seconds = 0;
 
-        countdownText.text = "Siguiente aldea en: " + seconds + "s";
+        countdownText.text = "Atacan en: " + seconds + "s";
     }
 
     private void SetText(string message)

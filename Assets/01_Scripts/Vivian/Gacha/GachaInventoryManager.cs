@@ -1,4 +1,4 @@
-﻿using System.Collections.Generic;
+using System.Collections.Generic;
 using UnityEngine;
 
 public class GachaInventoryManager : MonoBehaviour
@@ -92,6 +92,7 @@ public class GachaInventoryManager : MonoBehaviour
     public void AddEssence(int amount)
     {
         Debug.Log("Ganaste " + amount + " de Escencia");
+        if (MensajeUI.Instance != null) MensajeUI.Instance.Mostrar($"¡Has conseguido {amount} de Esencia!");
         SaveData.essence += amount;
         Save();
     }
@@ -99,6 +100,7 @@ public class GachaInventoryManager : MonoBehaviour
     public void AddShopCoinsFromBattle(int amount)
     {
         Debug.Log("Ganaste " + amount + " monedas");
+        if (MensajeUI.Instance != null) MensajeUI.Instance.Mostrar($"¡Has conseguido {amount} de Oro!");
         SaveData.shopCoins += amount;
         Save();
     }

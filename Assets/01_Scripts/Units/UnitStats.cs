@@ -88,14 +88,14 @@ public class UnitStats : MonoBehaviour
         if(turnManager != null && !turnManager.IsCombatActive)
             return;
 
+        hasActedThisRound = true;
+
         if(!status.CanAct())
         {
-            hasActedThisRound=true;
             turnManager.EndTurn();
             return;
         }
 
-        hasActedThisRound = true;
         combat.TakeTurn();
     }
 

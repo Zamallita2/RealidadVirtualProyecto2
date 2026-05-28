@@ -92,7 +92,7 @@ public class Iniciar : MonoBehaviour
         if (esperandoSiguienteAtaque)
         {
             int segundos = Mathf.CeilToInt(tiempoRestante);
-            contadorAtaqueText.text = "Siguiente aldea en: " + segundos + "s";
+            contadorAtaqueText.text = "Atacan en: " + segundos + "s";
         }
         else
         {

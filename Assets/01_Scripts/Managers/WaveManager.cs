@@ -357,20 +357,20 @@ public class WaveManager : MonoBehaviour
     bool CheckTemerosos(List<AdventurerData> party, float hp)
     {
         bool hasDead = party.Exists(p => !p.isAlive);
-        return hasDead || hp < 40f;
+        return hasDead || hp < 60f;
     }
 
     bool CheckCodiciosos(float hp, bool nextRoomHighDrop)
     {
-        if (hp < 30f) return true;
-        if (nextRoomHighDrop && hp < 20f) return true;
+        if (hp < 50f) return true;
+        if (nextRoomHighDrop && hp < 40f) return true;
         return false;
     }
 
     bool CheckCautelosos(float hp, bool nextRoomMultiple5)
     {
-        if (hp < 30f) return true;
-        if (nextRoomMultiple5 && hp < 50f) return true;
+        if (hp < 50f) return true;
+        if (nextRoomMultiple5 && hp < 70f) return true;
         return false;
     }
 
@@ -384,7 +384,7 @@ public class WaveManager : MonoBehaviour
 
         // Recalculate hp after potential healing
         float newHp = GetPartyHealthPercent(party);
-        return newHp < 30f;
+        return newHp < 50f;
     }
 
     bool CheckEruditos(float hp, bool nextRoomMultiple5, List<AdventurerData> party)
@@ -404,6 +404,6 @@ public class WaveManager : MonoBehaviour
         }
         
         float newHp = GetPartyHealthPercent(party);
-        return newHp < 30f;
+        return newHp < 50f;
     }
 }

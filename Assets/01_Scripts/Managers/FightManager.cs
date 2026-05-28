@@ -96,6 +96,9 @@ public class FightManager : MonoBehaviour
         isFightActive = true;
         isTransitioning = false;
 
+        if (MensajeUI.Instance != null && currentAldea != null) 
+            MensajeUI.Instance.Mostrar($"Los {currentAldea.tipoAldea} han entrado a la mazmorra.");
+        AldeaTexto.Instance.Mostrar(currentAldea.tipoAldea.ToString());
         waveManager.PrepareForFight();
 
         SpawnAllies();
@@ -174,6 +177,19 @@ public class FightManager : MonoBehaviour
             FadeImage.Instance.Ocultar();
             if (emptyRoomWarning != null) emptyRoomWarning.SetActive(false);
             yield return new WaitForSeconds(0.2f);
+        }
+
+        if (wasEmpty || isStart)
+        {
+            if(waveManager.ShouldPartyRetreat(currentAldea, currentParty))
+            {
+                RetreatFromDungeon();
+                yield break;
+            }
+            else
+            {
+                SyncFightFromParty();
+            }
         }
 
         TryStartNextWave();
@@ -396,6 +412,9 @@ public class FightManager : MonoBehaviour
 
         SyncPartyFromFight();
         waveManager.FinishCurrentRoom();
+        
+        int roomNumber = waveManager.GetCurrentRoomIndex() + 1;
+
         if(waveManager.ShouldPartyRetreat(currentAldea, currentParty))
         {
             RetreatFromDungeon();
@@ -452,6 +471,8 @@ public class FightManager : MonoBehaviour
         DeactivateFight();
 
         Debug.Log("Se retiraron");
+        if (MensajeUI.Instance != null) MensajeUI.Instance.Mostrar("Los aventureros han decidido retirarse.");
+        AldeaTexto.Instance.Quitar();
     }
     void LoseFight()
     {
@@ -463,6 +484,8 @@ public class FightManager : MonoBehaviour
         adventurerManager?.OnFightLost();
 
         Debug.Log("PERDISTE");
+        if (MensajeUI.Instance != null) MensajeUI.Instance.Mostrar("Los aventureros han sido derrotados.");
+        AldeaTexto.Instance.Quitar();
     }
 
     void ApplyAldeaResult(bool win)
@@ -502,8 +525,9 @@ public class FightManager : MonoBehaviour
             AdventurerData fightMember =
                 currentParty[i];
 
-            if(!fightMember.isAlive)
-                continue;
+            if(!fightMember.isAlive){
+                fightMember.isAlive=true;
+            }
 
             AventureroData snapshot =
                 currentAldeaTeamSnapshot[i];
