@@ -34,7 +34,9 @@ public class RoomEditorPanelController : MonoBehaviour
     private int currentRoomID = 1;
     private List<GameObject> spawnedEnemyItems = new List<GameObject>();
 
-    private void Start()
+    // SOLO CAMBIO:
+    // antes era Start()
+    private void Awake()
     {
         if (saveButton != null)
             saveButton.onClick.AddListener(SaveAndClose);
@@ -173,6 +175,7 @@ public class RoomEditorPanelController : MonoBehaviour
             else
             {
                 EnemyGachaData data = GachaInventoryManager.Instance.GetEnemyData(enemyId);
+
                 if (data != null)
                     roomSlots[i].SetEnemy(data);
                 else

@@ -41,20 +41,21 @@ public class LosePanelUI : MonoBehaviour
         "Tus defensas fueron insuficientes.\n\nRecuerda que si los aventureros encuentran una sala indefensa, la tomarán al instante.\n\nPrepara unidades cuanto antes para sobrevivir a las oleadas."
     };
 
-    void Awake()
+    private void Awake()
     {
         Instance = this;
     }
 
-    void Start()
+    private void Start()
     {
-        losePanel.SetActive(false);
+        if (losePanel != null)
+            losePanel.SetActive(false);
     }
 
-    // SOLO para derrota por oleadas
+    // SOLO derrota por oleadas
     public void InvokeLoseByWave()
     {
-        if(alreadyLost)
+        if (alreadyLost)
             return;
 
         alreadyLost = true;
@@ -62,46 +63,57 @@ public class LosePanelUI : MonoBehaviour
         ShowRandomMessage(waveLoseMessages);
     }
 
-    // Las aldeas llaman esto cuando mueren
+    // Revisar si todas las aldeas murieron
     public void CheckIfLose()
     {
-        if(alreadyLost)
+        if (alreadyLost)
             return;
 
         bool allDead = true;
 
-        foreach(Aldea aldea in aldeas)
+        foreach (Aldea aldea in aldeas)
         {
-            if(aldea != null && aldea.vidas<=0)
+            if (aldea != null && aldea.vidas > 0)
             {
                 allDead = false;
                 break;
             }
         }
 
-        if(allDead)
+        if (allDead)
         {
             alreadyLost = true;
-
             ShowRandomMessage(villagerLoseMessages);
         }
     }
 
     private void ShowRandomMessage(List<string> messageList)
     {
-        losePanel.SetActive(true);
+        if (losePanel != null)
+            losePanel.SetActive(true);
 
         int randomIndex = Random.Range(0, messageList.Count);
 
-        loseMessageText.text = messageList[randomIndex];
+        if (loseMessageText != null)
+            loseMessageText.text = messageList[randomIndex];
 
         Time.timeScale = 0f;
     }
 
-    public void BackToMenu()
+    // BOTÓN REINTENTAR
+    public void RetryGame()
     {
         Time.timeScale = 1f;
 
+        SceneManager.LoadScene(
+            SceneManager.GetActiveScene().buildIndex
+        );
+    }
+
+    // BOTÓN MENÚ
+    public void BackToMenu()
+    {
+        Time.timeScale = 1f;
         SceneManager.LoadScene(menuSceneName);
     }
 }

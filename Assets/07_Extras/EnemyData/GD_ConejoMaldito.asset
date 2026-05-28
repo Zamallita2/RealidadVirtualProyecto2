@@ -26,7 +26,7 @@ MonoBehaviour:
   shopBigLockedCardSprite: {fileID: 21300000, guid: 49e4fdc0697f71a488ced99665d97c29, type: 3}
   roomBlockedSprite: {fileID: 0}
   enemyPrefab: {fileID: 1563446396628506776, guid: 991ce61d8aa1dd3618e0439297f201f4, type: 3}
-  roomScale: {x: 10, y: 10, z: 10}
-  roomRotation: {x: 0, y: 0, z: 0}
+  roomScale: {x: 0.07, y: 0.07, z: 0.07}
+  roomRotation: {x: 0, y: -90, z: 0}
   shopPrice: 250
   isBoss: 0
