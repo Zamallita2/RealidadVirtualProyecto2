@@ -1,4 +1,4 @@
-﻿using System.Collections;
+using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 using TMPro;
@@ -18,6 +18,14 @@ public class GachaSystem : MonoBehaviour
     [Range(0, 100)] public float rareChance = 25f;
     [Range(0, 100)] public float epicChance = 12f;
     [Range(0, 100)] public float legendaryChance = 3f;
+
+    [Header("Cristales por repetido")]
+    public bool giveCrystalsOnDuplicate = true;
+    public int duplicateCommonCrystals = 10;
+    public int duplicateRareCrystals = 20;
+    public int duplicateEpicCrystals = 40;
+    public int duplicateLegendaryCrystals = 80;
+    public int duplicateMythicCrystals = 120;
 
     [Header("Sistema de suerte")]
     public bool usePity = true;
@@ -76,6 +84,12 @@ public class GachaSystem : MonoBehaviour
         if (isSummoning)
             return;
 
+        if (inventory == null)
+        {
+            Debug.LogError("No hay GachaInventoryManager asignado en GachaSystem.");
+            return;
+        }
+
         Play(clickSound);
 
         if (!inventory.SpendEssence(summonOneCost))
@@ -93,6 +107,12 @@ public class GachaSystem : MonoBehaviour
     {
         if (isSummoning)
             return;
+
+        if (inventory == null)
+        {
+            Debug.LogError("No hay GachaInventoryManager asignado en GachaSystem.");
+            return;
+        }
 
         Play(clickSound);
 
@@ -138,7 +158,6 @@ public class GachaSystem : MonoBehaviour
                 skipAnimationToggle != null &&
                 skipAnimationToggle.isOn;
 
-            // SOLO reproduce animación si NO está activado el skip
             if (!skipAnimation && fullscreenAnimation != null)
             {
                 yield return StartCoroutine(
@@ -150,6 +169,14 @@ public class GachaSystem : MonoBehaviour
             }
 
             bool isNew = inventory.AddEnemyFromGacha(reward);
+
+            if (!isNew && giveCrystalsOnDuplicate)
+            {
+                int duplicateCrystals = GetDuplicateCrystalReward(reward.rarity);
+                inventory.AddEssence(duplicateCrystals);
+                Debug.Log("Repetido: " + reward.enemyName + " | Cristales ganados: " + duplicateCrystals);
+            }
+
             UpdateUI();
 
             if (rewardPopup != null)
@@ -164,6 +191,30 @@ public class GachaSystem : MonoBehaviour
 
         isSummoning = false;
         UpdateUI();
+    }
+
+    private int GetDuplicateCrystalReward(GachaRarity rarity)
+    {
+        switch (rarity)
+        {
+            case GachaRarity.Comun:
+                return duplicateCommonCrystals;
+
+            case GachaRarity.Raro:
+                return duplicateRareCrystals;
+
+            case GachaRarity.Epico:
+                return duplicateEpicCrystals;
+
+            case GachaRarity.Legendario:
+                return duplicateLegendaryCrystals;
+
+            case GachaRarity.Mitico:
+                return duplicateMythicCrystals;
+
+            default:
+                return duplicateCommonCrystals;
+        }
     }
 
     private EnemyGachaData RollEnemy(bool forceEpicOrBetter)
@@ -267,12 +318,10 @@ public class GachaSystem : MonoBehaviour
     public void UpdateUI()
     {
         if (essenceText != null && inventory != null)
-            essenceText.text =
-                inventory.GetEssence().ToString();
+            essenceText.text = inventory.GetEssence().ToString();
 
         if (shopCoinsText != null && inventory != null)
-            shopCoinsText.text =
-                inventory.GetShopCoins().ToString();
+            shopCoinsText.text = inventory.GetShopCoins().ToString();
 
         UpdateButtonStates();
     }

@@ -13,8 +13,8 @@ public class VillageAttackCountdownManager : MonoBehaviour
     public TMP_Text countdownText;
 
     [Header("Tiempo para el siguiente ataque")]
-    public float minTimeToAttack = 15f;
-    public float maxTimeToAttack = 20f;
+    public float minTimeToAttack = 60f;
+    public float maxTimeToAttack = 190f;
 
     [Header("Reintento si no encuentra aldea")]
     public float retryDelay = 1f;

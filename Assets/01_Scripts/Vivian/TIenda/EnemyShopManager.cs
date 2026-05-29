@@ -1,4 +1,4 @@
-﻿using System.Collections.Generic;
+using System.Collections.Generic;
 using TMPro;
 using UnityEngine;
 using UnityEngine.UI;
@@ -142,7 +142,13 @@ public class EnemyShopManager : MonoBehaviour
     public void BuyEnemy(EnemyGachaData enemy)
     {
         if (enemy == null || inventory == null)
+        {
+            Debug.LogWarning("No se puede comprar: enemy o inventory es null.");
             return;
+        }
+
+        int copiesBefore = inventory.GetCopies(enemy.enemyId);
+        int coinsBefore = inventory.GetShopCoins();
 
         if (!inventory.HasEnemy(enemy.enemyId))
         {
@@ -160,7 +166,12 @@ public class EnemyShopManager : MonoBehaviour
             return;
         }
 
-        ShowMessage("Compraste una copia de " + enemy.enemyName + ".");
+        int copiesAfter = inventory.GetCopies(enemy.enemyId);
+        int coinsAfter = inventory.GetShopCoins();
+
+        ShowMessage("Compraste una copia de " + enemy.enemyName + ". Copias: " + copiesBefore + " -> " + copiesAfter);
+        Debug.Log("Compra tienda: " + enemy.enemyName + " | Copias " + copiesBefore + " -> " + copiesAfter + " | Monedas " + coinsBefore + " -> " + coinsAfter);
+
         Play(buySound);
         RefreshAll();
 
