@@ -1891,7 +1891,7 @@ MonoBehaviour:
   strength: 20
   speed: 6
   isAlive: 1
-  healthFillImage: {fileID: 653183597522472855}
+  healthFillImage: {fileID: 5833406845722112047}
   lineNumber: 0
   hasActedThisRound: 0
   partyIndex: -1
@@ -1945,7 +1945,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 1b56fef87cd6c4710af35df464055341, type: 3}
   m_Name: 
   m_EditorClassIdentifier: Assembly-CSharp::UnitMovement
-  moveSpeed: 1.15
+  moveSpeed: 4
   distanciaMinima: 0.55
   modelRotationOffset: {x: 0, y: -135, z: 0}
 --- !u!114 &6524967159421012652
@@ -1972,7 +1972,7 @@ MonoBehaviour:
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 6327702237055309721}
-  m_Enabled: 1
+  m_Enabled: 0
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: ec8aeeac4495c3d42b8df72554c0e0f3, type: 3}
   m_Name: 
@@ -1981,7 +1981,7 @@ MonoBehaviour:
   ataque: 20
   velocidad: 6
   defensaVisual: 10
-  velocidadMovimiento: 1.15
+  velocidadMovimiento: 4
   distanciaMinimaAtaque: 0.55
   rotacionModelo: {x: 0, y: -135, z: 0}
   probabilidadSusurro: 0.35

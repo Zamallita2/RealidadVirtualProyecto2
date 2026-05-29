@@ -640,19 +640,19 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: -8679921383154817045, guid: 63210ee8096238a408de72e5eec72625, type: 3}
       propertyPath: m_LocalRotation.w
-      value: 0.705983
+      value: 1
       objectReference: {fileID: 0}
     - target: {fileID: -8679921383154817045, guid: 63210ee8096238a408de72e5eec72625, type: 3}
       propertyPath: m_LocalRotation.x
-      value: 0.039851096
+      value: 0
       objectReference: {fileID: 0}
     - target: {fileID: -8679921383154817045, guid: 63210ee8096238a408de72e5eec72625, type: 3}
       propertyPath: m_LocalRotation.y
-      value: 0.705983
+      value: 0
       objectReference: {fileID: 0}
     - target: {fileID: -8679921383154817045, guid: 63210ee8096238a408de72e5eec72625, type: 3}
       propertyPath: m_LocalRotation.z
-      value: -0.039851096
+      value: 0
       objectReference: {fileID: 0}
     - target: {fileID: -8679921383154817045, guid: 63210ee8096238a408de72e5eec72625, type: 3}
       propertyPath: m_LocalEulerAnglesHint.x
@@ -763,18 +763,18 @@ MonoBehaviour:
     category: 0
     isHealing: 0
     isAOE: 1
-    strengthMultiplier: 1
+    strengthMultiplier: 1.5
     targetType: 3
-    applyEffect: 0
-    effectChance: 0
-    effectDuration: 0
+    applyEffect: 1
+    effectChance: 0.1
+    effectDuration: 2
   - skillName: Full paralice
     category: 0
     isHealing: 0
     isAOE: 1
-    strengthMultiplier: 1
+    strengthMultiplier: 0.5
     targetType: 3
-    applyEffect: 1
+    applyEffect: 3
     effectChance: 1
     effectDuration: 3
   isRanged: 1

@@ -1013,9 +1013,9 @@ MonoBehaviour:
     isAOE: 0
     strengthMultiplier: 0
     targetType: 0
-    applyEffect: 0
-    effectChance: 0
-    effectDuration: 0
+    applyEffect: 2
+    effectChance: 0.3
+    effectDuration: 3
   isRanged: 0
   projectilePrefab: {fileID: 0}
   projectileSpawnPoint: {fileID: 0}
