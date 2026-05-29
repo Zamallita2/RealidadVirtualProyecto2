@@ -1,4 +1,4 @@
-﻿using System.Collections;
+using System.Collections;
 using TMPro;
 using UnityEngine;
 using UnityEngine.EventSystems;
@@ -12,6 +12,9 @@ public class EnemyShopItemUI : MonoBehaviour, IPointerEnterHandler, IPointerExit
     [Header("Textos")]
     public TMP_Text copyText;
     public TMP_Text priceText;
+
+    [Header("Botón para abrir carta grande")]
+    public Button cardOpenButton;
 
     [Header("Botón comprar")]
     public Button buyButton;
@@ -39,18 +42,28 @@ public class EnemyShopItemUI : MonoBehaviour, IPointerEnterHandler, IPointerExit
         if (canvasGroup == null)
             canvasGroup = gameObject.AddComponent<CanvasGroup>();
 
+        canvasGroup.blocksRaycasts = true;
+        canvasGroup.interactable = true;
+
         if (buyButton != null)
         {
             buyButton.onClick.RemoveAllListeners();
             buyButton.onClick.AddListener(Buy);
         }
+        else
+        {
+            Debug.LogWarning("Falta asignar buyButton en " + gameObject.name);
+        }
 
-        Button cardButton = GetComponent<Button>();
-        if (cardButton == null)
-            cardButton = gameObject.AddComponent<Button>();
-
-        cardButton.onClick.RemoveAllListeners();
-        cardButton.onClick.AddListener(OpenBigImage);
+        // IMPORTANTE:
+        // Antes el script agregaba un Button automáticamente al objeto completo de la carta.
+        // Eso puede tapar o competir con el botón Comprar si el área se sobrepone.
+        // Ahora solo usamos cardOpenButton si tú lo asignas en el Inspector.
+        if (cardOpenButton != null && cardOpenButton != buyButton)
+        {
+            cardOpenButton.onClick.RemoveAllListeners();
+            cardOpenButton.onClick.AddListener(OpenBigImage);
+        }
 
         Refresh();
 
@@ -133,6 +146,8 @@ public class EnemyShopItemUI : MonoBehaviour, IPointerEnterHandler, IPointerExit
 
     private void Buy()
     {
+        Debug.Log("Click en Comprar: " + (enemyData != null ? enemyData.enemyName : "SIN DATA"));
+
         if (shopManager != null)
             shopManager.BuyEnemy(enemyData);
     }

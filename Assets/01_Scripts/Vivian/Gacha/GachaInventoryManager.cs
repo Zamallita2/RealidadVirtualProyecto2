@@ -59,6 +59,9 @@ public class GachaInventoryManager : MonoBehaviour
 
         if (SaveData == null)
             CreateNewSave();
+
+        if (SaveData.ownedEnemies == null)
+            SaveData.ownedEnemies = new List<GachaOwnedEnemy>();
     }
 
     private void CreateNewSave()
@@ -67,7 +70,8 @@ public class GachaInventoryManager : MonoBehaviour
         {
             essence = startEssence,
             shopCoins = startShopCoins,
-            pityCounter = 0
+            pityCounter = 0,
+            ownedEnemies = new List<GachaOwnedEnemy>()
         };
 
         Save();
@@ -91,14 +95,20 @@ public class GachaInventoryManager : MonoBehaviour
 
     public void AddEssence(int amount)
     {
-        Debug.Log("Ganaste " + amount + " de Escencia");
-        if (MensajeUI.Instance != null) MensajeUI.Instance.Mostrar($"¡Has conseguido {amount} de Esencia!");
+        if (amount <= 0)
+            return;
+
+        Debug.Log("Ganaste " + amount + " cristales/esencia");
+        if (MensajeUI.Instance != null) MensajeUI.Instance.Mostrar($"¡Has conseguido {amount} cristales!");
         SaveData.essence += amount;
         Save();
     }
 
     public void AddShopCoinsFromBattle(int amount)
     {
+        if (amount <= 0)
+            return;
+
         Debug.Log("Ganaste " + amount + " monedas");
         if (MensajeUI.Instance != null) MensajeUI.Instance.Mostrar($"¡Has conseguido {amount} de Oro!");
         SaveData.shopCoins += amount;
@@ -127,6 +137,9 @@ public class GachaInventoryManager : MonoBehaviour
 
     public GachaOwnedEnemy GetOwned(string enemyId)
     {
+        if (SaveData == null || SaveData.ownedEnemies == null)
+            return null;
+
         return SaveData.ownedEnemies.Find(x => x.enemyId == enemyId);
     }
 
@@ -160,12 +173,14 @@ public class GachaInventoryManager : MonoBehaviour
 
             SaveData.ownedEnemies.Add(owned);
             Save();
+            Debug.Log("Nuevo enemigo desbloqueado: " + enemy.enemyName + " | Copias: " + owned.copies);
             return true;
         }
 
         owned.unlocked = true;
         owned.copies++;
         Save();
+        Debug.Log("Enemigo repetido: " + enemy.enemyName + " | Copias: " + owned.copies);
         return false;
     }
 
@@ -174,22 +189,27 @@ public class GachaInventoryManager : MonoBehaviour
         if (enemy == null)
             return false;
 
-        if (!HasEnemy(enemy.enemyId))
-            return false;
-
-        if (!SpendShopCoins(enemy.shopPrice))
-            return false;
-
         GachaOwnedEnemy owned = GetOwned(enemy.enemyId);
 
-        if (owned == null)
+        if (owned == null || !owned.unlocked)
+        {
+            Debug.LogWarning("No puedes comprar copia porque no está desbloqueado: " + enemy.enemyName);
             return false;
+        }
 
+        if (SaveData.shopCoins < enemy.shopPrice)
+        {
+            Debug.LogWarning("No tienes monedas suficientes para comprar: " + enemy.enemyName);
+            return false;
+        }
+
+        SaveData.shopCoins -= enemy.shopPrice;
         owned.copies++;
         Save();
+
+        Debug.Log("Compra correcta: " + enemy.enemyName + " | Copias ahora: " + owned.copies + " | Monedas ahora: " + SaveData.shopCoins);
         return true;
     }
-
 
     public EnemyGachaData GetEnemyData(string enemyId)
     {

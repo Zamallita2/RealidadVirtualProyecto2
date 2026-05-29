@@ -1834,6 +1834,7 @@ MonoBehaviour:
   cardImage: {fileID: 83865119}
   copyText: {fileID: 1203772446}
   priceText: {fileID: 1772443591}
+  cardOpenButton: {fileID: 0}
   buyButton: {fileID: 1588369074}
   buyButtonImage: {fileID: 185147050}
   buyEnabledSprite: {fileID: 21300000, guid: 73fedc69c4079f04dbf62feba314148a, type: 3}
@@ -5973,6 +5974,12 @@ MonoBehaviour:
   rareChance: 25
   epicChance: 12
   legendaryChance: 3
+  giveCrystalsOnDuplicate: 1
+  duplicateCommonCrystals: 10
+  duplicateRareCrystals: 15
+  duplicateEpicCrystals: 20
+  duplicateLegendaryCrystals: 50
+  duplicateMythicCrystals: 50
   usePity: 1
   pityLimit: 20
   guaranteeEpicInTen: 1
@@ -10264,6 +10271,7 @@ MonoBehaviour:
   cardImage: {fileID: 521917557}
   copyText: {fileID: 1133844421}
   priceText: {fileID: 988008911}
+  cardOpenButton: {fileID: 0}
   buyButton: {fileID: 2097425079}
   buyButtonImage: {fileID: 1046237644}
   buyEnabledSprite: {fileID: 21300000, guid: 73fedc69c4079f04dbf62feba314148a, type: 3}
@@ -15649,6 +15657,7 @@ MonoBehaviour:
   cardImage: {fileID: 723354797}
   copyText: {fileID: 658758822}
   priceText: {fileID: 696232389}
+  cardOpenButton: {fileID: 0}
   buyButton: {fileID: 1426960494}
   buyButtonImage: {fileID: 669349616}
   buyEnabledSprite: {fileID: 21300000, guid: 73fedc69c4079f04dbf62feba314148a, type: 3}
@@ -15747,6 +15756,7 @@ MonoBehaviour:
   cardImage: {fileID: 723565929}
   copyText: {fileID: 1918418142}
   priceText: {fileID: 360190226}
+  cardOpenButton: {fileID: 0}
   buyButton: {fileID: 686890776}
   buyButtonImage: {fileID: 1121152601}
   buyEnabledSprite: {fileID: 21300000, guid: 73fedc69c4079f04dbf62feba314148a, type: 3}
@@ -20971,6 +20981,7 @@ MonoBehaviour:
   cardImage: {fileID: 1059467935}
   copyText: {fileID: 1298541831}
   priceText: {fileID: 211800228}
+  cardOpenButton: {fileID: 0}
   buyButton: {fileID: 1742729379}
   buyButtonImage: {fileID: 1133913233}
   buyEnabledSprite: {fileID: 21300000, guid: 73fedc69c4079f04dbf62feba314148a, type: 3}
@@ -23358,6 +23369,7 @@ MonoBehaviour:
   cardImage: {fileID: 1175342798}
   copyText: {fileID: 1316137873}
   priceText: {fileID: 1463200212}
+  cardOpenButton: {fileID: 0}
   buyButton: {fileID: 1846213357}
   buyButtonImage: {fileID: 217088148}
   buyEnabledSprite: {fileID: 21300000, guid: 73fedc69c4079f04dbf62feba314148a, type: 3}
@@ -31997,6 +32009,7 @@ MonoBehaviour:
   cardImage: {fileID: 1556570118}
   copyText: {fileID: 1917452205}
   priceText: {fileID: 1183156650}
+  cardOpenButton: {fileID: 0}
   buyButton: {fileID: 493911904}
   buyButtonImage: {fileID: 2146056530}
   buyEnabledSprite: {fileID: 21300000, guid: 73fedc69c4079f04dbf62feba314148a, type: 3}
@@ -35663,10 +35676,10 @@ RectTransform:
   - {fileID: 474675828}
   - {fileID: 2127630294}
   - {fileID: 1216525939}
+  - {fileID: 1742378489}
   - {fileID: 748654733}
   - {fileID: 1792977719}
   - {fileID: 627681939}
-  - {fileID: 1742378489}
   - {fileID: 2044218273}
   m_Father: {fileID: 0}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
