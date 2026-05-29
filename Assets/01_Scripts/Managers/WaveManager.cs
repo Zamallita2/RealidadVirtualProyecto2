@@ -151,8 +151,15 @@ public class WaveManager : MonoBehaviour
         currentRoomData.isBeingAttacked = false;
 
         // Recompensas
-        shop.AddEssence(Random.Range(minEssence * 2, maxEssence * 2));
-        shop.AddShopCoinsFromBattle(Random.Range(minCoins * 2, maxCoins * 2));
+        int essence = Random.Range(minEssence * 2, maxEssence * 2);
+        int coins = Random.Range(minCoins * 2, maxCoins * 2);
+
+        shop.AddEssence(essence);
+        shop.AddShopCoinsFromBattle(coins);
+
+        MensajeUI.Instance.Mostrar(
+            $"Ganaste {essence} de esencia y {coins} monedas"
+        );
         FM.HandleLevels(false);
 
         // ---- NUEVA LÓGICA: vaciar la sala en el save data y devolver copias ----
@@ -165,8 +172,15 @@ public class WaveManager : MonoBehaviour
         if (currentWave != 0)
         {
             FM.HandleLevels(true);
-            shop.AddEssence(Random.Range(minEssence, maxEssence));
-            shop.AddShopCoinsFromBattle(Random.Range(minCoins, maxCoins));
+            int essence = Random.Range(minEssence, maxEssence);
+            int coins = Random.Range(minCoins, maxCoins);
+
+            shop.AddEssence(essence);
+            shop.AddShopCoinsFromBattle(coins);
+
+            MensajeUI.Instance.Mostrar(
+                $"Ganaste {essence} de esencia y {coins} monedas"
+            );
         }
 
         currentWave++;

@@ -16396,7 +16396,7 @@ MonoBehaviour:
   adventurerManager: {fileID: 1046546289}
   countdownText: {fileID: 404328581}
   minTimeToAttack: 60
-  maxTimeToAttack: 190
+  maxTimeToAttack: 60
   retryDelay: 1
 --- !u!4 &761281551
 Transform:

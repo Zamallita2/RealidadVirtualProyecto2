@@ -99,7 +99,6 @@ public class GachaInventoryManager : MonoBehaviour
             return;
 
         Debug.Log("Ganaste " + amount + " cristales/esencia");
-        if (MensajeUI.Instance != null) MensajeUI.Instance.Mostrar($"¡Has conseguido {amount} cristales!");
         SaveData.essence += amount;
         Save();
     }
@@ -110,7 +109,6 @@ public class GachaInventoryManager : MonoBehaviour
             return;
 
         Debug.Log("Ganaste " + amount + " monedas");
-        if (MensajeUI.Instance != null) MensajeUI.Instance.Mostrar($"¡Has conseguido {amount} de Oro!");
         SaveData.shopCoins += amount;
         Save();
     }
