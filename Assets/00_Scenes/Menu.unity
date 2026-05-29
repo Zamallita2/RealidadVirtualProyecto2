@@ -424,7 +424,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: fab259b63242ade43a4d678475e91c07, type: 3}
   m_Name: 
   m_EditorClassIdentifier: Assembly-CSharp::MenuController
-  sceneToLoad: aldea,sala,grid,gacha Robert
+  sceneToLoad: ZamaDef
   playButton: {fileID: 2141871941}
   titleImage: {fileID: 139677912}
   playButtonTransform: {fileID: 2141871940}
