@@ -11,9 +11,12 @@ EditorBuildSettings:
   - enabled: 1
     path: Assets/00_Scenes/Menu.unity
     guid: c2542e033635fc846a5e490d4b33e8ed
-  - enabled: 1
+  - enabled: 0
     path: Assets/00_Scenes/aldea,sala,grid,gacha Robert.unity
     guid: b751d6071a1f54d4eb30b72e2561cff0
+  - enabled: 1
+    path: Assets/00_Scenes/ZamaDef.unity
+    guid: 5e14a95df4793225ca98c404af070ef4
   m_configObjects:
     com.unity.input.settings.actions: {fileID: -944628639613478452, guid: 052faaac586de48259a63d0c4782560b, type: 3}
   m_UseUCBPForAssetBundles: 0

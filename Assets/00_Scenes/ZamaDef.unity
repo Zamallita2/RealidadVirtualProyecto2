@@ -2850,8 +2850,8 @@ MonoBehaviour:
   villageManager: {fileID: 0}
   adventurerManager: {fileID: 1046546289}
   contadorAtaqueText: {fileID: 0}
-  minIntervalSeconds: 20
-  maxIntervalSeconds: 30
+  minIntervalSeconds: 60
+  maxIntervalSeconds: 160
   retryDelaySeconds: 1
 --- !u!4 &125354234
 Transform:
@@ -16385,8 +16385,8 @@ MonoBehaviour:
   villageManager: {fileID: 1046546286}
   adventurerManager: {fileID: 1046546289}
   countdownText: {fileID: 404328581}
-  minTimeToAttack: 15
-  maxTimeToAttack: 20
+  minTimeToAttack: 60
+  maxTimeToAttack: 190
   retryDelay: 1
 --- !u!4 &761281551
 Transform:
@@ -23153,7 +23153,7 @@ RectTransform:
   m_AnchorMin: {x: 0.5, y: 0.5}
   m_AnchorMax: {x: 0.5, y: 0.5}
   m_AnchoredPosition: {x: -93, y: 484}
-  m_SizeDelta: {x: 52.724, y: 30}
+  m_SizeDelta: {x: 41.818, y: 30}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!114 &1163457698
 MonoBehaviour:
